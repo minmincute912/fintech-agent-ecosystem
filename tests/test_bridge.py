@@ -1,12 +1,10 @@
-import copy
-
 import pandas as pd
 import pytest
 from tradingagents.dataflows.config import set_config
 from tradingagents.dataflows.errors import NoMarketDataError, VendorUnavailableError
-from tradingagents.default_config import DEFAULT_CONFIG
 
 from vsi import bridge
+from vsi.markets import vn_config
 
 DATES = pd.bdate_range(end="2026-10-30", periods=300)
 
@@ -32,11 +30,10 @@ class FakeClient:
 
 @pytest.fixture
 def installed(monkeypatch):
-    cfg = copy.deepcopy(DEFAULT_CONFIG)
-    cfg["data_vendors"].update(core_stock_apis="ssi", technical_indicators="ssi")
+    cfg = vn_config()
     bridge.load_ohlcv.cache_clear()
+    monkeypatch.setattr(bridge, "_client", None)  # records the original so teardown restores it
     bridge.install(FakeClient(), patch=monkeypatch.setattr, setitem=monkeypatch.setitem)
-    monkeypatch.setattr(bridge, "_client", bridge._client)  # undo the module global after the test
     set_config(cfg)
     yield
     bridge.load_ohlcv.cache_clear()
