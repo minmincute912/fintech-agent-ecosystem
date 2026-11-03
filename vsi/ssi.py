@@ -49,12 +49,15 @@ class SsiClient:
 
     def _access_token(self) -> str:
         if self._token is None:
+            failure = None
             try:
                 resp = self._session.post(self._base + _TOKEN, json={"consumerID": self._id,
                                                                       "consumerSecret": self._secret}, timeout=30)
                 body = resp.json()
             except (requests.RequestException, ValueError) as e:
-                raise VendorUnavailableError(f"SSI {_TOKEN} failed: {type(e).__name__}") from None
+                failure = type(e).__name__
+            if failure:  # raised outside the except so no __context__ carries the request body (secret)
+                raise VendorUnavailableError(f"SSI {_TOKEN} failed: {failure}")
             if body.get("status") != 200:
                 raise VendorNotConfiguredError(f"SSI token request failed: {body.get('message')}")
             self._token = body["data"]["accessToken"]
@@ -62,11 +65,13 @@ class SsiClient:
 
     def _get_once(self, path: str, params: dict):
         headers = {"Accept": "application/json", "Authorization": "Bearer " + self._access_token()}
+        failure = None
         try:
             return self._session.get(self._base + path, params=params, headers=headers, timeout=30)
         except requests.RequestException as e:
-            # from None: the chained exception can carry the request headers
-            raise VendorUnavailableError(f"SSI {path} failed: {type(e).__name__}") from None
+            failure = type(e).__name__
+        # raised outside the except so no __context__ carries the request headers (token)
+        raise VendorUnavailableError(f"SSI {path} failed: {failure}")
 
     def _get(self, path: str, params: dict) -> list[dict]:
         """All rows of a paged GET, refreshing the token once on HTTP 401."""
@@ -79,7 +84,15 @@ class SsiClient:
                 resp = self._get_once(path, query)
             if not 200 <= resp.status_code < 300:
                 raise VendorUnavailableError(f"SSI {path} failed: HTTP {resp.status_code}")
-            data = resp.json().get("data") or []
+            try:
+                body = resp.json()
+            except ValueError:
+                body = None
+            # SSI can answer HTTP 200 with an error status in the body; that is an outage, not "no data"
+            if not isinstance(body, dict) or body.get("status") not in ("Success", 200):
+                message = body.get("message") if isinstance(body, dict) else "non-JSON response"
+                raise VendorUnavailableError(f"SSI {path} failed: {message}")
+            data = body.get("data") or []
             rows.extend(data)
             if len(data) < _PAGE_SIZE:
                 return rows

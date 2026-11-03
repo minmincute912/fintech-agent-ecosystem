@@ -19,6 +19,7 @@ from tradingagents.agents import context
 from tradingagents.dataflows import router
 from tradingagents.dataflows.errors import NoMarketDataError, VendorUnavailableError
 from tradingagents.dataflows.vendors.yahoo import market, snapshot
+from tradingagents.dataflows.vendors.yahoo.ohlcv import _assert_ohlcv_not_stale
 from tradingagents.memory import settlement
 
 from vsi.ssi import SsiClient
@@ -44,6 +45,7 @@ def _ohlcv_until(base: str, as_of_date: str) -> pd.DataFrame:
     df = df[df["Date"] <= pd.Timestamp(as_of)].dropna(subset=["Close"])
     if df.empty:
         raise NoMarketDataError(base, base, f"no SSI price rows on or before {as_of_date}")
+    _assert_ohlcv_not_stale(df, as_of_date, base, base)  # upstream guard: halted/delisted is not "latest"
     return df.reset_index(drop=True)
 
 

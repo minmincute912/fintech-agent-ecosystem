@@ -392,7 +392,8 @@ git commit -m "feat: add vsi analyze command with per-run usage log"
   - the price units;
   - whether the largest one-day moves exceed what normal trading allows. That would suggest the prices are not adjusted for corporate actions. Label it **Assumption** unless an official source on price bands is cited;
   - the owner's terms clauses.
-- [ ] **Step 5: Gate.** STOP and report to the owner if VNINDEX has fewer than 200 rows a year, or if no HOSE ticker returns data. If VNINDEX works under a different code, fix `INDEX_CODES` and `VN_BENCHMARK` through a test first, as a ledgered ruling.
+- [ ] **Step 4b (added after final review):** Also record four things: the response `status` values SSI uses for success and for errors (the client accepts only `"Success"`/`200`), the field-name casing of Securities and DailyIndex, whether DailyOhlc includes an unfinished session during trading hours, and whether closes are adjusted for stock dividends and bonus shares.
+- [ ] **Step 5: Gate.** STOP and report to the owner if VNINDEX has fewer than 200 rows a year, or if no HOSE ticker returns data. Also STOP if closes turn out not to be adjusted for corporate actions, or if this can't be determined: settlement would then write false returns into the memory log, so Task 9 must not run until the owner rules on it. If VNINDEX works under a different code, fix `INDEX_CODES` and `VN_BENCHMARK` through a test first, as a ledgered ruling.
 - [ ] **Step 6: Commit**
 
 ```bash

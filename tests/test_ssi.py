@@ -1,7 +1,12 @@
 from datetime import date, timedelta
 
 import pytest
-from tradingagents.dataflows.errors import NoMarketDataError, VendorError, VendorNotConfiguredError
+from tradingagents.dataflows.errors import (
+    NoMarketDataError,
+    VendorError,
+    VendorNotConfiguredError,
+    VendorUnavailableError,
+)
 
 from vsi.ssi import SsiClient
 
@@ -106,3 +111,32 @@ def test_daily_index_and_securities():
     c = SsiClient("id", "secret", session=s)
     assert c.daily_index("VNINDEX", date(2026, 11, 1), date(2026, 11, 3)).iloc[-1] == 1699.62
     assert c.securities()["VNM"] == {"name": "Vietnam Dairy", "market": "HOSE"}
+
+
+def test_in_body_error_is_unavailable_not_no_data():
+    s = FakeSession([TOKEN_OK, (200, {"status": "Failed", "message": "Token expired", "data": None})])
+    with pytest.raises(VendorUnavailableError):
+        SsiClient("id", "secret", session=s).daily_ohlc("VNM", date(2026, 1, 1), date(2026, 2, 1))
+
+
+def test_non_json_body_is_unavailable():
+    class Html(_Resp):
+        def json(self):
+            raise ValueError("not json")
+
+    s = FakeSession([TOKEN_OK])
+    s.get = lambda *a, **k: Html(200, None)
+    with pytest.raises(VendorUnavailableError):
+        SsiClient("id", "secret", session=s).daily_ohlc("VNM", date(2026, 1, 1), date(2026, 2, 1))
+
+
+def test_network_error_keeps_no_context_with_secret():
+    import requests
+
+    class Boom(FakeSession):
+        def post(self, url, json=None, timeout=None):
+            raise requests.ConnectionError(f"failed sending {json}")
+
+    with pytest.raises(VendorUnavailableError) as e:
+        SsiClient("id", "S3CRET", session=Boom([])).daily_ohlc("VNM", date(2026, 1, 1), date(2026, 2, 1))
+    assert e.value.__context__ is None and e.value.__cause__ is None

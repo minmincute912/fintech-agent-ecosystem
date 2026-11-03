@@ -73,3 +73,18 @@ def test_get_closes_end_exclusive(installed):
     s = bridge.get_closes("VNM.VN", "2026-10-28", "2026-10-30")
     assert s.index.max() < pd.Timestamp("2026-10-30", tz="Asia/Ho_Chi_Minh")
     assert s.index.max() == pd.Timestamp("2026-10-29", tz="Asia/Ho_Chi_Minh")
+
+
+def test_stale_data_is_no_data(installed, monkeypatch):
+    from tradingagents.dataflows.vendors.yahoo.snapshot import build_verified_market_snapshot
+
+    class Stale(FakeClient):
+        def daily_ohlc(self, symbol, start, end):
+            df = super().daily_ohlc(symbol, start, end)
+            return df[df["Date"] <= pd.Timestamp("2026-03-31")].reset_index(drop=True)
+
+    monkeypatch.setattr(bridge, "_client", Stale())
+    with pytest.raises(NoMarketDataError):
+        bridge.load_ohlcv("VNM.VN", "2026-10-30")
+    with pytest.raises(NoMarketDataError):
+        build_verified_market_snapshot("VNM.VN", "2026-10-30", 5)
