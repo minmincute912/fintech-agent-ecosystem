@@ -33,6 +33,17 @@ Column order: Source/Product | Type | Access method | Exchanges | Fields | Histo
 
 Notes on the table: sentences tagged only with the sources above. "Free to call" and "undocumented" for VCI, KBS and MSN are inferences from reading the wrapper source and finding no developer documentation `[Assumption]`.
 
+### SSI FastConnect update (2026-11-03)
+
+All accessed 2026-11-03.
+
+- **Eligibility:** "Khách hàng có tài khoản giao dịch tại SSI" (customers with an SSI trading account); the service is provided "tại Quầy hoặc thông qua nhân viên môi giới" (at the counter or through a broker). `[Fact: https://guide.ssi.com.vn/ssi-products/tieng-viet/dang-ky-dich-vu.md]`
+- **Keys:** ConsumerID and ConsumerSecret are created on iBoard and shown once; a fixed IP must be registered for the account. `[Fact: same page]`
+- **Terms, fees, rate limits:** not published on the guide pages read (registration, connection guide, api-specs). `[Fact: pages above and https://guide.ssi.com.vn/ssi-products/fastconnect-data/api-specs]`
+- **Endpoints:** base `https://fc-data.ssi.com.vn/`; `api/v2/Market/AccessToken` (POST `consumerID`, `consumerSecret`), `DailyOhlc`, `DailyIndex`, `DailyStockPrice`, `Securities`, `IndexComponents`, `IndexList`; dates `dd/mm/yyyy`; `pageIndex` 1–10, `pageSize` 10/20/50/100/1000. Field names differ between the spec tables and samples (e.g. DailyIndex). `[Fact: api-specs page]`
+- **Auth header:** `Authorization: Bearer <accessToken>`. `[Fact: SSI-Securities-Corporation/python-fcdata, ssi_fc_data/fc_md_client.py, master branch; repo has no licence, last pushed 2024-06-05]`
+- **Terms:** `[Owner decision needed]` read the agreement signed at registration and record its storage/automation/redistribution clauses before M2.
+
 ## Four explicit questions per candidate
 
 | Candidate | Delisted tickers present? | Adjusted prices: method / raw series? | Corporate-action history? | Fundamentals carry publication dates? |

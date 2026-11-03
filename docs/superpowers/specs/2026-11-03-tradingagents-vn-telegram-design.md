@@ -220,8 +220,9 @@ rules (Owner decision 1).
 | D5 | Keep the deterministic scanner/backtester track? | Keep as Phase 2b; it is needed for VN execution realism and Level 2 claims. |
 | D6 | Which analysts for VN in M1. | Market + fundamentals + news; drop social (no VN coverage). |
 
-M1 choices (owner, 2026-11-03): D4 source = Yahoo via yfinance, research-only;
-D1 provider = OpenAI.
+M1 choices (owner, 2026-11-03): D4 source = SSI FastConnect Data (Yahoo rejected:
+no VN-Index history, no HNX/UPCoM, ToS §2(d)(9) forbids automated access; see
+docs/research/yahoo-vn-probe.md); D1 provider = OpenAI.
 
 Proposed phases (replacing CLAUDE.md's order, pending D2):
 
