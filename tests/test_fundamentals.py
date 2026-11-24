@@ -67,7 +67,7 @@ def test_missing_item_is_blank(client):
     client(_rows("2026-09-30", "2026-10-30") + _rows("2026-06-30", "2026-07-30", items={21001: 90.0}))
     out = fundamentals.get_income_statement("VNM", "quarterly", "2026-11-25")
     row = next(line for line in out.splitlines() if "Net Profit After Tax of Parent Company" in line)
-    assert row.rstrip().endswith("| 10 |  |")  # newest first; the missing Q2 cell is blank, not 0
+    assert row.rstrip().endswith("| 0.00 |  |")  # 10 VND in billions; the missing Q2 cell is blank, not 0
 
 
 def test_revised_period_marked(client):
@@ -87,10 +87,10 @@ def test_header_lines(client):
 
 
 def test_statement_picked_by_layout_position(client):
-    rows = _rows("2026-09-30", "2026-10-30", items={12700: 500.0}, model=1) + _rows("2026-09-30", "2026-10-30")
+    rows = _rows("2026-09-30", "2026-10-30", items={12700: 500e9}, model=1) + _rows("2026-09-30", "2026-10-30")
     client(rows)
-    assert "| 500 |" in fundamentals.get_balance_sheet("VNM", "quarterly", "2026-11-25")
-    assert "| 500 |" not in fundamentals.get_income_statement("VNM", "quarterly", "2026-11-25")
+    assert "| 500.00 |" in fundamentals.get_balance_sheet("VNM", "quarterly", "2026-11-25")
+    assert "| 500.00 |" not in fundamentals.get_income_statement("VNM", "quarterly", "2026-11-25")
 
 
 def test_no_period_before_as_of_is_no_data(client):
@@ -138,15 +138,15 @@ def _cells(out, label):
     return [c.strip() for c in _line(out, label).strip("|").split("|")]
 
 
-def _bn(cell):  # "18,465,190,628,493" -> billions of VND
-    return float(cell.replace(",", "")) / 1e9
+def _bn(cell):  # "18,465.19" (billion VND) -> float
+    return float(cell.replace(",", ""))
 
 
 def test_summary_corporate_values_and_changes(monkeypatch):
     out = _summary(monkeypatch, "corporate")
     assert "Latest usable quarter: 2026-09-30 (created 2026-10-30)" in out
     label, value, qoq, yoy, prev, year_ago = _cells(out, "Revenue")
-    assert value == "18,465,190,628,493" and prev == "18,847,347,464,988" and year_ago == "16,953,231,537,863"
+    assert value == "18,465.19" and prev == "18,847.35" and year_ago == "16,953.23"  # billion VND
     assert (qoq, yoy) == ("-2.0", "+8.9")  # (18465.19-18847.35)/18847.35, (18465.19-16953.23)/16953.23
     assert _cells(out, "Equity")[2] == "+7.3"
 
@@ -167,7 +167,7 @@ def test_summary_change_blank_when_base_not_positive(monkeypatch):
 def test_summary_bank_uses_net_interest_income(monkeypatch):
     out = _summary(monkeypatch, "bank")
     assert "| Revenue " not in out
-    assert _cells(out, "Net interest income")[1] == "8,195,351,000,000"
+    assert _cells(out, "Net interest income")[1] == "8,195.35"
     nii, total = _bn(_cells(out, "Net interest income")[1]), _bn(_cells(out, "Total operating income")[1])
     assert _bn(_cells(out, "Non-interest income (computed)")[1]) == pytest.approx(total - nii)
 
@@ -213,3 +213,12 @@ def test_summary_lists_items_missing_from_layout(monkeypatch):
     monkeypatch.setattr(fundamentals, "_client", fake)
     out = fundamentals.get_fundamentals("ACB", "2026-11-25")
     assert "Not in source data: Customer deposits" in out
+
+
+def test_values_shown_in_billion_vnd_except_per_share(client):
+    # live run 2026-11-25: given raw VND, the agent wrote SHS revenue 1,002 bn as "1.002 nghìn tỷ" (1000x)
+    client(_rows("2026-09-30", "2026-10-30", items={21001: 1_001_990_396_188.0, 23001: 1265.0}))
+    out = fundamentals.get_income_statement("SHS", "quarterly", "2026-11-25")
+    assert "billion VND" in out.split("\n\n", 1)[0]
+    assert "| 1,001.99 |" in out
+    assert "| 1,265 (VND per share) |" in out

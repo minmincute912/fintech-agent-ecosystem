@@ -42,8 +42,14 @@ def _period_label(rows: pd.DataFrame, fiscal: date, as_of: date) -> str:
     return label + " (revised after analysis date)" if rows["modified"].max() > as_of else label
 
 
-def _cell(value) -> str:
-    return "" if pd.isna(value) else f"{value:,.0f}"
+_PER_SHARE = {23001, 700087}  # EPS, diluted EPS: VND per share, not amounts
+
+
+def _cell(value, code: int | None = None) -> str:
+    """Billion VND, 2 decimals: the agent quotes these as-is instead of converting raw VND (it slipped 1000x)."""
+    if pd.isna(value):
+        return ""
+    return f"{value:,.0f} (VND per share)" if code in _PER_SHARE else f"{value / 1e9:,.2f}"
 
 
 def _table(ticker: str, freq: str, as_of_date: str | None, position: int) -> str:
@@ -62,7 +68,7 @@ def _table(ticker: str, freq: str, as_of_date: str | None, position: int) -> str
     names = _client.item_names(symbol, list(models))
     order = sorted(values.index, key=lambda code: (names.get((model, code), ("", "", float("inf")))[2], code))
     head = [f"# {_STATEMENTS[position]} for {symbol} ({freq}), layout: {layout}",
-            "# Source: VNDirect finfo (undocumented public API), research-only, personal use. Values in VND.",
+            "# Source: VNDirect finfo (undocumented public API), research-only, personal use. Values in billion VND (tỷ đồng) unless marked.",
             f"# Periods shown: latest {_PERIODS} with a statement created on or before {as_of} "
             "(creation date approximates publication; see column headers).",
             f"# {RESTATED}"]
@@ -73,7 +79,7 @@ def _table(ticker: str, freq: str, as_of_date: str | None, position: int) -> str
         if all(pd.isna(v) or v == 0 for v in row):
             continue  # all-zero lines of the standard template carry no information
         vn, en, _ = names.get((model, code), (f"item {code}", f"item {code}", 0))
-        lines.append(f"| {vn} | {en} | " + " | ".join(_cell(v) for v in row) + " |")
+        lines.append(f"| {vn} | {en} | " + " | ".join(_cell(v, code) for v in row) + " |")
     return "\n".join(head) + "\n\n" + "\n".join(lines)
 
 
@@ -143,7 +149,7 @@ def get_fundamentals(ticker: str, as_of_date: str | None = None) -> str:
     created = df[df["fiscal_date"] == latest]["created"].min()
     revised = df[df["fiscal_date"] == latest]["modified"].max() > as_of
     head = [f"# Fundamentals summary for {symbol}, layout: {layout}, quarterly, as of {as_of}",
-            "# Source: VNDirect finfo (undocumented public API), research-only, personal use. Values in VND.",
+            "# Source: VNDirect finfo (undocumented public API), research-only, personal use. Values in billion VND (tỷ đồng) unless marked.",
             f"# {RESTATED}",
             "# QoQ: change vs previous quarter; YoY: vs same quarter a year earlier; % computed by code, "
             "blank when a value is missing or the base is not positive. Quarterly figures are for the quarter alone.",

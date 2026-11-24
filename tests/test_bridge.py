@@ -134,6 +134,6 @@ def test_us_only_tools_unavailable(installed, method, args):
 
 def test_fundamentals_routes_to_vsi(installed):
     from tradingagents.dataflows.router import route_to_vendor
-    assert "18,465,190,628,493" in route_to_vendor("get_fundamentals", "VNM.VN", "2026-11-23")
+    assert "18,465.19" in route_to_vendor("get_fundamentals", "VNM.VN", "2026-11-23")
     assert "Net Sales" in route_to_vendor("get_income_statement", "VNM.VN", "quarterly", "2026-11-23")
     assert route_to_vendor("get_balance_sheet", "VNM.VN", "quarterly", "2026-10-29").startswith("NO_DATA_AVAILABLE")
