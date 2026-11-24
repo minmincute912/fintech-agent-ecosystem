@@ -89,8 +89,16 @@ never sees anything published after D.
   periods with `createdDate` ≤ D, keeps the latest 4 quarters or 4 years, and renders a
   compact table: item name (Vietnamese + English), one column per period, values in VND as
   given, header with source, availability rule and the research-only label.
-  `get_fundamentals` returns a short summary: latest period, revenue, net profit, total
-  assets, equity, operating cash flow, each with the period and `createdDate`.
+  `get_fundamentals` returns a short summary computed by code, per layout, each figure with
+  its period and `createdDate`, plus quarter-on-quarter and year-on-year change:
+  non-financial: revenue, gross profit, net profit, total assets, equity, operating cash
+  flow; bank: net interest income, non-interest income, operating expenses, credit-loss
+  provisions, net profit, total assets, customer loans, customer deposits, equity;
+  securities: operating revenue by main line where the layout has it, net profit, total
+  assets, margin lending if itemised, equity; insurance: net premium revenue, net profit,
+  total assets, equity. The layout is detected from the finfo model/note of the ticker.
+  Each layout's item mapping is tested against one published report (figures typed into a
+  test fixture from the company's published statement, with its source cited).
 - `news.py` — RSS fetch and parse (stdlib), the SQLite store, `collect()` (fetch all feeds,
   insert new items by link), and router vendor functions `get_news` (company) and
   `get_global_news` (market-wide). Company match: ticker as a whole word (e.g. `VNM`,
@@ -139,7 +147,8 @@ during collect → logged and skipped; others continue.
    ~10 days on most samples (data would be stale; owner decides).
 2. **Look-ahead tests:** statements created after D are excluded; news published after D is
    excluded; boundary at D in Vietnam time.
-3. **Live run:** three runs (one HOSE, one HNX, one UPCoM ticker) on the last full session;
+3. **Live run:** four runs on the last full session: VNM (HOSE, non-financial), VCB (bank),
+   SHS (HNX, securities), and one UPCoM ticker;
    check cited revenue/profit equal finfo; news items cited exist in the store with
    pubDate ≤ D; record tokens and cost in `docs/research/m2-run-cost.md`.
 
@@ -166,10 +175,11 @@ during collect → logged and skipped; others continue.
 - Fundamentals source A (VNDirect finfo), research-only (2026-11-24).
 - News via free RSS of Vietnamese outlets (proposal accepted with A).
 - Milestone order unchanged; M2 approved to start (2026-11-24).
-- Banks, securities firms and insurers (2026-11-24): statement tables in the source's own
-  layout for every ticker; the compact `get_fundamentals` summary only for non-financial
-  companies. Financial-sector tickers get "summary not available for this sector" plus the
-  tables. A sector summary (NII, NIM …) is later work.
+- Banks, securities firms and insurers (2026-11-24, full support): statement tables in the
+  source's own layout for every ticker, and a code-computed `get_fundamentals` summary for all
+  four layouts: non-financial (TT200), bank (TT49), securities (TT334), insurance (TT199/232).
+  The LLM computes nothing. Sector summaries use only items in the three main statements;
+  notes-based metrics (NPL, CASA, CAR) are out of scope because finfo has no notes.
 
 ## Left to the builder
 
