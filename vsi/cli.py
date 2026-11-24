@@ -14,9 +14,9 @@ from tradingagents.graph.trading_graph import TradingAgentsGraph
 
 from vsi.bridge import install
 from vsi.markets import VN_ANALYSTS, normalize_ticker, vn_config
-from vsi.ssi import SsiClient
+from vsi.dnse import DnseClient
 
-DATA_SOURCE = "SSI FastConnect Data"
+DATA_SOURCE = "DNSE OpenAPI"
 
 
 def analyze(ticker: str, trade_date: str, *, config: dict | None = None, graph_factory=None) -> dict:
@@ -56,9 +56,9 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     try:
         normalize_ticker(args.ticker)  # reject before any network setup
-        install(SsiClient.from_env())
+        install(DnseClient.from_env())
         result = analyze(args.ticker, args.date)
-    except ValueError as e:  # bad ticker/date, missing SSI keys (VendorNotConfiguredError)
+    except ValueError as e:  # bad ticker/date, missing DNSE keys (VendorNotConfiguredError)
         print(f"error: {e}")
         return 2
     print(f"{result['ticker']} {result['date']}: {result['rating']} (research only, not validated)")

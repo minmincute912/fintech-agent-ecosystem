@@ -1,4 +1,4 @@
-"""Vietnam market preset for TradingAgents (HOSE/HNX/UPCoM via SSI FastConnect)."""
+"""Vietnam market preset for TradingAgents (HOSE/HNX/UPCoM via DNSE OpenAPI)."""
 
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ def normalize_ticker(raw: str) -> str:
 
 def vn_config() -> dict:
     cfg = copy.deepcopy(DEFAULT_CONFIG)
-    cfg["data_vendors"].update(core_stock_apis="ssi", technical_indicators="ssi")
+    cfg["data_vendors"].update(core_stock_apis="dnse", technical_indicators="dnse")
     # first, so resolve_benchmark matches .VN before the "" (SPY) fallback
     cfg["benchmark_map"] = {VN_SUFFIX: VN_BENCHMARK, **cfg["benchmark_map"]}
     cfg.update(output_language="Vietnamese", llm_provider="openai", max_tokens=4096)

@@ -1,9 +1,9 @@
-"""Feed SSI FastConnect data into TradingAgents v0.7.1 and keep Yahoo out.
+"""Feed DNSE OpenAPI market data into TradingAgents v0.7.1 and keep Yahoo out.
 
 TradingAgents routes get_stock_data/get_indicators through its vendor router, but
 loads prices for indicators, the verified snapshot and settlement, and company
-identity, by calling Yahoo helpers directly. install() points those names at SSI
-so the upstream indicator, snapshot and settlement code runs unchanged on SSI data,
+identity, by calling Yahoo helpers directly. install() points those names at DNSE
+so the upstream indicator, snapshot and settlement code runs unchanged on DNSE data,
 and disables yfinance so any path left over fails loudly instead of fetching.
 """
 
@@ -22,11 +22,11 @@ from tradingagents.dataflows.vendors.yahoo import market, snapshot
 from tradingagents.dataflows.vendors.yahoo.ohlcv import _assert_ohlcv_not_stale
 from tradingagents.memory import settlement
 
-from vsi.ssi import SsiClient
+from vsi.dnse import DnseClient
 
 INDEX_CODES = frozenset({"VNINDEX"})
 _VN_TZ = "Asia/Ho_Chi_Minh"
-_client: SsiClient | None = None
+_client: DnseClient | None = None
 
 
 def base_symbol(symbol: str) -> str:
@@ -44,14 +44,14 @@ def _ohlcv_until(base: str, as_of_date: str) -> pd.DataFrame:
     df = _client.daily_ohlc(base, as_of - timedelta(days=5 * 365), as_of)
     df = df[df["Date"] <= pd.Timestamp(as_of)].dropna(subset=["Close"])
     if df.empty:
-        raise NoMarketDataError(base, base, f"no SSI price rows on or before {as_of_date}")
+        raise NoMarketDataError(base, base, f"no DNSE price rows on or before {as_of_date}")
     _assert_ohlcv_not_stale(df, as_of_date, base, base)  # upstream guard: halted/delisted is not "latest"
     return df.reset_index(drop=True)
 
 
 def load_ohlcv(symbol: str, as_of_date: str, fill_gaps: bool = True) -> pd.DataFrame:
     """Same contract as TradingAgents' Yahoo load_ohlcv: rows up to as_of_date only."""
-    # shortcut: fill_gaps ignored — SSI returns traded sessions only; revisit if a halted stock shows gaps
+    # shortcut: fill_gaps ignored — DNSE returns traded sessions only; revisit if a halted stock shows gaps
     return _ohlcv_until(base_symbol(symbol), str(as_of_date)[:10]).copy()  # callers mutate the frame
 
 
@@ -63,10 +63,10 @@ def get_stock_data(symbol: str, start_date: str, end_date: str) -> str:
     df = _client.daily_ohlc(base, _day(start_date), _day(end_date))
     df = df[(df["Date"] >= pd.Timestamp(start_date)) & (df["Date"] <= pd.Timestamp(end_date))]
     if df.empty:
-        raise NoMarketDataError(symbol, base, f"no SSI rows between {start_date} and {end_date}")
+        raise NoMarketDataError(symbol, base, f"no DNSE rows between {start_date} and {end_date}")
     out = df.assign(Date=df["Date"].dt.strftime("%Y-%m-%d"))
     header = (f"# Stock data for {base} from {start_date} to {end_date}\n"
-              f"# Total records: {len(out)}\n# Source: SSI FastConnect Data\n\n")
+              f"# Total records: {len(out)}\n# Source: DNSE OpenAPI; prices in thousand VND\n\n")
     return header + out.to_csv(index=False)
 
 
@@ -85,7 +85,7 @@ def get_closes(symbol: str, start_date: str, end_date: str) -> pd.Series:
 
 
 def company_profile(ticker: str) -> dict:
-    info = _client.securities().get(base_symbol(ticker))
+    info = _client.instrument(base_symbol(ticker))
     return {"longName": info["name"], "exchange": info["market"]} if info else {}
 
 
@@ -96,11 +96,11 @@ def _yahoo_blocked(*args, **kwargs):
 
 # shortcut: patches TradingAgents v0.7.1 internals by name; test_bridge fails loudly if an upgrade
 # renames them — re-check on every version bump.
-def install(client: SsiClient, patch=setattr, setitem=operator.setitem) -> None:
+def install(client: DnseClient, patch=setattr, setitem=operator.setitem) -> None:
     global _client
     _client = client
-    setitem(router.VENDOR_METHODS["get_stock_data"], "ssi", get_stock_data)
-    setitem(router.VENDOR_METHODS["get_indicators"], "ssi", market.get_stock_stats_indicators_window)
+    setitem(router.VENDOR_METHODS["get_stock_data"], "dnse", get_stock_data)
+    setitem(router.VENDOR_METHODS["get_indicators"], "dnse", market.get_stock_stats_indicators_window)
     for module, name, value in (
         (market, "load_ohlcv", load_ohlcv),
         (snapshot, "load_ohlcv", load_ohlcv),

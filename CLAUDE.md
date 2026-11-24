@@ -46,8 +46,8 @@ not execute brokerage orders or promise investment returns.
 Revised 2026-11-03 (owner decision D2, spec
 docs/superpowers/specs/2026-11-03-tradingagents-vn-telegram-design.md §10):
 Phase 0: research, requirements, architecture, and documentation.
-Phase 1: M1 TradingAgents on VN tickers (SSI FastConnect Data, cost measured;
-         Yahoo rejected, docs/research/yahoo-vn-probe.md);
+Phase 1: M1 TradingAgents on VN tickers (DNSE OpenAPI, cost measured;
+         Yahoo and SSI dropped, docs/research/data-sources.md);
          M2 VN fundamentals and Vietnamese news.
 Phase 2: M3 interactive Telegram bot; M4 pre-registered VN evaluation and
          evidence labels.

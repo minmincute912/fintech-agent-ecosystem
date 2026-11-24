@@ -22,8 +22,8 @@ def test_normalize_rejects_bad_input(bad):
 
 def test_vn_config_values():
     cfg = vn_config()
-    assert cfg["data_vendors"]["core_stock_apis"] == "ssi"
-    assert cfg["data_vendors"]["technical_indicators"] == "ssi"
+    assert cfg["data_vendors"]["core_stock_apis"] == "dnse"
+    assert cfg["data_vendors"]["technical_indicators"] == "dnse"
     assert cfg["output_language"] == "Vietnamese"
     assert cfg["llm_provider"] == "openai"
     assert cfg["max_tokens"] == 4096

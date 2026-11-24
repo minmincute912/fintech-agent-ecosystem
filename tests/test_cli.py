@@ -30,8 +30,8 @@ def _raise(exc):
 @pytest.fixture
 def env(monkeypatch):
     monkeypatch.setenv("OPENAI_API_KEY", "test")
-    monkeypatch.setenv("SSI_CONSUMER_ID", "id")
-    monkeypatch.setenv("SSI_CONSUMER_SECRET", "secret")
+    monkeypatch.setenv("DNSE_API_KEY", "id")
+    monkeypatch.setenv("DNSE_API_SECRET", "secret")
     monkeypatch.setattr(cli, "load_dotenv", lambda *a, **k: None)
     monkeypatch.setattr(cli, "install", lambda client: None)
 
@@ -40,7 +40,7 @@ def test_analyze_runs_graph_and_logs(tmp_path):
     cfg = vn_config() | {"results_dir": str(tmp_path)}
     out = cli.analyze("vnm", "2026-10-30", config=cfg, graph_factory=FakeGraph)
     assert out["ticker"] == "VNM.VN" and out["rating"] == "Hold"
-    assert out["data_source"] == "SSI FastConnect Data"
+    assert out["data_source"] == "DNSE OpenAPI"
     assert FakeGraph.built[-1][0] == VN_ANALYSTS
     line = json.loads((tmp_path / "vsi_runs.jsonl").read_text().splitlines()[-1])
     assert line["ticker"] == out["ticker"] and "tokens_in" in line
@@ -63,7 +63,7 @@ def test_main_reports_value_error(env, monkeypatch, capsys):
     assert "future" in capsys.readouterr().out
 
 
-def test_main_requires_ssi_keys(env, monkeypatch, capsys):
-    monkeypatch.delenv("SSI_CONSUMER_ID")
+def test_main_requires_dnse_keys(env, monkeypatch, capsys):
+    monkeypatch.delenv("DNSE_API_KEY")
     assert cli.main(["analyze", "VNM", "--date", "2026-10-30"]) == 2
-    assert "SSI_CONSUMER_ID" in capsys.readouterr().out
+    assert "DNSE_API_KEY" in capsys.readouterr().out

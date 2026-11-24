@@ -223,6 +223,10 @@ rules (Owner decision 1).
 M1 choices (owner, 2026-11-03): D4 source = SSI FastConnect Data (Yahoo rejected:
 no VN-Index history, no HNX/UPCoM, ToS §2(d)(9) forbids automated access; see
 docs/research/yahoo-vn-probe.md); D1 provider = OpenAI.
+Revised by owner 2026-11-24: D4 source = DNSE OpenAPI instead of SSI (SSI needs
+counter/broker sign-up and a fixed IP; DNSE keys are self-service online). DNSE terms
+limit data to the customer's own trading and bar third-party sharing without DNSE's
+written approval; see docs/research/data-sources.md "DNSE OpenAPI update".
 
 Proposed phases (replacing CLAUDE.md's order, pending D2):
 

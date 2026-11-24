@@ -44,6 +44,18 @@ All accessed 2026-11-03.
 - **Auth header:** `Authorization: Bearer <accessToken>`. `[Fact: SSI-Securities-Corporation/python-fcdata, ssi_fc_data/fc_md_client.py, master branch; repo has no licence, last pushed 2024-06-05]`
 - **Terms:** `[Owner decision needed]` read the agreement signed at registration and record its storage/automation/redistribution clauses before M2.
 
+### DNSE OpenAPI update (2026-11-24)
+
+All accessed 2026-11-24. Supersedes the DNSE row's "historical OHLC not located".
+
+- **Eligibility and keys:** an ACTIVE DNSE securities account; self-service registration on entradex.dnse.com.vn (Thông tin tài khoản > LightSpeed API > Đăng ký) with Smart OTP or Email OTP; the API Secret "chỉ hiển thị một lần duy nhất". No fixed-IP registration is stated. `[Fact: https://developers.dnse.com.vn/docs/guide/faq/, https://developers.dnse.com.vn/docs/guide/intro/register_guide/]`
+- **Auth:** HMAC-SHA256 with the API Secret over `(request-target): get <path>`, the date header and a nonce; Base64, URL-encoded; headers `x-api-key`, `X-Signature`, date; clock skew at most ±1 minute. Market data needs no OTP or trading token. `[Fact: https://developers.dnse.com.vn/docs/guide/intro/authentication/; github.com/dnse-tech/openapi-sdk python/dnse/api/common.py]` The spec YAML names the date header `X-Aux-Date`, the guide and SDK `Date` `[Unverified → Task 8 check]`.
+- **Endpoints:** `GET /price/ohlc` (`symbol`, `type` STOCK/DERIVATIVE/INDEX, `resolution` 1…1D/1W, `from`/`to` Unix seconds) → arrays `t,o,h,l,c,v` and `nextTime`; `GET /market/instruments` (`marketId` STO = HOSE, STX = HNX, UPX = UPCoM); `GET /price/{indexName}/market-index` covers at most one day. Base `https://openapi.dnse.com.vn`, version `2026-07-23`. `[Fact: openapi-sdk spec/dnse-openapi-2026-09-15.yaml]` Stock prices in the spec example look like thousand VND (ACB 23.8) `[Assumption]`.
+- **Rate limits:** OHLC 50,000 per hour and 100,000 per day per key; instruments 1,000/10,000. HTTP 429 over the hourly rate, 403 `OA-401` over the daily quota. `[Fact: https://developers.dnse.com.vn/docs/guide/ratelimits/]`
+- **Terms:** data "chỉ được phục vụ cho mục đích giao dịch chứng khoán của Khách hàng"; giving original or processed data to any third party needs written notice and DNSE approval; DNSE may require dedicated IP/VPN and may stop the API "mà không cần phải thông báo". Storage is not addressed. `[Fact: https://hdsd.dnse.com.vn/die-u-khoa-n-di-ch-vu-dnse/dieu-khoan-san-pham-dich-vu/dieu-khoan-san-pham-lightspeed-api.md]` A Telegram bot used only by the owner fits own use; sharing reports with others needs DNSE approval `[Assumption]`.
+- **Unknown:** fees (Biểu phí page not read), history depth, adjustment for corporate actions, SDK licence (GitHub reports none; last commit 2026-10-05).
+- **Other brokers, one search each (2026-11-24):** no public individual-investor market-data API found for VPS, VNDirect, TCBS, HSC, Mirae, KIS, ACBS, Vietcap or KBSV; BSC's Open API targets partner integration; Finhay offers API keys and an MCP server for a dedicated FHSC account (not assessed). `[Assumption: search results only]`
+
 ## Four explicit questions per candidate
 
 | Candidate | Delisted tickers present? | Adjusted prices: method / raw series? | Corporate-action history? | Fundamentals carry publication dates? |

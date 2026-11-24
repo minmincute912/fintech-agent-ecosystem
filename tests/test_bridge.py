@@ -24,8 +24,8 @@ class FakeClient:
         s = pd.Series([1600.0 + i for i in range(len(DATES))], index=pd.DatetimeIndex(DATES, name="Date"))
         return s[(s.index >= pd.Timestamp(start)) & (s.index <= pd.Timestamp(end))]
 
-    def securities(self):
-        return {"VNM": {"name": "Vietnam Dairy", "market": "HOSE"}}
+    def instrument(self, symbol):
+        return {"name": "Vietnam Dairy", "market": "HOSE"} if symbol == "VNM" else None
 
 
 @pytest.fixture
@@ -51,7 +51,7 @@ def test_market_tools_use_ssi(installed):
     from tradingagents.dataflows.vendors.yahoo.snapshot import build_verified_market_snapshot
     from tradingagents.memory import settlement
 
-    assert "Source: SSI FastConnect Data" in route_to_vendor("get_stock_data", "VNM.VN", "2026-10-01", "2026-10-30")
+    assert "Source: DNSE OpenAPI" in route_to_vendor("get_stock_data", "VNM.VN", "2026-10-01", "2026-10-30")
     assert "rsi" in route_to_vendor("get_indicators", "VNM.VN", "rsi", "2026-10-30", 10).lower()
     assert "52990" in build_verified_market_snapshot("VNM.VN", "2026-10-30", 5)  # last close 50000+10*299
     assert settlement.get_closes("VNINDEX", "2026-10-01", "2026-10-31").iloc[-1] == 1600 + 299

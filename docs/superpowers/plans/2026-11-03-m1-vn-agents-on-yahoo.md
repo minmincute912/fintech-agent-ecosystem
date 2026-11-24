@@ -4,6 +4,8 @@
 
 > **Revision 2, 2026-11-03.** Tasks 0–2 were done under revision 1 (Yahoo). The Task 2 probe failed its gate: Yahoo has no VN-Index history, no HNX or UPCoM stocks, and its terms forbid automated access (`docs/research/yahoo-vn-probe.md`). The owner chose SSI FastConnect Data on 2026-11-03. Tasks 3–9 replace revision 1's Tasks 3–5. The file name is kept so the execution ledger stays attached.
 
+> **Revision 3, 2026-11-24.** Tasks 3–7 were built on SSI. Before Task 8 the owner switched the source to DNSE OpenAPI (self-service keys, no fixed-IP registration). `vsi/ssi.py` was replaced by `vsi/dnse.py` with the same three-method shape (`daily_ohlc`, `daily_index`, and `instrument` instead of `securities`); the bridge, CLI and preset only changed names. SSI details below are kept as history; where they conflict, the DNSE constraints and Task 8 below win.
+
 **Goal:** Run the unmodified TradingAgents graph (market analyst only) on Vietnamese tickers, with SSI FastConnect data, from `vsi analyze VNM --date YYYY-MM-DD`, and record the measured LLM calls, tokens and cost of each run.
 
 **Architecture:** A small package `vsi` depends on TradingAgents pinned at git tag `v0.7.1`. `vsi.ssi` is a minimal FastConnect Data REST client. `vsi.bridge.install()` connects it to TradingAgents at runtime in three ways:
@@ -34,7 +36,8 @@ CLAUDE.md forbids advancing a milestone without owner approval, so only M1 is pl
 - Research and decision support only; nothing places orders. *(CLAUDE.md)*
 - TradingAgents is a pinned dependency, `tradingagents @ git+https://github.com/TauricResearch/TradingAgents.git@v0.7.1`. Its files are never edited. Runtime redirection is allowed only through `vsi.bridge.install()`, and each redirected name has a test. *(D3; rev 2 ruling)*
 - Data source: SSI FastConnect Data, base URL `https://fc-data.ssi.com.vn/`. Endpoints: `api/v2/Market/AccessToken` (POST JSON `{"consumerID", "consumerSecret"}` → `data.accessToken`), `api/v2/Market/DailyOhlc`, `api/v2/Market/DailyIndex`, `api/v2/Market/Securities` (GET, header `Authorization: Bearer <token>`). Dates are `dd/mm/yyyy`. Paging: `pageIndex` 1–10, `pageSize` 1000. *(SSI api-specs page and SSI python-fcdata `fc_md_client.py`, both read 2026-11-03)*
-- SSI keys go in `.env` only, as `SSI_CONSUMER_ID` and `SSI_CONSUMER_SECRET`. Keys and tokens never appear in output, logs, exceptions or commits.
+- **Rev 3 data source:** DNSE OpenAPI, base `https://openapi.dnse.com.vn`, header `version: 2026-07-23`. `GET /price/ohlc` (`symbol`, `type` STOCK|INDEX, `resolution=1D`, `from`/`to` Unix seconds; arrays `t,o,h,l,c,v` + `nextTime`, 0 = done) and `GET /market/instruments?symbol=` (`marketId` STO=HOSE, STX=HNX, UPX=UPCoM). Requests carry `x-api-key`, a `Date` header and `X-Signature` = HMAC-SHA256 over `(request-target): get <path>`, `date: <Date>`, `nonce: <uuid hex>`, Base64 then URL-encoded. Limits: OHLC 50,000/hour and 100,000/day per key. *(developers.dnse.com.vn auth, rate-limit and OHLC pages; dnse-tech/openapi-sdk spec 2026-09-15 and `python/dnse/api/common.py`, read 2026-11-24)*
+- DNSE keys go in `.env` only, as `DNSE_API_KEY` and `DNSE_API_SECRET`. (Rev 2: SSI keys went in `.env` only, as `SSI_CONSUMER_ID` and `SSI_CONSUMER_SECRET`.) Keys and tokens never appear in output, logs, exceptions or commits.
 - Yahoo is never called. Its terms §2(d)(9) forbid automated access. *(yahoo-vn-probe.md)*
 - No disk cache of SSI data in M1; caching is in-process only. Storage permission is unknown until the owner reads SSI's terms. *(Owner decision 1)*
 - LLM: OpenAI with TradingAgents' default models. `OPENAI_API_KEY` goes in `.env` only. *(D1)*
@@ -377,7 +380,9 @@ git add vsi/cli.py tests/test_cli.py
 git commit -m "feat: add vsi analyze command with per-run usage log"
 ```
 
-### Task 8: Live SSI check (owner-gated: needs the owner's SSI keys)
+### Task 8: Live DNSE check (owner-gated: needs the owner's DNSE keys)
+
+> **Rev 3:** read SSI as DNSE in this task. The probe is `scripts/probe_dnse_vn.py` (already written; adds `ZZZ`), the doc is `docs/research/dnse-vn-probe.md`. Step 1 needs `DNSE_API_KEY` / `DNSE_API_SECRET` and no fixed IP. Step 4b records instead: whether the server accepts the `Date` header (else switch to `X-Aux-Date`, per the spec YAML), the error body for an unknown ticker, the price unit (thousand VND per the spec example), whether today's unfinished session appears during trading hours, and whether closes are adjusted for stock dividends and bonus shares. The Step 5 gate is unchanged.
 
 **Files:**
 - Create: `scripts/probe_ssi_vn.py`
@@ -409,7 +414,7 @@ git commit -m "research: probe SSI FastConnect coverage of Vietnamese stocks"
 - [ ] **Step 1:** Ask the owner to confirm `OPENAI_API_KEY` is in `.env` and to approve three paid runs. Wait for the go.
 - [ ] **Step 2:** Run `uv run vsi analyze <T> --date <D>` with `D` set to the last full session before today. Use one HOSE ticker, one HNX ticker (as reported by the Task 8 probe), and `ZZZ`, a ticker that does not exist (Review Focus 1).
 - [ ] **Step 3:** Check each report:
-  - The last close the analyst cites must equal SSI's close for `D` (from Task 8 or one `daily_ohlc` call).
+  - The last close the analyst cites must equal DNSE's close for `D` (from Task 8 or one `daily_ohlc` call).
   - `ZZZ` must report the data as unavailable, with no price.
   - The run must make no Yahoo call. A `Yahoo disabled` message in the logs is acceptable only from fail-open paths, so list where each one came from.
 - [ ] **Step 4:** Write `docs/research/m1-run-cost.md` with:
@@ -419,7 +424,7 @@ git commit -m "research: probe SSI FastConnect coverage of Vietnamese stocks"
   - the result of each Step 3 check;
   - any problems with the Vietnamese language in the reports;
   - a projected cost for the M2 analyst set, labelled Assumption.
-- [ ] **Step 5:** Run `git grep -nE "sk-|SSI_CONSUMER_SECRET=." -- . ':!uv.lock'`. Expected: no matches.
+- [ ] **Step 5:** Run `git grep -nE "sk-|DNSE_API_SECRET=." -- . ':!uv.lock'`. Expected: no matches.
 - [ ] **Step 6: Commit**
 
 ```bash
