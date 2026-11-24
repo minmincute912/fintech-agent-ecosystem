@@ -4,7 +4,8 @@ TradingAgents routes get_stock_data/get_indicators through its vendor router, bu
 loads prices for indicators, the verified snapshot and settlement, and company
 identity, by calling Yahoo helpers directly. install() points those names at DNSE
 so the upstream indicator, snapshot and settlement code runs unchanged on DNSE data,
-and disables yfinance so any path left over fails loudly instead of fetching.
+and disables yfinance so any path left over fails loudly instead of fetching. Vietnamese
+news (vsi.news) and "no Vietnamese source" stubs for US-only tools register as vendor "vsi".
 """
 
 from __future__ import annotations
@@ -22,6 +23,7 @@ from tradingagents.dataflows.vendors.yahoo import market, snapshot
 from tradingagents.dataflows.vendors.yahoo.ohlcv import _assert_ohlcv_not_stale
 from tradingagents.memory import settlement
 
+from vsi import news
 from vsi.dnse import DnseClient
 
 INDEX_CODES = frozenset({"VNINDEX"})
@@ -89,6 +91,24 @@ def company_profile(ticker: str) -> dict:
     return {"longName": info["name"], "exchange": info["market"]} if info else {}
 
 
+def _names_for(symbol: str) -> list[str]:
+    info = _client.instrument(symbol)
+    return [info["name"]] if info and info.get("name") else []
+
+
+def _no_vn_source(method: str):
+    def unavailable(*args, **kwargs):
+        raise VendorUnavailableError(f"no Vietnamese source for {method}; do not use US data for a Vietnamese stock")
+    return unavailable
+
+
+VSI_METHODS = {
+    "get_news": news.get_news,
+    "get_global_news": news.get_global_news,
+    **{m: _no_vn_source(m) for m in ("get_insider_transactions", "get_macro_indicators", "get_prediction_markets")},
+}
+
+
 def _yahoo_blocked(*args, **kwargs):
     raise VendorUnavailableError(
         "Yahoo disabled: its terms forbid automated access (docs/research/yahoo-vn-probe.md)")
@@ -101,12 +121,17 @@ def install(client: DnseClient, patch=setattr, setitem=operator.setitem) -> None
     _client = client
     setitem(router.VENDOR_METHODS["get_stock_data"], "dnse", get_stock_data)
     setitem(router.VENDOR_METHODS["get_indicators"], "dnse", market.get_stock_stats_indicators_window)
+    for method, func in VSI_METHODS.items():
+        if method not in router.VENDOR_METHODS:
+            raise RuntimeError(f"TradingAgents changed: router has no {method}; re-check vsi.bridge")
+        setitem(router.VENDOR_METHODS[method], "vsi", func)
     for module, name, value in (
         (market, "load_ohlcv", load_ohlcv),
         (snapshot, "load_ohlcv", load_ohlcv),
         (market, "get_closes", get_closes),
         (settlement, "get_closes", get_closes),
         (context, "get_company_profile", company_profile),
+        (news, "names_for", _names_for),
         (yfinance, "Ticker", _yahoo_blocked),
         (yfinance, "download", _yahoo_blocked),
         (yfinance, "Search", _yahoo_blocked),
