@@ -1,6 +1,6 @@
 # M3 design: Telegram bot for on-demand analyses
 
-Status: draft for owner review, 2026-11-25. Builds on M1 + M2 (merged at 866ac20), the
+Status: approved by owner 2026-11-25. Builds on M1 + M2 (merged at 866ac20), the
 platform spec `2026-11-03-tradingagents-vn-telegram-design.md` §4, §7, §8, §10 and
 `docs/architecture.md` "Configuration and secrets".
 
