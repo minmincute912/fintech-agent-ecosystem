@@ -233,3 +233,11 @@ def test_summary_columns_carry_created_and_revision(monkeypatch):
     head = next(line for line in fundamentals.get_fundamentals("VNM", "2026-11-10").splitlines() if line.startswith("| Item"))
     assert "2026-06-30 (created 2026-07-30) (revised after analysis date)" in head
     assert "2025-09-30 (created 2025-10-30)" in head
+
+
+def test_latest_quarter(monkeypatch):
+    monkeypatch.setattr(fundamentals, "_client", FixtureClient("corporate"))
+    assert fundamentals.latest_quarter("VNM.VN", "2026-11-25") == (date(2026, 9, 30), date(2026, 10, 30))
+    assert fundamentals.latest_quarter("VNM.VN", "2026-10-29") == (date(2026, 6, 30), date(2026, 7, 30))
+    monkeypatch.setattr(fundamentals, "_client", None)
+    assert fundamentals.latest_quarter("VNM.VN", "2026-11-25") is None
