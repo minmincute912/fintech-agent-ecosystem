@@ -97,3 +97,119 @@ def test_no_period_before_as_of_is_no_data(client):
     client(_all_quarters())
     with pytest.raises(NoMarketDataError):
         fundamentals.get_income_statement("VNM", "quarterly", "2025-07-29")
+
+
+# --- summaries (Task 8). Fixtures: live finfo rows for the summary items, fetched 2026-11-25. ---
+
+import json  # noqa: E402
+from pathlib import Path  # noqa: E402
+
+
+class FixtureClient:
+    def __init__(self, layout):
+        data = json.loads((Path(__file__).parent / "fixtures" / f"finfo_{layout}.json").read_text())
+        self.df = pd.DataFrame(data["rows"])
+        for col in ("fiscal_date", "created", "modified"):
+            self.df[col] = self.df[col].map(date.fromisoformat)
+        self.names = {(m, i): (vn, en, order) for m, i, vn, en, order in data["names"]}
+        self.models = tuple(sorted({m for m, _ in self.names}))
+        self.layout = layout
+
+    def statements(self, symbol, report_type):
+        return self.df
+
+    def layout_models(self, symbol):
+        return self.layout, self.models
+
+    def item_names(self, symbol, models):
+        return self.names
+
+
+def _summary(monkeypatch, layout, as_of="2026-11-25"):
+    monkeypatch.setattr(fundamentals, "_client", FixtureClient(layout))
+    return fundamentals.get_fundamentals("X.VN", as_of)
+
+
+def _line(out, label):
+    return next(line for line in out.splitlines() if line.startswith(f"| {label} "))
+
+
+def _cells(out, label):
+    return [c.strip() for c in _line(out, label).strip("|").split("|")]
+
+
+def _bn(cell):  # "18,465,190,628,493" -> billions of VND
+    return float(cell.replace(",", "")) / 1e9
+
+
+def test_summary_corporate_values_and_changes(monkeypatch):
+    out = _summary(monkeypatch, "corporate")
+    assert "Latest usable quarter: 2026-09-30 (created 2026-10-30)" in out
+    label, value, qoq, yoy, prev, year_ago = _cells(out, "Revenue")
+    assert value == "18,465,190,628,493" and prev == "18,847,347,464,988" and year_ago == "16,953,231,537,863"
+    assert (qoq, yoy) == ("-2.0", "+8.9")  # (18465.19-18847.35)/18847.35, (18465.19-16953.23)/16953.23
+    assert _cells(out, "Equity")[2] == "+7.3"
+
+
+def test_summary_uses_only_statements_created_by_as_of(monkeypatch):
+    out = _summary(monkeypatch, "corporate", "2026-10-29")
+    assert "Latest usable quarter: 2026-06-30" in out
+
+
+def test_summary_change_blank_when_base_not_positive(monkeypatch):
+    fake = FixtureClient("corporate")
+    q2 = (fake.df["fiscal_date"] == date(2026, 6, 30)) & (fake.df["item_code"] == 21001)
+    fake.df.loc[q2, "value"] = 0.0
+    monkeypatch.setattr(fundamentals, "_client", fake)
+    assert _cells(fundamentals.get_fundamentals("VNM", "2026-11-25"), "Revenue")[2] == ""
+
+
+def test_summary_bank_uses_net_interest_income(monkeypatch):
+    out = _summary(monkeypatch, "bank")
+    assert "| Revenue " not in out
+    assert _cells(out, "Net interest income")[1] == "8,195,351,000,000"
+    nii, total = _bn(_cells(out, "Net interest income")[1]), _bn(_cells(out, "Total operating income")[1])
+    assert _bn(_cells(out, "Non-interest income (computed)")[1]) == pytest.approx(total - nii)
+
+
+def test_summary_corporate_matches_published_vnm_q3_2026(monkeypatch):
+    # Vinamilk Q3 2026 consolidated statement as reported by doanhnhan.baophapluat.vn (2026-10-31)
+    # and diendandoanhnghiep.vn: net sales 18.465 tỷ, NPAT 2.962 tỷ, parent NPAT 2.964 tỷ.
+    out = _summary(monkeypatch, "corporate")
+    assert round(_bn(_cells(out, "Revenue")[1])) == 18465
+    assert round(_bn(_cells(out, "Net profit after tax")[1])) == 2962
+    assert round(_bn(_cells(out, "Net profit, parent shareholders")[1])) == 2964
+
+
+def test_summary_bank_matches_published_acb_q3_2026(monkeypatch):
+    # ACB Q3 2026 consolidated statement as reported by mekongasean.vn and cafef.vn (2026-10-28):
+    # NPAT 4.698,8 tỷ; credit-loss provisions 933,8 tỷ; total assets above 1,1 triệu tỷ.
+    out = _summary(monkeypatch, "bank")
+    assert round(_bn(_cells(out, "Net profit after tax")[1]), 1) == 4698.8
+    assert round(_bn(_cells(out, "Credit-loss provisions")[1]), 1) == 933.8
+    assert _bn(_cells(out, "Total assets")[1]) > 1_100_000
+
+
+def test_summary_securities_matches_published_shs_q3_2026(monkeypatch):
+    # SHS Q3 2026 statement as reported by markettimes.vn and mekongasean.vn (2026-10-21):
+    # operating revenue gần 1.002 tỷ; income from loans and receivables 341,1 tỷ; total assets 29.053 tỷ.
+    out = _summary(monkeypatch, "securities")
+    assert round(_bn(_cells(out, "Operating revenue")[1])) == 1002
+    assert round(_bn(_cells(out, "Income from loans and receivables")[1]), 1) == 341.1
+    assert round(_bn(_cells(out, "Total assets")[1])) == 29054  # press: 29.053 (truncated); finfo 29,053.83 bn
+    assert "Margin and other loans" in out
+
+
+def test_summary_insurance_matches_published_bvh_q3_2026(monkeypatch):
+    # Bảo Việt Q3 2026 consolidated NPAT 834,8 tỷ as reported by vietbao.vn (Nov 2026).
+    out = _summary(monkeypatch, "insurance")
+    assert round(_bn(_cells(out, "Net profit after tax")[1]), 1) == 834.8
+    assert "Net premium revenue" in out and "| Revenue " not in out
+
+
+def test_summary_lists_items_missing_from_layout(monkeypatch):
+    fake = FixtureClient("bank")
+    fake.df = fake.df[fake.df["item_code"] != 413300]
+    monkeypatch.setattr(fundamentals, "_client", fake)
+    out = fundamentals.get_fundamentals("ACB", "2026-11-25")
+    assert "Not in source data: Customer deposits" in out

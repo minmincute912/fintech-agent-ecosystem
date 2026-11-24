@@ -5,7 +5,7 @@ loads prices for indicators, the verified snapshot and settlement, and company
 identity, by calling Yahoo helpers directly. install() points those names at DNSE
 so the upstream indicator, snapshot and settlement code runs unchanged on DNSE data,
 and disables yfinance so any path left over fails loudly instead of fetching. Vietnamese
-news (vsi.news) and "no Vietnamese source" stubs for US-only tools register as vendor "vsi".
+fundamentals (vsi.fundamentals), news (vsi.news) and "no Vietnamese source" stubs for US-only tools register as vendor "vsi".
 """
 
 from __future__ import annotations
@@ -23,8 +23,9 @@ from tradingagents.dataflows.vendors.yahoo import market, snapshot
 from tradingagents.dataflows.vendors.yahoo.ohlcv import _assert_ohlcv_not_stale
 from tradingagents.memory import settlement
 
-from vsi import news
+from vsi import fundamentals, news
 from vsi.dnse import DnseClient
+from vsi.finfo import FinfoClient
 
 INDEX_CODES = frozenset({"VNINDEX"})
 _VN_TZ = "Asia/Ho_Chi_Minh"
@@ -103,6 +104,10 @@ def _no_vn_source(method: str):
 
 
 VSI_METHODS = {
+    "get_fundamentals": fundamentals.get_fundamentals,
+    "get_balance_sheet": fundamentals.get_balance_sheet,
+    "get_income_statement": fundamentals.get_income_statement,
+    "get_cashflow": fundamentals.get_cashflow,
     "get_news": news.get_news,
     "get_global_news": news.get_global_news,
     **{m: _no_vn_source(m) for m in ("get_insider_transactions", "get_macro_indicators", "get_prediction_markets")},
@@ -116,7 +121,7 @@ def _yahoo_blocked(*args, **kwargs):
 
 # shortcut: patches TradingAgents v0.7.1 internals by name; test_bridge fails loudly if an upgrade
 # renames them — re-check on every version bump.
-def install(client: DnseClient, patch=setattr, setitem=operator.setitem) -> None:
+def install(client: DnseClient, finfo: FinfoClient | None = None, patch=setattr, setitem=operator.setitem) -> None:
     global _client
     _client = client
     setitem(router.VENDOR_METHODS["get_stock_data"], "dnse", get_stock_data)
@@ -132,6 +137,7 @@ def install(client: DnseClient, patch=setattr, setitem=operator.setitem) -> None
         (settlement, "get_closes", get_closes),
         (context, "get_company_profile", company_profile),
         (news, "names_for", _names_for),
+        (fundamentals, "_client", finfo or FinfoClient()),
         (yfinance, "Ticker", _yahoo_blocked),
         (yfinance, "download", _yahoo_blocked),
         (yfinance, "Search", _yahoo_blocked),

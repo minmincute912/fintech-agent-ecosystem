@@ -1,0 +1,395 @@
+{
+"symbol": "VNM",
+"layout": "corporate",
+"fetched": "2026-11-25",
+"source": "VNDirect finfo financial_statements QUARTER",
+"rows": [
+{
+"model_type": 3,
+"fiscal_date": "2026-09-30",
+"item_code": 32000,
+"value": 4272033504983.0,
+"created": "2026-10-30",
+"modified": "2026-10-30"
+},
+{
+"model_type": 1,
+"fiscal_date": "2026-09-30",
+"item_code": 14000,
+"value": 38264196798507.0,
+"created": "2026-10-30",
+"modified": "2026-10-30"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-09-30",
+"item_code": 23100,
+"value": 7636548299385.0,
+"created": "2026-10-30",
+"modified": "2026-10-30"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-09-30",
+"item_code": 21001,
+"value": 18465190628493.0,
+"created": "2026-10-30",
+"modified": "2026-10-30"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-09-30",
+"item_code": 23000,
+"value": 2964174975122.0,
+"created": "2026-10-30",
+"modified": "2026-10-30"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-09-30",
+"item_code": 23003,
+"value": 2962212356591.0,
+"created": "2026-10-30",
+"modified": "2026-10-30"
+},
+{
+"model_type": 1,
+"fiscal_date": "2026-09-30",
+"item_code": 12700,
+"value": 57892388235962.0,
+"created": "2026-10-30",
+"modified": "2026-10-30"
+},
+{
+"model_type": 1,
+"fiscal_date": "2026-06-30",
+"item_code": 12700,
+"value": 57451803693875.0,
+"created": "2026-07-30",
+"modified": "2026-08-17"
+},
+{
+"model_type": 3,
+"fiscal_date": "2026-06-30",
+"item_code": 32000,
+"value": 3204461104813.0,
+"created": "2026-07-30",
+"modified": "2026-07-30"
+},
+{
+"model_type": 1,
+"fiscal_date": "2026-06-30",
+"item_code": 14000,
+"value": 35666334973929.0,
+"created": "2026-07-30",
+"modified": "2026-08-17"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-06-30",
+"item_code": 21001,
+"value": 18847347464988.0,
+"created": "2026-07-30",
+"modified": "2026-07-30"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-06-30",
+"item_code": 23003,
+"value": 3184401641748.0,
+"created": "2026-07-30",
+"modified": "2026-07-30"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-06-30",
+"item_code": 23100,
+"value": 8204085955756.0,
+"created": "2026-07-30",
+"modified": "2026-07-30"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-06-30",
+"item_code": 23000,
+"value": 3167031130412.0,
+"created": "2026-07-30",
+"modified": "2026-07-30"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-03-31",
+"item_code": 23100,
+"value": 6895926044077.0,
+"created": "2026-05-04",
+"modified": "2026-05-04"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-03-31",
+"item_code": 21001,
+"value": 16148657871623.0,
+"created": "2026-05-04",
+"modified": "2026-05-04"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-03-31",
+"item_code": 23003,
+"value": 2458221002532.0,
+"created": "2026-05-04",
+"modified": "2026-05-04"
+},
+{
+"model_type": 3,
+"fiscal_date": "2026-03-31",
+"item_code": 32000,
+"value": 269326997516.0,
+"created": "2026-05-04",
+"modified": "2026-05-04"
+},
+{
+"model_type": 2,
+"fiscal_date": "2026-03-31",
+"item_code": 23000,
+"value": 2428719813104.0,
+"created": "2026-05-04",
+"modified": "2026-05-04"
+},
+{
+"model_type": 1,
+"fiscal_date": "2026-03-31",
+"item_code": 14000,
+"value": 36688079277039.0,
+"created": "2026-05-04",
+"modified": "2026-05-18"
+},
+{
+"model_type": 1,
+"fiscal_date": "2026-03-31",
+"item_code": 12700,
+"value": 55429011127169.0,
+"created": "2026-05-04",
+"modified": "2026-05-18"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-12-31",
+"item_code": 23000,
+"value": 2840367601702.0,
+"created": "2026-01-30",
+"modified": "2026-03-02"
+},
+{
+"model_type": 1,
+"fiscal_date": "2025-12-31",
+"item_code": 12700,
+"value": 53312370717301.0,
+"created": "2026-01-30",
+"modified": "2026-03-02"
+},
+{
+"model_type": 1,
+"fiscal_date": "2025-12-31",
+"item_code": 14000,
+"value": 34483015286107.0,
+"created": "2026-01-30",
+"modified": "2026-03-02"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-12-31",
+"item_code": 23003,
+"value": 2827199040932.0,
+"created": "2026-01-30",
+"modified": "2026-03-02"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-12-31",
+"item_code": 21001,
+"value": 17033552405954.0,
+"created": "2026-01-30",
+"modified": "2026-03-02"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-12-31",
+"item_code": 23100,
+"value": 6890016993344.0,
+"created": "2026-01-30",
+"modified": "2026-03-02"
+},
+{
+"model_type": 3,
+"fiscal_date": "2025-12-31",
+"item_code": 32000,
+"value": 1738942804862.0,
+"created": "2026-01-30",
+"modified": "2026-03-02"
+},
+{
+"model_type": 1,
+"fiscal_date": "2025-09-30",
+"item_code": 12700,
+"value": 55677822006663.0,
+"created": "2025-10-30",
+"modified": "2025-10-31"
+},
+{
+"model_type": 1,
+"fiscal_date": "2025-09-30",
+"item_code": 14000,
+"value": 37952798707867.0,
+"created": "2025-10-30",
+"modified": "2025-10-31"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-09-30",
+"item_code": 23100,
+"value": 7087296836168.0,
+"created": "2025-10-30",
+"modified": "2025-10-31"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-09-30",
+"item_code": 23000,
+"value": 2526766558891.0,
+"created": "2025-10-30",
+"modified": "2025-10-31"
+},
+{
+"model_type": 3,
+"fiscal_date": "2025-09-30",
+"item_code": 32000,
+"value": 3157043663634.0,
+"created": "2025-10-30",
+"modified": "2025-10-31"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-09-30",
+"item_code": 21001,
+"value": 16953231537863.0,
+"created": "2025-10-30",
+"modified": "2025-10-31"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-09-30",
+"item_code": 23003,
+"value": 2510532743203.0,
+"created": "2025-10-30",
+"modified": "2025-10-31"
+},
+{
+"model_type": 1,
+"fiscal_date": "2025-06-30",
+"item_code": 14000,
+"value": 35687053148557.0,
+"created": "2025-07-30",
+"modified": "2025-07-31"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-06-30",
+"item_code": 21001,
+"value": 16724597479554.0,
+"created": "2025-07-30",
+"modified": "2025-07-31"
+},
+{
+"model_type": 1,
+"fiscal_date": "2025-06-30",
+"item_code": 12700,
+"value": 55282661244375.0,
+"created": "2025-07-30",
+"modified": "2025-07-31"
+},
+{
+"model_type": 3,
+"fiscal_date": "2025-06-30",
+"item_code": 32000,
+"value": 3896865384081.0,
+"created": "2025-07-30",
+"modified": "2025-07-31"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-06-30",
+"item_code": 23100,
+"value": 7021677925140.0,
+"created": "2025-07-30",
+"modified": "2025-07-31"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-06-30",
+"item_code": 23000,
+"value": 2474585297998.0,
+"created": "2025-07-30",
+"modified": "2025-07-31"
+},
+{
+"model_type": 2,
+"fiscal_date": "2025-06-30",
+"item_code": 23003,
+"value": 2488584680280.0,
+"created": "2025-07-30",
+"modified": "2025-07-31"
+}
+],
+"names": [
+[
+1,
+12700,
+"TỔNG CỘNG TÀI SẢN",
+"TOTAL ASSETS",
+1350.0
+],
+[
+1,
+14000,
+"Vốn chủ sở hữu",
+"Owners equity",
+1830.0
+],
+[
+2,
+21001,
+"Doanh thu thuần",
+"Net Sales",
+140.0
+],
+[
+2,
+23100,
+"Lợi nhuận gộp",
+"Gross profit",
+250.0
+],
+[
+2,
+23003,
+"Lợi nhuận sau thuế thu nhập doanh nghiệp",
+"Net Profit After Tax",
+580.0
+],
+[
+2,
+23000,
+"Lợi nhuận sau thuế của Công ty mẹ",
+"Net Profit After Tax of Parent Company",
+660.0
+],
+[
+3,
+32000,
+"Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+"Net cashflow from operating activities",
+230.0
+]
+]
+}

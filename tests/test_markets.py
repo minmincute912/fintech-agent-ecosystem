@@ -24,9 +24,9 @@ def test_vn_config_values():
     cfg = vn_config()
     assert cfg["data_vendors"]["core_stock_apis"] == "dnse"
     assert cfg["data_vendors"]["technical_indicators"] == "dnse"
-    for category in ("news_data", "macro_data", "prediction_markets"):
+    for category in ("fundamental_data", "news_data", "macro_data", "prediction_markets"):
         assert cfg["data_vendors"][category] == "vsi"
-    assert VN_ANALYSTS == ("market", "news")
+    assert VN_ANALYSTS == ("market", "fundamentals", "news")
     assert cfg["output_language"] == "Vietnamese"
     assert cfg["llm_provider"] == "openai"
     assert cfg["max_tokens"] == 4096
