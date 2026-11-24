@@ -48,7 +48,8 @@ docs/superpowers/specs/2026-11-03-tradingagents-vn-telegram-design.md §10):
 Phase 0: research, requirements, architecture, and documentation.
 Phase 1: M1 TradingAgents on VN tickers (DNSE OpenAPI, cost measured;
          Yahoo and SSI dropped, docs/research/data-sources.md);
-         M2 VN fundamentals and Vietnamese news.
+         M2 VN fundamentals (VNDirect finfo, research-only) and Vietnamese
+         news (RSS), merged 2026-11-25 (docs/research/m2-run-cost.md).
 Phase 2: M3 interactive Telegram bot; M4 pre-registered VN evaluation and
          evidence labels.
 Phase 3: M5 follow-up Q&A on the last report.
