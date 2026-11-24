@@ -1,6 +1,6 @@
 # M2 design: Vietnamese fundamentals and news for the agent team
 
-Status: draft 2026-11-24, for owner approval. Builds on M1 (merged at 78b1fa4) and the
+Status: approved by owner 2026-11-24. Builds on M1 (merged at 78b1fa4) and the
 source survey `docs/research/m2-vn-sources.md`.
 
 ## Intent
