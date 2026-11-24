@@ -10,6 +10,7 @@ from pathlib import Path
 
 from cli.stats_handler import StatsCallbackHandler
 from dotenv import load_dotenv
+from tradingagents.dataflows.errors import VendorError
 from tradingagents.graph.trading_graph import TradingAgentsGraph
 
 from vsi.bridge import install
@@ -55,12 +56,19 @@ def main(argv: list[str] | None = None) -> int:
         print("OPENAI_API_KEY is not set; add it to .env")
         return 2
     try:
-        normalize_ticker(args.ticker)  # reject before any network setup
-        install(DnseClient.from_env())
+        base = normalize_ticker(args.ticker).removesuffix(".VN")  # reject before any network setup
+        client = DnseClient.from_env()
+        if client.instrument(base) is None:  # one free DNSE call instead of a full paid LLM run
+            print(f"error: {base} is not listed on HOSE, HNX or UPCoM (DNSE)")
+            return 2
+        install(client)
         result = analyze(args.ticker, args.date)
     except ValueError as e:  # bad ticker/date, missing DNSE keys (VendorNotConfiguredError)
         print(f"error: {e}")
         return 2
+    except VendorError as e:  # data source down or rate-limited
+        print(f"error: {e}")
+        return 1
     print(f"{result['ticker']} {result['date']}: {result['rating']} (research only, not validated)")
     print(f"report: {result['report_path']}")
     print(f"usage: {result['llm_calls']} LLM calls, {result['tokens_in']} in / {result['tokens_out']} out tokens, "

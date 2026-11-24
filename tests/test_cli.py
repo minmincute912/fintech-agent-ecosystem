@@ -34,6 +34,8 @@ def env(monkeypatch):
     monkeypatch.setenv("DNSE_API_SECRET", "secret")
     monkeypatch.setattr(cli, "load_dotenv", lambda *a, **k: None)
     monkeypatch.setattr(cli, "install", lambda client: None)
+    monkeypatch.setattr(cli.DnseClient, "instrument",
+                        lambda self, sym: None if sym == "ZZZ" else {"name": sym, "market": "HOSE"})
 
 
 def test_analyze_runs_graph_and_logs(tmp_path):
@@ -67,3 +69,16 @@ def test_main_requires_dnse_keys(env, monkeypatch, capsys):
     monkeypatch.delenv("DNSE_API_KEY")
     assert cli.main(["analyze", "VNM", "--date", "2026-10-30"]) == 2
     assert "DNSE_API_KEY" in capsys.readouterr().out
+
+
+def test_main_refuses_unlisted_ticker_before_any_llm_run(env, monkeypatch, capsys):
+    monkeypatch.setattr(cli, "TradingAgentsGraph", _raise(AssertionError("graph built")))
+    assert cli.main(["analyze", "zzz", "--date", "2026-10-30"]) == 2
+    assert "not listed" in capsys.readouterr().out
+
+
+def test_main_reports_dnse_outage(env, monkeypatch, capsys):
+    from tradingagents.dataflows.errors import VendorUnavailableError
+    monkeypatch.setattr(cli.DnseClient, "instrument", _raise(VendorUnavailableError("DNSE down")))
+    assert cli.main(["analyze", "VNM", "--date", "2026-10-30"]) == 1
+    assert "DNSE down" in capsys.readouterr().out
