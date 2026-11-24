@@ -27,7 +27,7 @@ class FakeSession:
         self.answers, self.calls = list(answers), []
 
     def get(self, url, params=None, timeout=None, **kw):
-        self.calls.append((url, params))
+        self.calls.append((url, params, kw.get("headers") or {}))
         answer = self.answers.pop(0)
         if isinstance(answer, Exception):
             raise answer
@@ -39,7 +39,7 @@ def test_statements_parse():
                                                    modified="2026-11-02 08:00:00")]}
     session = FakeSession(FakeResponse(body))
     df = FinfoClient(session).statements("vnm", "QUARTER")
-    url, params = session.calls[0]
+    url, params, _ = session.calls[0]
     assert url == "https://api-finfo.vndirect.com.vn/v4/financial_statements"
     assert params["q"] == "code:VNM~reportType:QUARTER" and int(params["size"]) >= 2000
     assert list(df.columns) == ["model_type", "fiscal_date", "item_code", "value", "created", "modified"]
@@ -78,7 +78,7 @@ def test_item_names():
     session = FakeSession(FakeResponse(body))
     names = FinfoClient(session).item_names("VNM", [1, 2, 3])
     assert names == {(1, 11100): ("Tiền", "Cash", 20.0)}
-    url, params = session.calls[0]
+    url, params, _ = session.calls[0]
     assert url.endswith("/financial_models") and params["q"] == "codeList:VNM~modelType:1,2,3"
 
 
@@ -93,3 +93,10 @@ def test_http_error_is_unavailable(answer):
 def test_empty_is_no_data():
     with pytest.raises(NoMarketDataError):
         FinfoClient(FakeSession(FakeResponse({"data": []}))).statements("ZZZ", "QUARTER")
+
+
+def test_requests_identify_the_client():
+    # finfo answers 403 to python's default User-Agent (probe 2026-11-25); we send an honest one
+    session = FakeSession(FakeResponse({"data": [_row(1, 1, 1.0)]}))
+    FinfoClient(session).statements("VNM", "QUARTER")
+    assert session.calls[0][2]["User-Agent"].startswith("vsi-research/")

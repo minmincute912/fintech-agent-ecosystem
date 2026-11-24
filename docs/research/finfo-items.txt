@@ -1,0 +1,1133 @@
+## items corporate (VNM, latest quarter 2026-09-30)
+1	11000	10	40802549102444.0	Tài sản ngắn hạn | Current Assets
+1	11100	20	3611993886527.0	Tiền và các khoản tương đương tiền | Cash and Cash Equivalents
+1	11110	30	1954993886527.0	Tiền | Cash
+1	11120	70	1657000000000.0	Các khoản tương đương tiền | Cash equivalents
+1	11200	80	22926037976040.0	Các khoản đầu tư tài chính ngắn hạn | Short term financial investment
+1	11210	90	1268792917.0	Đầu tư ngắn hạn | Short-term investments
+1	11290	100	-807331987.0	Dự phòng giảm giá đầu tư ngắn hạn | Provision for  short term investment loss
+1	412320	105	22925576515110.0	Đầu tư giữ đến ngày đáo hạn | Held to maturity Investment
+1	11457	106	0.0	Dự phòng đầu tư nắm giữ đến ngày đáo hạn ngắn hạn | Provision for Held-to-maturity investment
+1	11440	107	0.0	Đầu tư ngắn hạn khác | Other short-term investments
+1	11441	108	0.0	Dự phòng tổn thất các khoản đầu tư ngắn hạn khác | Provision for impairment of other short-term investments
+1	11300	110	6142465201287.0	Các khoản phải thu ngắn hạn | Short term Account Receivables
+1	11310	120	5225033533061.0	Phải thu khách hàng | Account Receivable
+1	11320	130	497604567097.0	Trả trước cho người bán | Prepaid for suppliers
+1	11330	140	0.0	Phải thu nội bộ ngắn hạn | Short term Internal Receivable
+1	11340	150	0.0	Phải thu theo tiến độ kế hoạch hợp đồng xây dựng | Construction contract in progress receivables
+1	11345	155	0.0	Phải thu về cho vay ngắn hạn | Short-term loan Receivables
+1	11350	160	440110941892.0	Các khoản phải thu khác | Other Receivables
+1	11390	210	-20283840763.0	Dự phòng phải thu ngắn hạn khó đòi | Provision for doublful debt
+1	611530	215	0.0	Tài sản thiếu chờ xử lý | Deficiency Assets  waiting for solution
+1	11400	220	7468559705359.0	Hàng tồn kho | Inventories
+1	11410	230	7514820336294.0	Hàng tồn kho | Inventory
+1	11490	360	-46260630935.0	Dự phòng giảm giá hàng tồn kho | Provision for decline in inventories
+1	11442	365	327810079381.0	Tài sản sinh học ngắn hạn | Current biological assets
+1	11443	366	314387784612.0	Súc vật nuôi lấy sản phẩm một lần ngắn hạn | Livestock held for one-time harvest
+1	11444	367	13422294769.0	Cây trồng theo mùa vụ hoặc lấy sản phẩm một lần ngắn hạn | Short-term seasonal crops or plants held for one-time harvest
+1	11445	368	0.0	Dự phòng tổn thất tài sản sinh học ngắn hạn | Provision for impairment of current biological assets
+1	11500	370	325682253850.0	Tài sản ngắn hạn khác | Other Current Assets
+1	11510	380	170499950114.0	Chi phí trả trước ngắn hạn | Short-term prepaid expenses
+1	11520	390	143048368618.0	Thuế GTGT được khấu trừ | Discounted VAT
+1	11540	400	12133935118.0	Thuế và các khoản khác phải thu Nhà nước | Tax and States Account Receivables
+1	11570	405	0.0	Giao dịch mua bán lại trái phiếu chính phủ | Government bonds purchased for resale
+1	11580	410	0.0	Tài sản ngắn hạn khác | Other current assets
+1	12000	420	17089839133518.0	Tài sản dài hạn | Long-term Assets
+1	12100	430	27405301839.0	Các khoản phải thu dài hạn | Long term Account Receivable
+1	12110	440	0.0	Phải thu dài hạn của khách hàng | Long-term trade receivables from customers
+1	12111	445	0.0	Trả trước dài hạn người bán | Long term prepaid for suppliers
+1	12120	450	0.0	Vốn kinh doanh ở đơn vị trực thuộc | Business capital in subsidiary uints
+1	12130	460	0.0	Phải thu dài hạn nội bộ | Internal Longterm Receivables
+1	12140	465	0.0	Phải thu về cho vay dài hạn | Long-term loans receivables
+1	12180	470	27405301839.0	Phải thu dài hạn khác | Other Long term Receivables
+1	12190	520	0.0	Dự phòng phải thu dài hạn khó đòi | Provision for doubtful Long-term receivable
+1	12200	530	11176456012117.0	Tài sản cố định | Fixed assets
+1	12210	540	10192251845757.0	Tài sản cố định hữu hình | Tangible Fixed Assets
+1	12220	550	33765915413108.0	Nguyên giá TSCĐHH | Original Price
+1	12230	630	-23573663567351.0	Hao mòn TSCĐHH | Acumulated Depreation and Amortization
+1	12240	700	0.0	Tài sản cố định thuê tài chính | Financial leases fixed assets
+1	12250	710	0.0	Nguyên giá TSCĐTTC | Original Price
+1	12260	780	0.0	Hao mòn TSCĐTTC | Acumulated Depreation and Amortization
+1	12270	850	984204166360.0	Tài sản cố định vô hình | Intangible Fixed Asset
+1	12280	860	1561041169159.0	Nguyên giá TSCĐVH | Original Price
+1	12290	930	-576837002799.0	Hao mòn TSCĐVH | Acumulated Depreation and Amortization
+1	12300	940	0.0	Chi phí xây dựng cơ bản dở dang (trước 2015) | Construction in progress (before 2015)
+1	11446	950	1633022989712.0	Tài sản sinh học dài hạn | Non-current biological assets
+1	11447	951	1633022989712.0	Súc vật nuôi cho sản phẩm định kỳ | Bearer livestock
+1	11448	952	519969606061.0	Súc vật nuôi cho sản phẩm định kỳ chưa đến giai đoạn trưởng thành | Immature bearer livestock
+1	11449	953	1113053383651.0	Súc vật nuôi cho sản phẩm định kỳ đến giai đoạn trưởng thành | Mature bearer livestock
+1	11450	954	1742395402132.0	Nguyên giá | Cost
+1	11451	955	-629342018481.0	Giá trị khấu hao luỹ kế | Accumulated depreciation
+1	11452	956	0.0	Súc vật nuôi lấy sản phẩm một lần dài hạn | Non-current livestock held for one-time harvest
+1	11453	957	0.0	Cây trồng theo mùa vụ hoặc lấy sản phẩm một lần dài hạn | Non-current seasonal crops or plants held for one-time harvest
+1	11454	958	0.0	Dự phòng tổn thất tài sản sinh học dài hạn | Provision for impairment of non-current biological assets
+1	12400	1000	29632308191.0	Bất động sản đầu tư | Real Estate Investment
+1	12410	1010	67398411513.0	Nguyên giá bất động sản đầu tư | Original Price
+1	12420	1060	-37766103322.0	Hao mòn bất động sản đầu tư | Acumulated Depreation and Amortization
+1	12440	1100	1080453540751.0	Tài sản dở dang dài hạn | Long-term incomplete assets
+1	12450	1110	0.0	Chi phí sản xuất, kinh doanh dở dang dài hạn | Long-term cost of work in progress
+1	12460	1120	1080453540751.0	Chi phí xây dựng cơ bản dở dang  | Capital Construction in Process
+1	12500	1160	1117302478944.0	Các khoản đầu tư tài chính dài hạn | Long term Finacial  Investments
+1	12510	1170	0.0	Đầu tư vào công ty con | Investments in subsidiaries
+1	12520	1180	644381410272.0	Đầu tư vào công ty liên kết, liên doanh | Investments in associates
+1	12580	1190	94563759081.0	Đầu tư dài hạn khác | Other long term Investments
+1	12590	1250	-23983512327.0	Dự phòng giảm giá đầu tư tài chính dài hạn | Provision for long-term investments
+1	12595	1255	402340821918.0	Đầu tư dài hạn giữ đến ngày đáo hạn | Long term held-to-maturity Investment
+1	11455	1257	0.0	Dự phòng đầu tư nắm giữ đến ngày đáo hạn dài hạn | Provision for Held-to-maturity investment
+1	12600	1260	2025566501964.0	Tài sản dài hạn khác | Other long term assets
+1	12610	1270	1302634443485.0	Chi phí trả trước dài hạn | Prepaid expenses
+1	12620	1330	78054632318.0	Tài sản thuế thu nhập hoãn lại | Deferred Income Tax
+1	12630	1335	0.0	Thiết bị, vật tư, phụ tùng thay thế dài hạn | Long-term equipment, material and spare parts
+1	12680	1340	644877426161.0	Tài sản dài hạn khác | Other long term assets
+1	12690	1342	0.0	Lợi thế thương mại | Goodwill
+1	412541	1345	0.0	Lợi thế thương mại (trước 2015) | Goodwill (before 2015)
+1	12700	1350	57892388235962.0	TỔNG CỘNG TÀI SẢN | TOTAL ASSETS
+1	13000	1360	19628191437455.0	Nợ phải trả | Liabilities
+1	13100	1370	19305205929224.0	Nợ ngắn hạn | Short term Liabilities
+1	13110	1380	8384686375137.0	Vay và nợ ngắn hạn | Short term Loan and Liabilities
+1	13120	1410	4388353832571.0	Phải trả người bán | Payment for suppliers
+1	13130	1420	307119403827.0	Người mua trả tiền trước | Prepaid from Customers
+1	613520	1425	8625546300.0	Phải trả cổ tức cho cổ đông | Dividend of shareholde Payable
+1	13140	1430	2110850794953.0	Thuế và các khoản phải nộp Nhà nước | Tax and other payable to State Budget
+1	13150	1520	302421649500.0	Phải trả người lao động | Employees Payable
+1	13160	1530	2474020394771.0	Chi phí phải trả | Expenses Payable
+1	13170	1580	0.0	Phải trả nội bộ | Internal Payable
+1	13180	1590	0.0	Phải trả theo tiến độ kế hoạch hợp đồng xây dựng | Construction contract in progress payables
+1	13190	1600	142987906114.0	Các khoản phải trả, phải nộp ngắn hạn khác | Other Account Payables
+1	14310	1685	1172299872135.0	Quỹ khen thưởng, phúc lợi | Bonus and welfare funds
+1	13199	1686	223676360.0	Doanh thu chưa thực hiện ngắn hạn | Short-term unrealized revenue
+1	13200	1690	13616477556.0	Dự phòng phải trả ngắn hạn | Provision for short term Payables
+1	13210	1691	0.0	Quỹ bình ổn giá | Price stabilisation Fund
+1	13220	1692	0.0	Giao dịch mua bán lại trái phiếu chính phủ | Government bonds purchased for resale
+1	13300	1700	322985508231.0	Nợ dài hạn | Long term Liabilities
+1	13310	1710	0.0	Phải trả dài hạn người bán | Long-term Payable for suppliers
+1	13311	1711	0.0	Người mua trả trước dài hạn | Long term prepaid from Customers
+1	11456	1713	0.0	Thuế và các khoản phải nộp Nhà nước dài hạn | 2.3. Long-term taxes and payables to the State
+1	13312	1718	0.0	Chi phí phải trả dài hạn | Long term Expenses Payables
+1	13313	1719	0.0	Phải trả nội bộ về vốn kinh doanh | Internal Payables of Business Capital
+1	13320	1720	0.0	Phải trả dài hạn nội bộ | Internal Payable
+1	13330	1730	550397271.0	Phải trả dài hạn khác | Other long-term payables
+1	13340	1740	97387500260.0	Vay và nợ dài hạn | Loans and Long term Liabilities
+1	13343	1794	0.0	Trái phiếu chuyển đổi | convertible bond
+1	13346	1795	0.0	Cổ phiếu ưu đãi | Preferred shares
+1	13350	1800	225047610700.0	Thuế thu nhập hoãn lại phải trả | Deferred Income Tax Payable
+1	13360	1810	0.0	Dự phòng trợ cấp mất việc làm | Provision for  unemloyment pension  allowance
+1	13197	1815	0.0	Doanh thu chưa thực hiện dài hạn | Unrealized Revenue (Long term)
+1	14193	1817	0.0	Quỹ phát triển khoa học và công nghệ | Technology-science development fund
+1	13370	1820	0.0	Dự phòng phải trả dài hạn | Provision for long-term liabilities
+1	14000	1830	38264196798507.0	Vốn chủ sở hữu | Owners equity
+1	14100	1840	38264196798507.0	Vốn và các quỹ | Capital and researves
+1	14110	1870	20899554450000.0	Vốn góp | Paid-in capital
+1	14148	1871	20899554450000.0	Cổ phiếu phổ thông | Common shares
+1	14145	1872	0.0	Cổ phiếu ưu đãi | Prefered shares
+1	14120	1880	34110709700.0	Thặng dư vốn cổ phần | Share premium
+1	14149	1885	0.0	Quyền chọn chuyển đổi trái phiếu | Convertible Bonds Option
+1	14130	1890	746826728845.0	Vốn khác của chủ sở hữu | Other capitals of Owners Equity
+1	14140	1900	0.0	Cổ phiếu quỹ | Treasury shares
+1	14150	1910	0.0	Chênh lệch đánh giá lại tài sản | Property revaluation differences
+1	14160	1920	353890236083.0	Chênh lệch tỷ giá hối đoái | Exchange differences
+1	14170	1930	0.0	Quỹ đầu tư phát triển | Development and Investment Fund
+1	14180	1940	0.0	Quỹ dự phòng tài chính | Financial Provision  Fund
+1	14190	1950	0.0	Quỹ khác thuộc vốn chủ sở hữu | Other Funds of Owners Equity
+1	14200	1960	12436884115894.0	Lợi nhuận sau thuế chưa phân phối | Undistributed Profit after Tax
+1	14220	1961	4734808877049.0	Lợi nhuận sau thuế chưa phân phối lũy kế đến cuối kỳ trước | Cummulative Undistributed Profit after Tax until last year
+1	14230	1962	7702075238845.0	Lợi nhuận sau thuế chưa phân phối kỳ này | Undistributed Profit after Tax this year
+1	14240	1963	3792930557985.0	Lợi ích cổ đông không kiểm soát | Non Controlling Shareholders
+1	14201	1965	0.0	Quỹ hỗ trợ sắp xếp doanh nghiệp | Business Arrangement Assistance Fund
+1	14210	1970	0.0	Nguồn vốn đầu tư XDCB | Capital Construction Investment
+1	14300	1980	0.0	Nguồn kinh phí và quỹ khác | Expenditures and Other Funds
+1	700036	1990	0.0	Quỹ khen thưởng, phúc lợi (trước 2010) | Bonus and welfare funds (Before 2010)
+1	14320	2000	0.0	Vốn ngân sách nhà nước | Budget sources and other funds
+1	14330	2010	0.0	Nguồn kinh phí đã hình thành TSCĐ | Fixed Assets expenditures
+1	15000	2020	0.0	Lợi ích của cổ đông không kiểm soát (trước 2015) | Minority shareholderss Equity
+1	14400	2030	57892388235962.0	TỔNG CỘNG NGUỒN VỐN | TOTAL EQUITY
+2	21000	10	18472411939924.0	Tổng doanh thu hoạt động kinh doanh | Gross Operating Revenue
+2	21090	70	7221311431.0	Các khoản giảm trừ doanh thu | Deduction revenues
+2	21001	140	18465190628493.0	Doanh thu thuần | Net Sales
+2	22100	170	10828642329108.0	Giá vốn hàng bán | Cost of goods sold
+2	23100	250	7636548299385.0	Lợi nhuận gộp | Gross profit
+2	24000	255	0.0	Lãi/lỗ của hoạt động bán, thanh lý bất động sản đầu tư | Gain/(loss) from disposals of investment properties
+2	21500	260	600338580634.0	Doanh thu hoạt động tài chính | Financial income
+2	22500	350	151405579644.0	Chi phí tài chính | Financial Expenses
+2	22510	360	99252445800.0	Trong đó: Chi phí lãi vay | Of which: Interest Expenses
+2	23300	425	40727237763.0	Lợi nhuận hoặc lỗ trong công ty liên kết | Profit or loss from join venture companies
+2	22110	430	3885114776443.0	Chi phí bán hàng | Selling Expenses
+2	22200	440	538440687408.0	Chi phí quản lý doanh nghiệp | General and admin expenses
+2	23110	500	3702653074287.0	Lợi nhuận thuần từ hoạt động kinh doanh | Net Profit from Operating activities
+2	21900	510	10600122211.0	Thu nhập khác | Other incomes
+2	22900	520	19252400849.0	Chi phí khác | Other Expenses
+2	23900	530	-8652278638.0	Lợi nhuận khác | Other profits
+2	23200	531	0.0	Lợi nhuận hoặc lỗ trong công ty liên kết (trước 2015) | Profit or lost from join venture companies (before 2015)
+2	23800	540	3694000795649.0	Lợi nhuận kế toán trước thuế | Pretax Profit
+2	22070	550	731788439058.0	Chi phí thuế TNDN | Corporate Income Tax Expenses
+2	22051	560	735202069516.0	Chi phí thuế TNDN hiện hành | Current Corporate Income Tax Expenses
+2	22052	570	-3413630458.0	Chi phí thuế TNDN hoãn lại | Deferred Income Taxes Expenses
+2	23003	580	2962212356591.0	Lợi nhuận sau thuế thu nhập doanh nghiệp | Net Profit After Tax
+2	23500	657	-1962618531.0	Lợi ích của cổ đông thiểu số | Benefits of Minitory shareholders
+2	23000	660	2964174975122.0	Lợi nhuận sau thuế của Công ty mẹ | Net Profit After Tax of Parent Company
+2	23001	670	1265.0	Lãi cơ bản trên cổ phiếu | Earnings  per share
+2	700087	680	0.0	Lãi suy giảm trên cổ phiếu | EPS_diluted
+3	932000	0		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG KINH DOANH - GIÁN TIẾP | Cash flows from Operating Activities - Indirect method
+3	23810	10	3694000795649.0	Lợi nhuận kế toán trước thuế | Pretax Profit
+3	30000	15		Điều chỉnh cho các khoản | Adjustments
+3	22230	20	607075242467.0	Chi phí khấu hao tài sản cố định | Depreciation of Fixed Assets Expenses
+3	31111	25	0.0	Phân bổ lợi thế thương mại | Amortisation of goodwill
+3	22515	30	-225888442.0	Dự phòng giảm giá các khoản đầu tư ngắn hạn, dài hạn | Provision for short term investment loss
+3	31100	40	-82030926046.0	Lãi, lỗ chênh lệch tỷ giá hối đoái chưa thực hiện | Unrealised foreign exchange gain/(loss)
+3	31101	45	0.0	Lãi/(lỗ) từ thanh lý tài sản cố định | Profit/(loss) from liquidating fixed assets
+3	31110	50	-525812347085.0	Lãi, lỗ từ hoạt động đầu tư | Profit/(loss) from investing activities
+3	22509	60	99252445800.0	Chi phí lãi vay | Interest Expenses
+3	31102	65	0.0	Thu lãi và cổ tức | Interest income and dividend
+3	431100	66	0.0	Các khoản điều chỉnh khác | Other adjustments
+3	31120	70	3792259322343.0	Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn  lưu động | Operating profit/(loss) before changes in Working Capital
+3	31130	80	-197650731093.0	Tăng, giảm các khoản phải thu |  Increase/(decrease) in receivables
+3	31140	90	165766810653.0	Tăng, giảm hàng tồn kho | Increase/(decrease) in inventories
+3	31150	100	826116300362.0	Tăng, giảm các khoản phải trả (Không kể lãi vay phải trả, thuế TNDN phải nộp) | (Increase)/decrease in payables
+3	31160	110	-22441965912.0	Tăng, giảm chi phí trả trước | Increase/(decrease) in prepaid expenses
+3	431400	115	0.0	Tăng/ (Giảm) chứng khoán kinh doanh | Increase/(decrease)  in trading securities
+3	31170	120	-94574014741.0	Tiền lãi vay đã trả | Interest paid
+3	31180	130	-23760142437.0	Thuế thu nhập doanh nghiệp đã nộp | Income Tax paid
+3	31190	140	0.0	Tiền thu khác từ hoạt động kinh doanh | Other Incomes from Operating Activities
+3	31200	150	-173682074192.0	Tiền chi khác cho hoạt động kinh doanh | Other Incomes from Operating Activities
+3	932001	159		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG KINH DOANH - TRỰC TIẾP | Cash flows from Operating Activities - Direct method
+3	30100	160		Tiền thu từ bán hàng, cung cấp dịch vụ và doanh thu khác | Cash provided by Sales, services, and other revenues
+3	30200	170		Tiền chi trả cho người cung cấp hàng hóa và dịch vụ | Cash payments to goods and service Suppliers
+3	30300	180		Tiền chi trả cho người lao động | Cash payments to employees
+3	30400	190		Tiền chi trả lãi vay | Cash payments to Interest
+3	30500	200		Tiền chi nộp thuế thu nhập doanh nghiệp | Cash payments to Corporate Income Tax
+3	30600	210		Tiền thu khác từ hoạt động kinh doanh | Proceeds from operating activities
+3	30700	220		Tiền chi khác cho hoạt động kinh doanh | Other Cash payments to Operating activities
+3	32000	230	4272033504983.0	Lưu chuyển tiền thuần từ hoạt động kinh doanh | Net cashflow from operating activities
+3	933000	240		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG ĐẦU TƯ | Cash flows  from Investing activities
+3	32100	250	-563267383813.0	Mua sắm TSCĐ | Purchases of fixed assets and other long term assets
+3	32200	260	2800724678.0	Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác | Proceeds from depleting, acquisiting fixed assets and other long term assets
+3	32300	270	-921360356546.0	Tiền chi cho vay, mua các công cụ nợ của đơn vị khác | Loans granted, purchases of debt instruments
+3	32400	280	-585947632395.0	Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác | Collection of loans, proceeds from sales of debts instruments
+3	32500	290	0.0	Tiền chi đầu tư góp vốn vào đơn vị khác | Investments in other entities
+3	32600	300	6500000000.0	Tiền thu hồi đầu tư góp vốn vào đơn vị khác | Proceeds from divestment in other entities
+3	32700	310	619739537982.0	Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia | Proceeds from Interest, Dividends and shared profit.
+3	33000	320	-1441535110094.0	Lưu chuyển tiền thuần từ hoạt động đầu tư | Net Cashflow from Investing activities
+3	934000	330		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG TÀI CHÍNH | Cash flows  from Financing activities
+3	33100	340	0.0	Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu | Proceeds from  issue of  shares, capital contribution
+3	33200	350	0.0	Tiền chi trả vốn góp cho các chủ sở hữu, mua lại cổ phiếu của doanh nghiệp đã phát hành | Cash payments to capital contribution and Buy back  issued shares
+3	33300	360	3368534354328.0	Tiền vay ngắn hạn, dài hạn nhận được | Short , long term loan received
+3	33400	370	-3248674701614.0	Tiền chi trả nợ gốc vay | Payment of Princial Loans
+3	33500	380	0.0	Tiền chi trả nợ thuê tài chính | Payment of financial lease
+3	33600	390	-3866119149750.0	Cổ tức, lợi nhuận đã trả cho chủ sở hữu | Dividends and Profit paid
+3	33710	396	0.0	Tiền lãi đã nhận | Interests, dividends, profits received
+3	34000	400	-3746259497036.0	Lưu chuyển tiền thuần từ hoạt động tài chính | Net Cashflow from Financing activities
+3	35000	410	-915761102147.0	Lưu chuyển tiền thuần trong kỳ | Net Cash and Cash equivalents during the period
+3	36000	420	4535672366831.0	Tiền và tương đương tiền đầu kỳ | Cash and cash equivalents at beginning of year
+3	36100	430	-7917378157.0	Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ | Effect of foreign exchange differences
+3	37000	440	3611993886527.0	Tiền và tương đương tiền cuối kỳ | Cash and Cash equivalents at end of  year
+
+## items bank (VCB, latest quarter 2026-09-30)
+101	12700	99	2682408935000000.0	TỔNG CỘNG TÀI SẢN | TOTAL ASSETS
+101	411100	100	13375646000000.0	Tiền mặt, vàng bạc, đá quí | Cash, gold, gemstone
+101	411200	150	63237158000000.0	Tiền gửi tại NHNN | Balance at the State Bank
+101	411400	250	582805066000000.0	Tiền, vàng gửi tại các TCTD khác và cho vay các TCTD khác | Current deposit and lend with other financial institutions
+101	700487	340	566328027000000.0	Tiền gửi tại các TCTD khác | Balances with other credit institutions
+101	700488	350	16477051000000.0	Cho vay các TCTD khác | Loans to other credit institutions
+101	700489	400	-12000000.0	Dự phòng rủi ro | Allowance for balances with and loans to other credit institutions
+101	411500	450	12773040000000.0	Chứng khoán kinh doanh | Trading securities
+101	411510	500	12869204000000.0	Chứng khoán kinh doanh | Trading securities
+101	411520	550	-96164000000.0	Dự phòng giảm giá chứng khoán kinh doanh | Provision for trading securities loss
+101	411600	600	839313000000.0	Các công cụ chứng khoán phái sinh và các tài sản tài chính khác | Derivative financial instruments and other financial assets
+101	412000	650	1784925179000000.0	Cho vay khách hàng | Customer Loans
+101	412100	700	1816093286000000.0	Cho vay khách hàng | Customer Loans
+101	412200	750	-31168107000000.0	Dự phòng rủi ro cho vay khách hàng | Provision for customer loans loss
+101	700490	760	0.0	Hoạt động mua nợ | Debts purchase
+101	700491	770	0.0	Mua nợ | Debts purchase
+101	700492	780	0.0	Dự phòng rủi ro hoạt động mua nợ | Allowance for losses on debts purchase
+101	412300	800	173844631000000.0	Chứng khoán đầu tư | Investment securities
+101	412310	850	153843257000000.0	Sẵn sàng để bán | Available for sale
+101	412320	900	26353299000000.0	Đầu tư giữ đến ngày đáo hạn | Held to maturity Investment
+101	412330	950	-6351925000000.0	Dự phòng giảm giá chứng khoán đầu tư | Provision for investment securities loss
+101	412400	1000	2060324000000.0	Góp vốn, đầu tư dài hạn | Capital contributions and long-term investments
+101	412410	1050	0.0	Đầu tư vào công ty con | Invested to subsidairy companies
+101	412420	1100	201649000000.0	Đầu tư vào công ty liên doanh, liên kết | Invest in joint ventures and associates
+101	612200	1110	189088000000.0	Góp vốn liên doanh | Join-venture Capital Contribution
+101	412430	1150	12561000000.0	Đầu tư vào công ty liên kết | Invested to joint-venture companies
+101	412440	1200	1933675000000.0	Đầu tư dài hạn khác | Other long-term investments
+101	412450	1250	-75000000000.0	Dự phòng giảm giá đầu tư dài hạn | Provision for long-term investments loss
+101	12200	1300	18167343000000.0	Tài sản cố định | Fixed assets
+101	12210	1350	10607584000000.0	Tài sản cố định hữu hình | Tangible Fixed Assets
+101	12220	1400	23241017000000.0	Nguyên giá TSCĐHH | Original Price
+101	12230	1800	-12633433000000.0	Hao mòn TSCĐHH | Acumulated Depreation and Amortization
+101	12240	2150	0.0	Tài sản cố định thuê tài chính | Financial leases fixed assets
+101	12250	2200	0.0	Nguyên giá TSCĐTTC | Original Price
+101	12260	2550	0.0	Hao mòn TSCĐTTC | Acumulated Depreation and Amortization
+101	12270	2900	7559759000000.0	Tài sản cố định vô hình | Intangible Fixed Asset
+101	12280	2950	10587941000000.0	Nguyên giá TSCĐVH | Original Price
+101	12290	3300	-3028182000000.0	Hao mòn TSCĐVH | Acumulated Depreation and Amortization
+101	12400	3600	0.0	Bất động sản đầu tư | Real Estate Investment
+101	12410	3650	0.0	Nguyên giá bất động sản đầu tư | Original Price
+101	12420	3900	0.0	Hao mòn bất động sản đầu tư | Acumulated Depreation and Amortization
+101	412500	4400	30381235000000.0	Tài sản Có khác | Other credit assets
+101	412510	4450	15928547000000.0	Các khoản phải thu | Account receivable
+101	412520	4500	11811110000000.0	Các khoản lãi, phí phải thu | Interest, charge receivable
+101	412530	4550	18109000000.0	Tài sản thuế TNDN hoãn lại | Deferred income tax assets
+101	412553	4560	2642214000000.0	Tài sản có khác | Other assets
+101	700493	4570	0.0	Trong đó: Lợi thế thương mại | In which: Good will
+101	700494	4580	-18745000000.0	Dự phòng rủi ro cho các tài sản Có nội bảng khác | Allowance for other assets
+101	14400	4809	2682408935000000.0	TỔNG CỘNG NGUỒN VỐN | TOTAL EQUITY
+101	13000	4810	2428647789000000.0	Nợ phải trả | Liabilities
+101	413100	4850	182378756000000.0	Các khoản nợ Chính phủ và NHNN | Borrowings from State Bank
+101	413200	4900	369982752000000.0	Tiền gửi và vay các TCTD khác | Deposit and loan from other financial institutions
+101	413210	4950	353629378000000.0	Tiền gửi của các TCTD khác | Deposit of other financial institutions
+101	413220	5000	16353374000000.0	Vay các TCTD khác | Borrowings from other financial institutions
+101	413300	5050	1781703044000000.0	Tiền gửi của khách hàng | Deposit of customers
+101	413400	5100	0.0	Các công cụ tài chính phái sinh và các khoản nợ tài chính khác | Derivative financial instruments and other financial debts
+101	413500	5150	19188000000.0	Vốn tài trợ, uỷ thác đầu tư, cho vay TCTD chịu rủi ro | Fund, delegated investment, loans to Credit institutions
+101	413600	5200	47392009000000.0	Phát hành giấy tờ có giá | Issuing bank note
+101	413700	5250	47172040000000.0	Các khoản nợ khác | Other liabilities
+101	413720	5350	23774644000000.0	Các khoản lãi, phí phải trả | Interest, charge payable
+101	413730	5400	0.0	Thuế TNDN hoãn lại phải trả | Deferred Income tax payable
+101	413740	5450	23397396000000.0	Các khoản phải trả và công nợ khác | Other liabilities
+101	413754	5504	0.0	Dự phòng rủi ro khác | Provision for other risks
+101	14000	5600	253761146000000.0	Vốn chủ sở hữu | Owners equity
+101	14100	5650	91343499000000.0	Vốn và các quỹ | Capital and researves
+101	14110	5700	83556751000000.0	Vốn góp | Paid-in capital
+101	14210	5750	0.0	Nguồn vốn đầu tư XDCB | Capital Construction Investment
+101	14120	5800	4995389000000.0	Thặng dư vốn cổ phần | Share premium
+101	14140	5850	0.0	Cổ phiếu quỹ | Treasury shares
+101	14145	5900	0.0	Cổ phiếu ưu đãi | Prefered shares
+101	14130	5950	2791359000000.0	Vốn khác của chủ sở hữu | Other capitals of Owners Equity
+101	14191	6000	48094266000000.0	Các Quỹ | Funds
+101	14160	6250	-967944000000.0	Chênh lệch tỷ giá hối đoái | Exchange differences
+101	14150	6300	0.0	Chênh lệch đánh giá lại tài sản | Property revaluation differences
+101	14200	6350	115198883000000.0	Lợi nhuận sau thuế chưa phân phối | Undistributed Profit after Tax
+101	14220	6355	0.0	Lợi nhuận sau thuế chưa phân phối lũy kế đến cuối kỳ trước | Cummulative Undistributed Profit after Tax until last year
+101	14230	6357	115198883000000.0	Lợi nhuận sau thuế chưa phân phối kỳ này | Undistributed Profit after Tax this year
+101	14240	6360	92442000000.0	Lợi ích cổ đông không kiểm soát | Non Controlling Shareholders
+101	15000	6400	0.0	Lợi ích của cổ đông không kiểm soát (trước 2015) | Minority shareholderss Equity
+101	600015	6500	138448881000000.0	Nghĩa vụ nợ tiềm ẩn | Contigent liabilities
+101	600129	6600	0.0	Thư tín dụng | Letter of credit
+101	600130	6700	0.0	Thư tín dụng trả ngay | Letters of credit at sight
+101	600131	6800	0.0	Thư tín dụng trả chậm | Deferred letters of credit
+101	600132	6900	0.0	Thư tín dụng khác | Other letters of credit
+101	600133	7000	138448881000000.0	Bảo lãnh tín dụng | Credit guarantee
+101	600012	7010	9549055000000.0	Bảo lãnh vay vốn | Loan Guarantee
+101	600125	7020	0.0	Bảo lãnh thanh toán | Payment Guarantee
+101	600126	7030	0.0	Bảo lãnh thực hiện hợp đồng | ​Performance Guarantee
+101	600127	7040	0.0	Bảo lãnh dự thầu | ​Bid Guarantee
+101	600128	7050	0.0	Bảo lãnh xuất khẩu | Export guarantee
+101	600014	7060	128899826000000.0	Bảo lãnh khác | Other guarantees
+101	600018	7070	523957599000000.0	Cam kết tín dụng | Credit commitments
+101	600144	7080	387921610000000.0	Cam kết trong giao dịch hối đoái | Foreign exchange commitments
+101	600145	7090	4158237000000.0	Cam kết mua ngoại tệ | Spot foreign exchange commitments - buy
+101	600146	7100	4159004000000.0	Cam kết bán ngoại tệ | Foreign exchange selling commitments
+101	600147	7110	379604369000000.0	Cam kết hoán đổi ngoại tệ | Currency swap commitments
+101	600148	7120	0.0	Cam kết giao dịch tương lại | Forward commitments
+101	600150	7130	0.0	Cam kết cho vay không hủy ngang | Irrevocable loan commitments
+101	600013	7140	75278547000000.0	Cam kết trong nghiệp vụ L/C | Letters of credit commitments
+101	660000	7150	60757442000000.0	Cam kết khác | Other commitments
+102	421100	200	40014561000000.0	Thu nhập lãi và các khoản thu nhập tương tự | Interest and similar income
+102	422100	300	19628606000000.0	Chi phí lãi và các khoản chi phí tương tự | Interest expense and similar charges
+102	421900	400	20385955000000.0	Thu nhập lãi thuần | Interest income
+102	421200	500	3211918000000.0	Thu nhập từ hoạt động dịch vụ | Service income
+102	422200	600	2307658000000.0	Chi phí hoạt động dịch vụ | Service expense
+102	423200	700	904260000000.0	Thu nhập thuần từ hoạt động dịch vụ | Net service income
+102	423300	1000	2576331000000.0	Lợi nhuận thuần từ hoạt động kinh doanh ngoại hối | Net foreign exchange gains(loss)
+102	423400	1300	199526000000.0	Lợi nhuận thuần từ hoạt động kinh doanh chứng khoán | Net income on trading securities
+102	423500	1400	0.0	Lãi thuần từ chứng khoán đầu tư | Net income on investment securities
+102	421600	1401	1003193000000.0	Thu nhập thuần từ hoạt động kinh doanh khác | Net income of other business operations
+102	421601	1402	1488096000000.0	Thu nhập từ hoạt động khác | Other incomes
+102	421602	1403	484903000000.0	Chi phí hoạt động khác | Other expenses
+102	421700	1500	361852000000.0	Thu nhập vốn góp mua cổ phần | Income from associated capital
+102	421701	1501	25431117000000.0	Tổng thu nhập hoạt động | Total operating income
+102	22200	2400	8029332000000.0	Chi phí quản lý doanh nghiệp | General and admin expenses
+102	88888	2500	17401785000000.0	Lợi nhuận thuần từ hoạt động kinh doanh trước chi phí dự phòng rủi ro tín dụng | Net profit from operating activities before provision for credit risk
+102	422900	2600	6184109000000.0	Chi phí dự phòng rủi ro tín dụng | Provision for credit risk
+102	23800	2700	11217676000000.0	Lợi nhuận kế toán trước thuế | Pretax Profit
+102	22070	2800	2176555000000.0	Chi phí thuế TNDN | Corporate Income Tax Expenses
+102	22051	2900	2175584000000.0	Chi phí thuế TNDN hiện hành | Current Corporate Income Tax Expenses
+102	22052	3000	971000000.0	Chi phí thuế TNDN hoãn lại | Deferred Income Taxes Expenses
+102	23003	3100	9041121000000.0	Lợi nhuận sau thuế thu nhập doanh nghiệp | Net Profit After Tax
+102	23500	3400	7819000000.0	Lợi ích của cổ đông thiểu số | Benefits of Minitory shareholders
+102	23000	3500	9033302000000.0	Lợi nhuận sau thuế của Công ty mẹ | Net Profit After Tax of Parent Company
+102	23001	3600	1081.0	Lãi cơ bản trên cổ phiếu | Earnings  per share
+103	932000	0		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG KINH DOANH - GIÁN TIẾP | Cash flows from Operating Activities - Indirect method
+103	23810	5		Lợi nhuận kế toán trước thuế | Pretax Profit
+103	30000	10		Điều chỉnh cho các khoản | Adjustments
+103	22230	15		Chi phí khấu hao tài sản cố định | Depreciation of Fixed Assets Expenses
+103	431030	20		Dự phòng rủi ro tín dụng, Giảm giá, đầu tư trích thêm,/(hoàn nhập) trong năm | Provision for credit risk, loss, additional invesment, /(return) in the period
+103	431040	25		Lãi và phí phải thu trong kì (thực tế chưa thu) (*) | Interest, charge receivable dates (not collected yet) (*)
+103	431050	30		Lãi và phí phải trả trong kì (Thực tế chưa trả) | Interest, charge payable dates (not paid yet)
+103	431060	35		Lãi lỗ do thanh lý TSCĐ | Gain (loss) by liquidating fixed assets
+103	431070	40		Lãi lỗ do việc bán, thanh lý bất động sản | Gain (loss) of selling investment real estate
+103	431080	45		Lãi lỗ do đầu tư vào đơn vị khác, cổ tức nhận được từ hoạt động đầu tư | Gain (loss) on Investment in equities and joint-venture, dividends received
+103	431090	50		Chênh lệch tỷ giá hối đoái chưa thực hiện | Exchange difference unrealized
+103	431100	55		Các khoản điều chỉnh khác | Other adjustments
+103	431375	60	20357303000000.0	Lưu chuyển tiền thuần từ hoạt động kinh doanh trước những thay đổi về TS & vốn lưu động | Net cashflow provided by operating activities before changes in net operating assets
+103	943100	65		Những thay đổi về tài sản và công nợ hoạt động | Changes in operating assets and liabilities
+103	943110	70		Những thay đổi về tài sản hoạt động | Change in operating assets
+103	431420	75	0.0	Tăng/ (Giảm) tiền gửi dự trữ bắt buộc tại NHNN | Increase/(decrease) in compulsory reserves with the SBV
+103	431130	80	-4175435000000.0	Tăng/ (Giảm) các khoản tiền gửi, tiền vay các tổ chức tín dụng khác | Net increase/(decrease) in Current deposit and lend with other banks
+103	431400	85	-18003769000000.0	Tăng/ (Giảm) chứng khoán kinh doanh | Increase/(decrease)  in trading securities
+103	431430	90	-27994000000.0	Tăng/ (Giảm) các công cụ tài chính phái sinh và các tài sản tài chính khác | Net increase/(decrease) in Derivative financial instrument and other financial assets
+103	431150	95	-57925221000000.0	Tăng/ (Giảm) các khoản cho vay, ứng trước khách hàng | Net increase/(decrease) in Loans and advances to customers
+103	431160	100	0.0	Tăng)/Giảm lãi, phí phải thu | Net increase/(decrease) in Interest, charges receivable
+103	431180	105	0.0	Giảm/ (Tăng) nguồn dự phòng để bù đắp tổn thất các khoản | Net decrease/(increase) in Reserve for loss
+103	431440	110	-3625944000000.0	Tăng/ (Giảm) khác về tài sản hoạt động | Net increase/(decrease) in Operating assets
+103	943120	115		Những thay đổi về công nợ hoạt động | Changes in liabilities
+103	431450	120	-10184370000000.0	Tăng/ (Giảm) các khoản tiền vay NHNN | Net increase/(decrease) Borrowings from State Bank
+103	431460	125	-35201073000000.0	Tăng/ (Giảm) các khoản tiền gửi, tiền vay các tổ chức tín dụng | Net increase/(decrease) in Deposits and borrowings of other financial institutions
+103	431470	130	52882477000000.0	Tăng/ (Giảm) tiền gửi của khách hàng (bao gồm cả Kho bạc Nhà nước) | Net increase/(decrease) in Deposits of customers (including State Treasury)
+103	431500	135	0.0	Tăng/ (Giảm) các công cụ tài chính phái sinh và các khoản nợ tài chính khác | Net increase/(decrease) in Other liabilities
+103	431490	140	19183000000.0	Tăng/ (Giảm) vốn tài trợ, uỷ thác đầu tư, cho vay mà TCTD chịu rủi ro | Net increase/(decrease) in Fund, Delegated investment, loans (Credit Institutions incur risks)
+103	431480	145	8046482000000.0	Tăng/ (Giảm) phát hành GTCG (ngoại trừ GTCG phát hành được tính vào hoạt động tài chính) | 
+103	431240	150	0.0	Tăng/ (Giảm) lãi, phí phải trả | Net increase/(decrease) in Interest, charge payable
+103	431510	155	-1017180000000.0	Tăng/ (Giảm) khác về công nợ hoạt động | Net increase/(decrease) in Operating debts
+103	431275	160	-48855541000000.0	Lưu chuyển tiền tệ thuần từ hoạt động kinh doanh trước thuế thu nhập | Net cashflow provided by operating activities before income tax
+103	431280	165	0.0	Thuế TNDN đã nộp (*) | Income tax paid (*)
+103	431520	170	-692391000000.0	Chi từ các quỹ của TCTD (*) | Outgoings on funds of credit institutions
+103	431300	175	0.0	Thu được từ nợ khó đòi | Bad debt recoveries
+103	932001	180		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG KINH DOANH - TRỰC TIẾP | Cash flows from Operating Activities - Direct method
+103	431310	185	39371620000000.0	Thu nhập lãi và các khoản thu nhập tương tự | Received Interest
+103	431320	190	-15825128000000.0	Chi phí lãi và các chi phí tương tự đã trả | Paid Interest
+103	400003	195	892387000000.0	Thu nhập từ hoạt động dịch vụ nhận được | Fees and commission income received
+103	431340	200	2204250000000.0	Chênh lệch số tiền thực thu/thực chi từ hoạt động kinh doanh (vàng bạc, ngoại tệ, v.v…) | Received-paid cashs difference of trading activities (gold, currency, ..etc)
+103	421300	205	0.0	Thu nhập từ hoạt động kinh doanh ngoại hối | Foreign exchange income
+103	432110	210	2204250000000.0	Thu nhập từ hoạt động kinh doanh chứng khoán | Net receipts  from dealing of securities
+103	21900	215	34963000000.0	Thu nhập khác | Other incomes
+103	431350	220	968205000000.0	Tiền thu các khoản nợ đã được xử lý xoá,bù đắp bằng nguồn rủi ro | Receives from loans which was settled by provision fund
+103	431360	225	-5232741000000.0	Tiền chi trả cho nhân viên và hoạt động quản lý, công vụ (*) | Paid for employees, administrations, assignments
+103	431370	230	-2056253000000.0	Tiền thuế thu nhập thực nộp trong kỳ (*) | Income tax paid in period
+103	32000	245	-49547932000000.0	Lưu chuyển tiền thuần từ hoạt động kinh doanh | Net cashflow from operating activities
+103	933000	250		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG ĐẦU TƯ | Cash flows  from Investing activities
+103	32100	255	-748481000000.0	Mua sắm TSCĐ | Purchases of fixed assets and other long term assets
+103	32200	260	2002000000.0	Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác | Proceeds from depleting, acquisiting fixed assets and other long term assets
+103	32201	265	-118000000.0	Tiền chi từ thanh lý, nhượng bán TSCĐ | Cash payments from depleting, acquisiting fixed assets
+103	32202	270	0.0	Mua sắm bất động sản đầu tư | Purchase real estate investment
+103	32203	275	0.0	Tiền thu từ bán, thanh lý bất động sản đầu tư | Proceeds from depleting, acquisiting real estate
+103	32204	280	0.0	Tiền chi ra do bán, thanh lý bất động sản đầu tư | Cash payment from depleting, acquisiting real estate
+103	32500	285	-344586000000.0	Tiền chi đầu tư góp vốn vào đơn vị khác | Investments in other entities
+103	32600	290	0.0	Tiền thu hồi đầu tư góp vốn vào đơn vị khác | Proceeds from divestment in other entities
+103	32700	295	362044000000.0	Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia | Proceeds from Interest, Dividends and shared profit.
+103	33000	300	-729139000000.0	Lưu chuyển tiền thuần từ hoạt động đầu tư | Net Cashflow from Investing activities
+103	934000	305		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG TÀI CHÍNH | Cash flows  from Financing activities
+103	33100	310	0.0	Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu | Proceeds from  issue of  shares, capital contribution
+103	433100	315	0.0	Tiền thu từ PH GTCG dài hạn có đủ đk tính vào vốn tự có & các khoản vốn vay dài hạn khác | Received cash of issuing value certificates (which counted to equity and long-term borrowings)
+103	433200	320	0.0	Tiền chi từ PH GTCG dài hạn có đủ đk tính vào vốn tự có & các khoản vốn vay dài hạn khác | Paid cash of issuing value certificates (which counted to equity and long-term borrowings)
+103	33600	325	-3760054000000.0	Cổ tức, lợi nhuận đã trả cho chủ sở hữu | Dividends and Profit paid
+103	33200	330	0.0	Tiền chi trả vốn góp cho các chủ sở hữu, mua lại cổ phiếu của doanh nghiệp đã phát hành | Cash payments to capital contribution and Buy back  issued shares
+103	433300	335	0.0	Tiền thu được do bán/mua cổ phiếu ngân quỹ | Cash from selling/buying treasury stocks
+103	34000	340	-3760054000000.0	Lưu chuyển tiền thuần từ hoạt động tài chính | Net Cashflow from Financing activities
+103	35000	345	-54037125000000.0	Lưu chuyển tiền thuần trong kỳ | Net Cash and Cash equivalents during the period
+103	36000	350	672039663000000.0	Tiền và tương đương tiền đầu kỳ | Cash and cash equivalents at beginning of year
+103	36100	355	0.0	Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ | Effect of foreign exchange differences
+103	37000	360	618002538000000.0	Tiền và tương đương tiền cuối kỳ | Cash and Cash equivalents at end of  year
+
+## items securities (SSI, latest quarter 2026-09-30)
+89	12700	10	93827114618661.0	TỔNG CỘNG TÀI SẢN | TOTAL ASSETS
+89	11000	20	88646396007449.0	Tài sản ngắn hạn | Current Assets
+89	700000	25	88499556089128.0	Tài sản tài chính ngắn hạn | Short term financial assets 
+89	11100	30	1126975367113.0	Tiền và các khoản tương đương tiền | Cash and Cash Equivalents
+89	11110	40	1106926826017.0	Tiền | Cash
+89	611140	45	0.0	Tiền gửi của người đầu tư về giao dịch chứng khoán | Cash deposited by investors for securities trading
+89	11120	50	20048541096.0	Các khoản tương đương tiền | Cash equivalents
+89	11200	60	86656979569723.0	Các khoản đầu tư tài chính ngắn hạn | Short term financial investment
+89	11210	70	44310762189903.0	Đầu tư ngắn hạn | Short-term investments
+89	700002	80	393470396313.0	Các khoản tài chính sẵn sàng để bán (AFS) | Available for sales assets 
+89	412320	85	3658850138825.0	Đầu tư giữ đến ngày đáo hạn | Held to maturity Investment
+89	700001	86	38293908776767.0	Các khoản cho vay | Loans 
+89	11290	87	-11932085.0	Dự phòng giảm giá đầu tư ngắn hạn | Provision for  short term investment loss
+89	11300	90	715601152292.0	Các khoản phải thu ngắn hạn | Short term Account Receivables
+89	700003	91	725069305886.0	Các khoản phải thu (từ 2016) | Receivables (from 2016)
+89	700004	92	115892939124.0	Phải thu bán các tài sản tài chính | Account receivables 
+89	700005	93	609176366762.0	Phải thu và dự thu cổ tức, tiền lãi các tài sản tài chính | Receivables and accrued dividend/interest of financial assets 
+89	700006	94	0.0	Phải thu cổ tức, tiền lãi đến ngày nhận | Due or overdue receivables on dividend/interest
+89	700007	95	0.0	Trong đó : phải thu khó đòi về cổ tức , tiền lãi đến ngày nhận nhưng chưa nhận được | Doubtful debts on dividend/interest which are overdue 
+89	700008	96	609176366762.0	Dự thu cổ tức , tiền lãi chưa đến ngày nhận  | Undue accrued dividend/interest 
+89	11310	100	0.0	Phải thu khách hàng | Account Receivable
+89	11520	105	0.0	Thuế GTGT được khấu trừ | Discounted VAT
+89	700009	106	27666274957.0	Phải thu các dịch vụ CTCK cung cấp  | Receivables form services provided by the stock company 
+89	11320	110	54498920062.0	Trả trước cho người bán | Prepaid for suppliers
+89	11330	120	0.0	Phải thu nội bộ ngắn hạn | Short term Internal Receivable
+89	700010	121	0.0	Phải thu về lỗi giao dịch CK | Receivables arise from transaction error
+89	610000	130	0.0	Phải thu hoạt động giao dịch chứng khoán | Receivable from trading stocks
+89	11340	131	0.0	Phải thu theo tiến độ kế hoạch hợp đồng xây dựng | Construction contract in progress receivables
+89	11345	150	0.0	Phải thu về cho vay ngắn hạn | Short-term loan Receivables
+89	700012	152	-107683472269.0	Dự phòng suy giảm giá trị các khoản phải thu  | Provision for short term receivables 
+89	11350	154	16050123656.0	Các khoản phải thu khác | Other Receivables
+89	11390	156	0.0	Dự phòng phải thu ngắn hạn khó đòi | Provision for doublful debt
+89	611530	158	0.0	Tài sản thiếu chờ xử lý | Deficiency Assets  waiting for solution
+89	11400	160	0.0	Hàng tồn kho | Inventories
+89	11410	161	0.0	Hàng tồn kho | Inventory
+89	11490	162	0.0	Dự phòng giảm giá hàng tồn kho | Provision for decline in inventories
+89	11500	170	146839918321.0	Tài sản ngắn hạn khác | Other Current Assets
+89	11550	171	22360572883.0	Tạm ứng | Advances to employees
+89	700013	172	141704937.0	Vật tư văn phòng, công cụ, dụng cụ | Tools and equipments 
+89	11510	180	46337909596.0	Chi phí trả trước ngắn hạn | Short-term prepaid expenses
+89	611560	181	245311100.0	Tài sản cầm cố, ký cược, ký quỹ ngắn hạn | Short term Collateral, deposits
+89	13141	190	0.0	Thuế VAT được khấu trừ | Value added Tax
+89	11540	200	2644605.0	Thuế và các khoản khác phải thu Nhà nước | Tax and States Account Receivables
+89	11570	205	0.0	Giao dịch mua bán lại trái phiếu chính phủ | Government bonds purchased for resale
+89	11580	210	77751775200.0	Tài sản ngắn hạn khác | Other current assets
+89	700014	211	0.0	 Dự phòng suy giảm giá trị TSNH khác  | Provision for other current assets
+89	12000	220	5180718611212.0	Tài sản dài hạn | Long-term Assets
+89	700017	225	4083073176798.0	Tài sản tài chính dài hạn | Long term financial assets
+89	12100	230	0.0	Các khoản phải thu dài hạn | Long term Account Receivable
+89	12110	240	0.0	Phải thu dài hạn của khách hàng | Long-term trade receivables from customers
+89	12111	245	0.0	Trả trước dài hạn người bán | Long term prepaid for suppliers
+89	12120	250	0.0	Vốn kinh doanh ở đơn vị trực thuộc | Business capital in subsidiary uints
+89	12130	260	0.0	Phải thu dài hạn nội bộ | Internal Longterm Receivables
+89	12140	265	0.0	Phải thu về cho vay dài hạn | Long-term loans receivables
+89	12180	270	0.0	Phải thu dài hạn khác | Other Long term Receivables
+89	12190	280	0.0	Dự phòng phải thu dài hạn khó đòi | Provision for doubtful Long-term receivable
+89	12500	281	4083073176798.0	Các khoản đầu tư tài chính dài hạn | Long term Finacial  Investments
+89	12510	282	0.0	Đầu tư vào công ty con | Investments in subsidiaries
+89	12520	283	1151982910666.0	Đầu tư vào công ty liên kết, liên doanh | Investments in associates
+89	612100	284	2931090266132.0	Đầu tư chứng khoán dài hạn | Long-term Investments in Securities
+89	610001	285	0.0	Chứng khoán đầu tư sẵn sàng để bán | Investment securities available for sale
+89	12595	286	2931090266132.0	Đầu tư dài hạn giữ đến ngày đáo hạn | Long term held-to-maturity Investment
+89	12580	287	0.0	Đầu tư dài hạn khác | Other long term Investments
+89	12590	288	0.0	Dự phòng giảm giá đầu tư tài chính dài hạn | Provision for long-term investments
+89	12200	290	694622853891.0	Tài sản cố định | Fixed assets
+89	12210	300	617751298244.0	Tài sản cố định hữu hình | Tangible Fixed Assets
+89	12220	310	967689416973.0	Nguyên giá TSCĐHH | Original Price
+89	12230	320	-349938118729.0	Hao mòn TSCĐHH | Acumulated Depreation and Amortization
+89	700018	321	0.0	Đánh giá TSCĐHH theo giá trị hợp lý | Revaluation of tangible fixed assets using fair value model 
+89	12240	330	0.0	Tài sản cố định thuê tài chính | Financial leases fixed assets
+89	12250	340	0.0	Nguyên giá TSCĐTTC | Original Price
+89	12260	350	0.0	Hao mòn TSCĐTTC | Acumulated Depreation and Amortization
+89	700019	351	0.0	Đánh giá TSCĐTTC theo giá trị hợp lý | Revaluation of fixed assets in financial lease using fair value model 
+89	12270	360	76871555647.0	Tài sản cố định vô hình | Intangible Fixed Asset
+89	12280	370	332140018744.0	Nguyên giá TSCĐVH | Original Price
+89	12290	380	-255268463097.0	Hao mòn TSCĐVH | Acumulated Depreation and Amortization
+89	700020	381	0.0	Đánh giá TSCĐVH theo giá trị hợp lý | Revaluation of intangible fixed assets using fair value model 
+89	12300	390	0.0	Chi phí xây dựng cơ bản dở dang (trước 2015) | Construction in progress (before 2015)
+89	12400	400	281545130104.0	Bất động sản đầu tư | Real Estate Investment
+89	12410	410	387309853771.0	Nguyên giá bất động sản đầu tư | Original Price
+89	12420	420	-105764723667.0	Hao mòn bất động sản đầu tư | Acumulated Depreation and Amortization
+89	700021	421	0.0	Đánh giá BĐSĐT theo giá trị hợp lý | Revaluation of investment property using fair value model 
+89	12440	425	12686962913.0	Tài sản dở dang dài hạn | Long-term incomplete assets
+89	12450	426	0.0	Chi phí sản xuất, kinh doanh dở dang dài hạn | Long-term cost of work in progress
+89	12460	427	12686962913.0	Chi phí xây dựng cơ bản dở dang  | Capital Construction in Process
+89	12600	510	108790487506.0	Tài sản dài hạn khác | Other long term assets
+89	600000	511	29776743271.0	Cầm cố, ký quỹ, ký cược dài hạn khác | Other long-term assets
+89	12610	520	32480877981.0	Chi phí trả trước dài hạn | Prepaid expenses
+89	12620	530	11532866254.0	Tài sản thuế thu nhập hoãn lại | Deferred Income Tax
+89	12630	535	0.0	Thiết bị, vật tư, phụ tùng thay thế dài hạn | Long-term equipment, material and spare parts
+89	612620	540	20000000000.0	Tiền nộp Quỹ hỗ trợ thanh toán | Payments to Settlement Assistance Fund
+89	12680	550	15000000000.0	Tài sản dài hạn khác | Other long term assets
+89	412541	560		Lợi thế thương mại (trước 2015) | Goodwill (before 2015)
+89	12690	565	0.0	Lợi thế thương mại | Goodwill
+89	700022	566	0.0	Dự phòng suy giảm giá trị tài sản dài hạn | Provision for long term assets 
+89	14400	570	93827114618661.0	TỔNG CỘNG NGUỒN VỐN | TOTAL EQUITY
+89	13000	580	54474624836256.0	Nợ phải trả | Liabilities
+89	13100	590	54411555729494.0	Nợ ngắn hạn | Short term Liabilities
+89	13110	600	51904401433435.0	Vay và nợ ngắn hạn | Short term Loan and Liabilities
+89	700023	601	51904401433435.0	Vay ngắn hạn | Short term borrowings 
+89	700024	602	0.0	Nợ thuê tài sản tài chính ngắn hạn  | Short term finance lease 
+89	700025	603	0.0	 Vay tài sản tài chính ngắn hạn  | Short term financial assets borrowings 
+89	700026	604	0.0	 Trái phiếu chuyển đổi ngắn hạn | Short term convertible bonds 
+89	613100	605	0.0	Trái phiếu phát hành ngắn hạn | short term issue bonds
+89	700027	606	0.0	 Vay quỹ hộ trợ thanh toán | Borrowings form payable assistance fund 
+89	13120	610	1243834296184.0	Phải trả người bán | Payment for suppliers
+89	13130	620	61195733546.0	Người mua trả tiền trước | Prepaid from Customers
+89	13140	630	426221001396.0	Thuế và các khoản phải nộp Nhà nước | Tax and other payable to State Budget
+89	13150	640	30773202135.0	Phải trả người lao động | Employees Payable
+89	700028	641	728807998.0	Các khoản trích nộp phúc lợi nhân viên | Employees welfare payable to authorities 
+89	13160	650	118734731331.0	Chi phí phải trả | Expenses Payable
+89	13170	660	0.0	Phải trả nội bộ | Internal Payable
+89	13196	661	705864600.0	Nhận ký quỹ, ký cược ngắn hạn | Short term deposit
+89	13180	665	0.0	Phải trả theo tiến độ kế hoạch hợp đồng xây dựng | Construction contract in progress payables
+89	610003	670	32893171177.0	Phải trả hoạt động giao dịch chứng khoán | Payables to securities trading
+89	700029	671	0.0	Phải trả về lỗi giao dịch các tài sản tài chính | Payable arise from transaction errors
+89	613510	680	0.0	Phải trả hộ cổ tức, gốc và lãi trái phiếu | Dividend, principal and interest payables
+89	613600	690	0.0	Phải trả tổ chức phát hành chứng khoán | Payment for securities issue institution
+89	13190	700	25889109982.0	Các khoản phải trả, phải nộp ngắn hạn khác | Other Account Payables
+89	14310	710	556163131609.0	Quỹ khen thưởng, phúc lợi | Bonus and welfare funds
+89	13199	720	10015246101.0	Doanh thu chưa thực hiện ngắn hạn | Short-term unrealized revenue
+89	13210	725	0.0	Quỹ bình ổn giá | Price stabilisation Fund
+89	13200	730	0.0	Dự phòng phải trả ngắn hạn | Provision for short term Payables
+89	13220	735	0.0	Giao dịch mua bán lại trái phiếu chính phủ | Government bonds purchased for resale
+89	13300	740	63069106762.0	Nợ dài hạn | Long term Liabilities
+89	13310	750	0.0	Phải trả dài hạn người bán | Long-term Payable for suppliers
+89	13311	751	0.0	Người mua trả trước dài hạn | Long term prepaid from Customers
+89	13312	752	0.0	Chi phí phải trả dài hạn | Long term Expenses Payables
+89	13313	753	0.0	Phải trả nội bộ về vốn kinh doanh | Internal Payables of Business Capital
+89	613910	754	0.0	Nhận ký quỹ, ký cược dài hạn | Long term collaterals received
+89	13320	760	0.0	Phải trả dài hạn nội bộ | Internal Payable
+89	13330	770	0.0	Phải trả dài hạn khác | Other long-term payables
+89	13340	780	0.0	Vay và nợ dài hạn | Loans and Long term Liabilities
+89	12584	781	0.0	Cho vay dài hạn | Long term Loan
+89	700030	782	0.0	Nợ thuê tài chính dài hạn | Long term financial lease 
+89	700031	783	0.0	Vay tài sản tài chính dài hạn  | Long term financial assets borrowings 
+89	13343	795	0.0	Trái phiếu chuyển đổi | convertible bond
+89	700032	796	0.0	Trái phiếu phát hành dài hạn  | Long term bonds 
+89	13346	798	0.0	Cổ phiếu ưu đãi | Preferred shares
+89	13350	800	17650323812.0	Thuế thu nhập hoãn lại phải trả | Deferred Income Tax Payable
+89	13360	810	0.0	Dự phòng trợ cấp mất việc làm | Provision for  unemloyment pension  allowance
+89	13197	820	45418782950.0	Doanh thu chưa thực hiện dài hạn | Unrealized Revenue (Long term)
+89	13370	830	0.0	Dự phòng phải trả dài hạn | Provision for long-term liabilities
+89	610087	840	0.0	Dự phòng bồi thường thiệt hại cho nhà đầu tư | Provision for compensation of investors
+89	14193	845	0.0	Quỹ phát triển khoa học và công nghệ | Technology-science development fund
+89	14000	850	39352489782405.0	Vốn chủ sở hữu | Owners equity
+89	14100	860	39352489782405.0	Vốn và các quỹ | Capital and researves
+89	14110	870	30032938010000.0	Vốn góp | Paid-in capital
+89	14148	871	30032938010000.0	Cổ phiếu phổ thông | Common shares
+89	14145	872	0.0	Cổ phiếu ưu đãi | Prefered shares
+89	14120	880	2075645192664.0	Thặng dư vốn cổ phần | Share premium
+89	14149	885	0.0	Quyền chọn chuyển đổi trái phiếu | Convertible Bonds Option
+89	14130	890	0.0	Vốn khác của chủ sở hữu | Other capitals of Owners Equity
+89	14140	1000	-19115006409.0	Cổ phiếu quỹ | Treasury shares
+89	14150	1010	7278726825.0	Chênh lệch đánh giá lại tài sản | Property revaluation differences
+89	14160	1020	83578251195.0	Chênh lệch tỷ giá hối đoái | Exchange differences
+89	14169	1025	3000000000.0	Quỹ dự trự bổ sung vốn điều lệ | Reserved fund to supplement the charter capital
+89	14170	1030	0.0	Quỹ đầu tư phát triển | Development and Investment Fund
+89	14180	1040	0.0	Quỹ dự phòng tài chính | Financial Provision  Fund
+89	14190	1050	0.0	Quỹ khác thuộc vốn chủ sở hữu | Other Funds of Owners Equity
+89	14200	1060	6938468605141.0	Lợi nhuận sau thuế chưa phân phối | Undistributed Profit after Tax
+89	700034	1061	7015609518639.0	Lợi nhuận sau thuế đã thực hiện | Realized gain 
+89	14220	1062	0.0	Lợi nhuận sau thuế chưa phân phối lũy kế đến cuối kỳ trước | Cummulative Undistributed Profit after Tax until last year
+89	14230	1063	7015609518639.0	Lợi nhuận sau thuế chưa phân phối kỳ này | Undistributed Profit after Tax this year
+89	700035	1064	-77140913498.0	Lợi nhuận sau thuế chưa thực hiện | Unrealized gain 
+89	14240	1065	230696002989.0	Lợi ích cổ đông không kiểm soát | Non Controlling Shareholders
+89	14300	1066	0.0	Nguồn kinh phí và quỹ khác | Expenditures and Other Funds
+89	14320	1068	0.0	Vốn ngân sách nhà nước | Budget sources and other funds
+89	14330	1069	0.0	Nguồn kinh phí đã hình thành TSCĐ | Fixed Assets expenditures
+89	700036	1070	0.0	Quỹ khen thưởng, phúc lợi (trước 2010) | Bonus and welfare funds (Before 2010)
+89	15000	1071	0.0	Lợi ích của cổ đông không kiểm soát (trước 2015) | Minority shareholderss Equity
+89	700037	1080	0.0	LỢI  NHUẬN ĐÃ PHÂN PHỐI CHO NHÀ ĐẦU TƯ | C. Distributed profit to investor 
+89	700038	1090	0.0	Lợi nhuận đã phân phối cho Nhà đầu tư trong năm | Distributed profit to investor during the year 
+90	21000	1	3167957997455.0	Tổng doanh thu hoạt động kinh doanh | Gross Operating Revenue
+90	700039	10	1378024703909.0	Lãi từ các tài sản tài chính ghi nhận thông qua lãi/lỗ ( FVTPL) | Income from financial assets regconized through profit/loss (FVTPL)
+90	700040	20	803485301755.0	Lãi bán các tài sản tài chính PVTPL | Income from selling financial assets FVTPL 
+90	700041	30	54806731604.0	Chênh lệch tăng đánh giá lại các TSTC thông qua lãi/lỗ | FVTPL revaluation gain 
+90	700042	40	519732670550.0	Cổ tức, tiền lãi phát sinh từ tài sản tài chính PVTPL | Dividend, interest from FVTPL financial assets 
+90	700043	50	140056391467.0	Lãi từ các khoản đầu tư nắm giữ đến ngày đáo hạn | Income from held to maturity investment (HTM)
+90	700044	60	1115199256167.0	Lãi từ các khoản cho vay và phải thu  | Income from loans and receivables 
+90	412522	70	75664224426.0	Lãi từ chứng khoán Nợ đầu tư sẵn sàng để bán | Income from available for sales assets (AFS)
+
+90	700045	80	0.0	Lãi từ các công cụ phát sinh phòng ngừa rủi ro  | Income from derivatives 
+90	621110	90	348933594669.0	Doanh thu môi giới chứng khoán cho người đầu tư | Securities Brokerage for investors Revenues
+90	610082	100	0.0	Doanh thu hoạt động đầu tư chứng khoán, góp vốn | Revenue in Securities investment and other investment activities
+90	610083	110	0.0	Doanh thu bảo lãnh phát hành chứng khoán | Revenue in Underwriting services
+90	610084	120	0.0	Doanh thu đại lý phát hành chứng khoán | Revenue in Issuance agency services
+90	621150	140	8443519623.0	Doanh thu tư vấn đầu tư chứng khoán cho người đầu tư | Securities Investment Consult Revenue for investors
+90	621160	150	17210951055.0	Doanh thu lưu ký chứng khoán cho người đầu tư | Securities Deposit Revenue for investors
+90	610085	160	0.0	Doanh thu hoạt động ủy thác đấu giá | Revenue in Auction trust services
+90	621190	170	0.0	Doanh thu cho thuê tài sản, sử dụng thiết bị, sử dụng thông tin | Leasing, using equipment and information Revenues
+90	631243	180	1280345019.0	Thu từ dịch vụ tư vấn | Revenue from advisory services
+
+90	610086	190	83145011120.0	Doanh thu khác | Others revenue
+90	21090	210	0.0	Các khoản giảm trừ doanh thu | Deduction revenues
+90	21001	220	3167957997455.0	Doanh thu thuần | Net Sales
+90	622100	230	855325969718.0	Chi phí hoạt động kinh doanh chứng khoán   | Trading Securities activities Expenses
+90	700046	240	512872300855.0	Lỗ các tài sản tài chính ghi nhận thông qua lãi lỗ (FVTPL) | Loss from financial assets recognized through profit/loss (FVTPL)
+90	700047	250	336947614259.0	Lỗ bán các tài sản tài chính | Loss from selling financial assets FVTPL 
+90	700048	260	171695900579.0	Chênh lệch giảm đánh giá lại các TSTC thông qua lãi/lỗ | FVTPL financial assets revaluation loss
+90	700049	270	4228786017.0	Chi phí giao dịch mua các tài sản tài chính FVTPL | FVTPL financial assets purchase transaction costs 
+90	700050	280	0.0	Lỗ các khoản đầu tư nắm giữ đến ngày đáo hạn (HTM) | Loss form held to maturity investment (HTM)
+90	700051	290	0.0	Chi phí lãi vay, lỗ từ các khoản cho vay và phải thu | Interest cost, loss from loans and receivables 
+90	700052	300	0.0	Lỗ bán các tài sản tài chính sẵn sàng để bán (AFS) | Loss from available for sales assets (AFS)
+90	700053	310	-41430209228.0	Cphí dự phòng TSTC, xử lý tổn thất các khoản phải thu khó đòi là lỗ suy giảm TSTC và CP đi vay | Provision for losses from mortgage assets, uncollectible receivables, and borrowing expenses
+90	700054	320	0.0	Lỗ từ các tài sản tài chính phái sinh phòng ngừa rủi ro | Loss from derivatives 
+90	700055	330	26801665356.0	Chi phí hoạt động tự doanh | Proprietary trading services expenses
+90	700056	340	284094954273.0	Chi phí môi giới chứng khoán | Brokerage expenses
+90	700057	350	0.0	Chi phí hoạt động bảo lãnh, đại lý phát hành chứng khoán | Underwriting, securities issuance expenses 
+90	700058	360	3788080284.0	Chi phí tư vấn đầu tư chứng khoán | Expenses for securities advisory 
+90	700059	370	0.0	Chí phí hoạt động đấu giá, ủy thác | Bidding agent service expenses 
+90	700060	380	18245881520.0	Chi phí lưu ký chứng khoán | Investor securities depository expenses 
+90	700061	390	6479686990.0	Chi phí hoạt động tư vấn tài chính | Expenses for financial advisory activities 
+90	700497	400	44473609668.0	Chi phí khác của HĐKD | Other expenses Income
+90	700062	410	0.0	Trong đó: Chi phí sửa lỗi giao dịch chứng khoán, lỗi khác | Expenses arise from securities transaction errors and other errors 
+90	23100	420	2312632027737.0	Lợi nhuận gộp | Gross profit
+90	21500	430	36873624531.0	Doanh thu hoạt động tài chính | Financial income
+90	700063	440	2512321293.0	Chênh lệch lãi tỷ giá hối đoái đã và chưa thực hiện | Realized and unrealized foreign exchange gain
+90	700064	450	6722545589.0	Doanh thu, dự thu cổ tức, lãi tiền gửi không cố định phát sinh trong kỳ | Income from non fixed accrued dividend and interest 
+90	700065	460	0.0	Lãi bán, thanh lý các khoản đầu tư vào công ty con, liên kết, liên doanh | Gain from disposals or sales of investments in subsidiaries, associates and joint ventures 
+90	700066	470	27638757649.0	Doanh thu khác về đầu tư | Other revenue from investments 
+90	22500	480	901614349835.0	Chi phí tài chính | Financial Expenses
+90	700068	490	19760721023.0	Chênh lệch lỗ tỷ giá hối đoái đã và chưa thực hiện | Realized and unrealized foreign exchange loss
+90	22509	500	849687392269.0	Chi phí lãi vay | Interest Expenses
+90	700070	510	0.0	Lỗ bán, thanh lý các khoản đầu tư vào công ty con, liên kết, liên doanh | Loss from disposals or sales of investments in subsidiaries, associates and joint ventures 
+90	700071	520	0.0	Chi phí dự phòng suy giảm giá trị các khoản đầu tư tài chính dài hạn | Provision for losses on long term financial investment
+90	700069	530	32166236543.0	Chi phí đầu tư khác | Other investment expenses 
+90	23300	540	0.0	Lợi nhuận hoặc lỗ trong công ty liên kết | Profit or loss from join venture companies
+90	22110	550	0.0	Chi phí bán hàng | Selling Expenses
+90	22200	560	73403667901.0	Chi phí quản lý doanh nghiệp | General and admin expenses
+90	23110	570	1374487634532.0	Lợi nhuận thuần từ hoạt động kinh doanh | Net Profit from Operating activities
+90	21900	580	14415129876.0	Thu nhập khác | Other incomes
+90	22900	590	321933052.0	Chi phí khác | Other Expenses
+90	23900	600	14093196824.0	Lợi nhuận khác | Other profits
+90	23200	610	0.0	Lợi nhuận hoặc lỗ trong công ty liên kết (trước 2015) | Profit or lost from join venture companies (before 2015)
+90	23800	620	1388580831356.0	Lợi nhuận kế toán trước thuế | Pretax Profit
+90	700072	630	1529920245742.0	Lợi nhuận trước thuế đã thực hiện | Realized gain 
+90	700073	640	-141339414386.0	Lợi nhuận trước thuế chưa thực hiện | Unrealized gain 
+90	22070	650	263589877632.0	Chi phí thuế TNDN | Corporate Income Tax Expenses
+90	22051	660	274621897865.0	Chi phí thuế TNDN hiện hành | Current Corporate Income Tax Expenses
+90	22052	670	-11032020233.0	Chi phí thuế TNDN hoãn lại | Deferred Income Taxes Expenses
+90	23003	680	1124990953724.0	Lợi nhuận sau thuế thu nhập doanh nghiệp | Net Profit After Tax
+90	23500	690	67414691.0	Lợi ích của cổ đông thiểu số | Benefits of Minitory shareholders
+90	700074	700	0.0	LNST trích các Quỹ dự trữ điều lệ, Dự phòng TC và rủi ro nghề nghiệp theo quy định cty |  Profit after tax deducted of Funds
+90	23000	710	1124923539033.0	Lợi nhuận sau thuế của Công ty mẹ | Net Profit After Tax of Parent Company
+90	700075	720	0.0	Lãi/(Lỗ) từ đánh giá lại các các khoản đầu tư giữ đến ngày đáo hạn | Gain (loss) from revaluation of held to maturity investments 
+90	700076	730	-94392108655.0	Lãi/(Lỗ) từ đánh giá lại các tài sản tài chính sẵn sàng để bán | Gain (loss) from revaluation of available for sales financial assets
+90	700077	740	0.0	Lãi (lỗ) toàn diện khác được chia từ hoạt động đầu tư vào công ty con, liên kết liên doanh | Gain (loss) distributed from investments in subsidiaries, associates and joint ventures
+90	700078	750	0.0	Lãi/(Lỗ) từ đánh giá lại các công cụ tài chính phái sinh | Gain (loss) from revaluation of derivatives 
+90	700079	760	0.0	Lãi/(lỗ) chênh lệch tỷ giá của hoạt động tại nước ngoài  | Gain (loss) from foreign exchange difference of overseas operations 
+90	700080	770	0.0	Lãi, lỗ từ các khoản đầu tư vào công ty con. Công ty liên kết, liên doanh chưa chia | Pre-distributed gain (loss) from investments in subsidiaries, associates and joint ventures 
+90	700081	780	0.0	Lãi, lỗ đánh giá công cụ phái sinh | Gain (loss) from revaluation of derivatives 
+90	700082	790	0.0	Lãi, lỗ đánh giá lại tài sản cố định theo mô hình giá trị hợp lý | Gain (loss) from revaluation of fixed assets using fair value model 
+90	700083	800	1030598845069.0	Tổng thu nhập toàn diện | Total comprehensive income 
+90	700084	810	1030598845069.0	Thu nhập toàn diện phân bổ cho chủ sở hữu | Comprehensive income distributed to shareholders 
+90	700085	820	0.0	Thu nhập toàn diện phân bổ cho cổ đông không nắm quyền kiểm soát | Comprehensive income distributed to uncontrolled shareholders 
+90	700086	830	0.0	THU NHẬP THUẦN TRÊN CỔ PHIẾU PHỔ THÔNG | Net income to common share
+90	23001	840	0.0	Lãi cơ bản trên cổ phiếu | Earnings  per share
+90	700087	850	0.0	Lãi suy giảm trên cổ phiếu | EPS_diluted
+91	932000	1		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG KINH DOANH - GIÁN TIẾP | Cash flows from Operating Activities - Indirect method
+91	23810	10	1388580831356.0	Lợi nhuận kế toán trước thuế | Pretax Profit
+91	30000	20	-864313648780.0	Điều chỉnh cho các khoản | Adjustments
+91	22230	30	29236556098.0	Chi phí khấu hao tài sản cố định | Depreciation of Fixed Assets Expenses
+91	31111	40	0.0	Phân bổ lợi thế thương mại | Amortisation of goodwill
+91	22515	50	-41415085941.0	Dự phòng giảm giá các khoản đầu tư ngắn hạn, dài hạn | Provision for short term investment loss
+91	31100	60	24449609495.0	Lãi, lỗ chênh lệch tỷ giá hối đoái chưa thực hiện | Unrealised foreign exchange gain/(loss)
+91	700498	70	0.0	Chi phí phải trả, chi phí trả trước | Accrued expenses
+91	31110	80	-80592516791.0	Lãi, lỗ từ hoạt động đầu tư | Profit/(loss) from investing activities
+91	22509	90	849687392269.0	Chi phí lãi vay | Interest Expenses
+91	60000	100	-1644676451609.0	Dự thu tiền lãi | Interest income and dividend
+91	431100	110	-1003152301.0	Các khoản điều chỉnh khác | Other adjustments
+91	700088	120	171695900579.0	Tăng các chi phí phi tiền tệ  | Increase in non-cash expense
+91	700089	130	171695900579.0	Lỗ đánh giá giá trị các tài sản tài chính ghi nhận thông qua KQKD | Loss on valuation of fair value through profit/loss financial assets
+91	700090	140	0.0	Lỗ đánh giá giá trị các công nợ tài chính ghi nhận thông qua KQKD | Loss from financial assets sales  (Before 2016)
+91	700091	150	0.0	Lỗ đánh giá giá trị các công cụ tài chính phái sinh | Loss from derivatives
+91	700092	160	0.0	Lỗ từ thanh lý các tài sản tài chính sẵn sàng để bán | Loss on valuation of available for sale financial assets
+91	700093	170	0.0	Suy giảm giá trị của các tài sản tài chính sẵn sàng để bán | The decrease in value of available sales assets
+91	700094	180	0.0	Lỗ suy giảm giá trị các khoản đầu tư nắm giữ đến ngày đáo hạn | Loss on valuation of held to marturity investments
+91	700095	190	0.0	Lỗ suy giảm giá trị các khoản cho vay | Loss on the decrease in value of loans given
+91	700096	200	0.0	Lỗ về chênh lệch đánh giá theo giá trị hợp lý TSTC sẵn sàng để bán AFS khi phân loại lại | Loss regconized when reclassification of AFS is made and fair value is used for revaluation
+91	700097	210	0.0	Lỗ đánh giá giá các công cụ tài chính phát sinh cho mục đích phòng ngừa rủi ro | Loss from derivatives
+91	700098	220	0.0	Lỗ từ thanh lý TSCĐ | Loss from sales of fixed assets
+91	700099	230	0.0	Suy giảm giá trị của các tài sản cố định | Decrease in value of fixed assets
+91	700100	240	0.0	Chi phí dự phòng suy giảm giá trị các khoản đầu tư tài chính dài hạn | Provision for decrease in value of long term financial investments
+91	700101	250	0.0	Lỗ từ thanh lý các khoản đầu tư vào công ty con và công ty liên doanh, liên kết | Loss from disposals or sales of investments in subsidiaries, associates and joint ventures  (Before 2016)
+91	700102	260	0.0	Lỗ khác | Other loss
+91	700103	270	-150518933582.0	Giảm các doanh thu phi tiền tệ | Decrease in non-cash revenue
+91	700104	280	-54806731604.0	Lãi đánh giá giá trị các tài sản chính ghi nhận thông qua KQKD | Profit from revaluation of fair value through profit and loss financial assets
+91	700105	290	0.0	Lãi đánh giá giá trị các công nợ tài chính thông qua kết quả kinh doanh | Profit from revaluation of fair value through profit and loss financial debts (Before 2016)
+91	700106	300	0.0	Lãi từ thanh lý các tài sản tài chính sẵn sàng để bán | Profit from sales of  available for sale assets  (Before 2016)
+91	700107	310	0.0	Hoàn nhập suy giảm giá trị của các tài sản tài chính sẵn sàng để bán | Reversal of loss from available for sale assets (Before 2016)
+91	700108	320	-65793506426.0	Lãi về chênh lệch đánh giá theo giá trị hợp lý TSTC sẵn sàng để bán AFS khi phân loại lại | Profit regconized when reclassification of AFS is made and fair value is used for revaluation
+91	700109	330	0.0	Lãi đánh giá giá trị các công cụ tài chính phái sinh cho mục đích phòng ngừa | Profit  from derivatives
+91	700110	340	0.0	Lãi từ thanh lý các khoản cho vay và phải thu | Profit from the decrease in value of loans given
+91	700111	350	0.0	Hoàn nhập chi phí dự phòng | Reversal of provision
+91	700112	360	0.0	Lãi từ thanh lý tài sản cố định, BĐSĐT | Profit from sales of fixed assets and properties
+91	700113	370	0.0	Lãi từ thanh lý các khoản đầu tư vào công ty con và công ty liên doanh, liên kết | Profit from disposals or sales of investments in subsidiaries, associates and joint ventures
+91	700114	380	-29918695552.0	Lãi khác | Other profit
+91	700115	390	2893748357627.0	Thay đổi tài sản và nợ phải trả hoạt động | Change in assets and operating liabilities
+91	700116	400	-141865559056.0	Tăng (giảm) tài sản tài chính ghi nhận thông qua lãi lỗ | Increase (decrease) in financial assets at fair value through profit or loss
+91	700117	410	862576779546.0	Tăng (giảm) các khoản đầu tư giữ đến ngày đáo hạn | Increase (decrease) in held to marturity investments
+91	700118	420	2178642248591.0	Tăng (giảm) các khoản cho vay  | Increase (decrease) in loans given
+91	700119	430	-10000000000.0	Tăng (giảm) tài sản tài chính sẵn sàng để bán  | Increase (decrease) in available-for-sale financial assets
+91	700120	440	-34619736920.0	Tăng (giảm) các tài sản khác | Increase (decrease) in other assets
+91	700121	450	39014625466.0	Tăng (giảm) các khoản phải thu | Increase (decrease) in receivable (Before 2016)
+91	700122	460	0.0	Tăng (giảm) vay và nợ thuê tài sản tài chính | Increase (decrease) in financial asset borrowings and financial lease (Before 2016)
+91	700123	470	0.0	Tăng (giảm) vay tài sản tài chính | Increase (decrease) in financial asset borrowings (Before 2016)
+91	700124	480	0.0	Tăng (giảm) Trái phiếu chuyển đổi - Cấu phần nợ | Increase (decrease) in convertible bond-equity portion (Before 2016)
+91	700125	490	0.0	Tăng (giảm) Trái phiếu phát hành | Increase (decrease) in issued bond (Before 2016)
+91	700126	500	0.0	Tăng (giảm) vay Quỹ Hỗ trợ thanh toán | Increase (decrease) in borrowing form Settlement Assistance Fund
+91	31120	510	4671990818300.0	Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn  lưu động | Operating profit/(loss) before changes in Working Capital
+91	700127	520	0.0	(-) Tăng, (+) giảm phải thu bán các tài sản tài chính | Increase (decrease) in receivable form selling financial assets
+91	700128	530	0.0	(-) Tăng, (+) giảm phải thu tiền lãi các tài sản tài chính | Increase (decrease) in receivable from interest of financial assets
+91	700129	540	1143230947.0	(-) Tăng, (+) giảm các khoản phải thu các dịch vụ CTCK cung cấp | Increase (decrease) in receivable from services rendered
+91	700130	550	0.0	(-) Tăng, (+) giảm các khoản phải thu về lỗi giao dịch CK | Increase (decrease) in receivable from transaction errors
+91	31130	560	217053415110.0	Tăng, giảm các khoản phải thu |  Increase/(decrease) in receivables
+91	400760	570	9870702057.0	(-) Tăng, (+) giảm chi phí phải trả (không bao gồm chi phí lãi vay) | Increase (decrease) in payable expenses (excluding interest expenses)
+91	700131	580	939266959369.0	(+) Tăng, (-) giảm phải trả cho người bán | Increase (decrease) in trade payables
+91	700132	590	0.0	(+) Tăng, (-) giảm phải trả Tổ chức phát hành chứng khoán | Increase (decrease) in payables to securities issuers (Before 2016)
+91	700133	600	-17631450.0	(+) Tăng, (-) giảm các khoản trích nộp phúc lợi nhân viên | Increase (decrease) in contribution to employees welfare
+91	700134	610	60877611916.0	(+) Tăng, (-) giảm thuế và các khoản phải nộp Nhà nước | Increase (decrease) in tax and payables to authority
+91	431400	620	0.0	Tăng/ (Giảm) chứng khoán kinh doanh | Increase/(decrease)  in trading securities
+91	700135	630	-18004672.0	(+) Tăng, (-) giảm phải trả người lao động | Increase (decrease) in payables to employees
+91	700136	640	0.0	(+) Tăng, (-) giảm phải trả về lỗi giao dịch các tài sản tài chính | Increase (decrease) in payable arise form financial asset transaction error
+91	31140	650	0.0	Tăng, giảm hàng tồn kho | Increase/(decrease) in inventories
+91	31150	660	-142920899358.0	Tăng, giảm các khoản phải trả (Không kể lãi vay phải trả, thuế TNDN phải nộp) | (Increase)/decrease in payables
+91	31160	670	5535074062.0	Tăng, giảm chi phí trả trước | Increase/(decrease) in prepaid expenses
+91	31170	680	-845133057142.0	Tiền lãi vay đã trả | Interest paid
+91	31180	690	-290009199167.0	Thuế thu nhập doanh nghiệp đã nộp | Income Tax paid
+91	31190	700	1830446318868.0	Tiền thu khác từ hoạt động kinh doanh | Other Incomes from Operating Activities
+91	700137	710	1811674788316.0	Tiền lãi đã thu | Interest received
+91	700138	720	18771530552.0	Tiền thu khác | Other receivables
+91	31200	730	-7852059867.0	Tiền chi khác cho hoạt động kinh doanh | Other Incomes from Operating Activities
+91	700499	740	0.0	Lãi vay đã trả cho hoạt động kinh doanh | Interest paid for Income
+91	431280	750	0.0	Thuế TNDN đã nộp (*) | Income tax paid (*)
+91	631253	760	-7852059867.0	Các khoản chi khác | Other expenses
+91	400750	770		Tiền chi nộp thuế liên quan đến hoạt động CTCK | 
+91	932001	780		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG KINH DOANH - TRỰC TIẾP | Cash flows from Operating Activities - Direct method
+91	610007	790		Tiền thu từ hoạt động kinh doanh | Receivables on operating activities
+91	610008	800		Tiền chi hoạt động kinh doanh | Payments on operating activities
+91	700139	810		Tiền đã chi mua các tài sản tài chính | 
+91	700140	820		Tiền đã thu từ bán các tài sản tài chính | 
+91	610009	830		Tiền chi nộp Quỹ hỗ trợ thanh toán | Payments to Settlement Assistance Fund
+91	33710	840		Tiền lãi đã nhận | Interests, dividends, profits received
+91	610010	850		Tiền thu giao dịch chứng khoán khách hàng | receivables on securities transaction settlement of clients
+91	610011	860		Tiền chi trả giao dịch chứng khoán khách hàng | Cash outflow on securities transaction settlement of clients
+91	610012	870		Tiền thu bán chứng khoán phát hành | 
+91	610013	880		Tiền chi trả tổ chức phát hành chứng khoán | Cash paid to issuing organizations
+91	30200	890		Tiền chi trả cho người cung cấp hàng hóa và dịch vụ | Cash payments to goods and service Suppliers
+91	30300	900		Tiền chi trả cho người lao động | Cash payments to employees
+91	30400	910		Tiền chi trả lãi vay | Cash payments to Interest
+91	700141	920		Tiền chi trả Tổ chức cung cấp dịch vụ cho CTCK  | 
+91	30500	930		Tiền chi nộp thuế thu nhập doanh nghiệp | Cash payments to Corporate Income Tax
+91	700142	940		Tiền chi thanh toán các chi phí cho hoạt động mua, bán các TSTC (chi phí giao dịch, phí chuyển tiền) | Purchases of fixed assets and other long term assets
+91	30600	950		Tiền thu khác từ hoạt động kinh doanh | Proceeds from operating activities
+91	30700	960		Tiền chi khác cho hoạt động kinh doanh | Other Cash payments to Operating activities
+91	32000	970	5217434967873.0	Lưu chuyển tiền thuần từ hoạt động kinh doanh | Net cashflow from operating activities
+91	933000	980		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG ĐẦU TƯ | Cash flows  from Investing activities
+91	610006	990	-26459125845.0	Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác | Purchases of fixed assets and other long term assets
+91	32200	1000	2199997.0	Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác | Proceeds from depleting, acquisiting fixed assets and other long term assets
+91	32300	1010	0.0	Tiền chi cho vay, mua các công cụ nợ của đơn vị khác | Loans granted, purchases of debt instruments
+91	32400	1020	0.0	Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác | Collection of loans, proceeds from sales of debts instruments
+91	32500	1030	-263734810326.0	Tiền chi đầu tư góp vốn vào đơn vị khác | Investments in other entities
+91	32600	1040	0.0	Tiền thu hồi đầu tư góp vốn vào đơn vị khác | Proceeds from divestment in other entities
+91	32700	1050	186396000000.0	Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia | Proceeds from Interest, Dividends and shared profit.
+91	33000	1060	-103795736174.0	Lưu chuyển tiền thuần từ hoạt động đầu tư | Net Cashflow from Investing activities
+91	934000	1070		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG TÀI CHÍNH | Cash flows  from Financing activities
+91	33100	1080	100000000000.0	Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu | Proceeds from  issue of  shares, capital contribution
+91	33200	1090	0.0	Tiền chi trả vốn góp cho các chủ sở hữu, mua lại cổ phiếu của doanh nghiệp đã phát hành | Cash payments to capital contribution and Buy back  issued shares
+91	33300	1100	145589287053304.0	Tiền vay ngắn hạn, dài hạn nhận được | Short , long term loan received
+91	700143	1110	0.0	Tiền vay Quỹ Hỗ trợ thanh toán | Loans from Settlement Assistance Fund received
+91	700144	1120	145589287053304.0	Tiền vay khác | Other loans received
+91	33400	1130	-147707152905756.0	Tiền chi trả nợ gốc vay | Payment of Princial Loans
+91	700145	1140	0.0	Tiền chi trả gốc vay Quỹ Hỗ trợ thanh toán | Loans Principal repaid to Settlement Assistance Fund
+91	700146	1150	0.0	Tiền chi trả nợ gốc vay tài sản tài chính | Financial assets loans principal repaid
+91	700147	1160	-147707152905756.0	Tiền chi trả gốc nợ vay khác | Other Loans principal repaid
+91	33500	1170	0.0	Tiền chi trả nợ thuê tài chính | Payment of financial lease
+91	33600	1180	-2500319635000.0	Cổ tức, lợi nhuận đã trả cho chủ sở hữu | Dividends and Profit paid
+91	34000	1190	-4518185487452.0	Lưu chuyển tiền thuần từ hoạt động tài chính | Net Cashflow from Financing activities
+91	35000	1200	595453744247.0	Lưu chuyển tiền thuần trong kỳ | Net Cash and Cash equivalents during the period
+91	36000	1210	531521622866.0	Tiền và tương đương tiền đầu kỳ | Cash and cash equivalents at beginning of year
+91	700148	1220	530844251548.0	Tiền mặt, tiền gửi ngân hàng đầu kỳ | Cash and bank deposit at the beginning of the period
+91	700149	1230	0.0	Tiền gửi ngân hàng cho hoạt động CTCK_Đầu kỳ | Bank deposit for the Securities company activities
+91	700150	1240	0.0	Các khoản tiền tương đương đầu kỳ | Cash equivalents
+91	36100	1250	677371318.0	Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ | Effect of foreign exchange differences
+91	37000	1260	1126975367113.0	Tiền và tương đương tiền cuối kỳ | Cash and Cash equivalents at end of  year
+91	700151	1270	1107249124211.0	Tiền mặt, tiền gửi ngân hàng kỳ | Cash and bank deposit during the period
+91	700152	1280	0.0	Tiền gửi ngân hàng cho hoạt động CTCK_Cuối kỳ | Bank deposit for the Securities company activities
+91	11120	1290	20048541096.0	Các khoản tương đương tiền | Cash equivalents
+91	700154	1300	-322298194.0	Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ tổng hợp | Effect of changes in foreign currency exchange rates
+
+## items insurance (BVH, latest quarter 2026-09-30)
+411	12700	9	305991238026465.0	TỔNG CỘNG TÀI SẢN | TOTAL ASSETS
+411	11000	10	127385683343380.0	Tài sản ngắn hạn | Current Assets
+411	11100	11	3962989180690.0	Tiền và các khoản tương đương tiền | Cash and Cash Equivalents
+411	11110	20	1118853565720.0	Tiền | Cash
+411	11120	51	2844135614970.0	Các khoản tương đương tiền | Cash equivalents
+411	11200	60	112842688503518.0	Các khoản đầu tư tài chính ngắn hạn | Short term financial investment
+411	11210	80	4414285979777.0	Đầu tư ngắn hạn | Short-term investments
+411	11290	81	-289250652285.0	Dự phòng giảm giá đầu tư ngắn hạn | Provision for  short term investment loss
+411	412320	82	108717653176026.0	Đầu tư giữ đến ngày đáo hạn | Held to maturity Investment
+411	11300	90	5806817240574.0	Các khoản phải thu ngắn hạn | Short term Account Receivables
+411	11310	100	1627720605937.0	Phải thu khách hàng | Account Receivable
+411	11311	101	1584419939398.0	Phải thu hoạt động bảo hiểm gốc | Premium receivables
+411	400005	105	43300666539.0	Phải thu khác của khách hàng | Other Receivable from customers
+411	11320	110	19334523386.0	Trả trước cho người bán | Prepaid for suppliers
+411	11550	111	0.0	Tạm ứng | Advances to employees
+411	11330	112	0.0	Phải thu nội bộ ngắn hạn | Short term Internal Receivable
+411	12121	114	0.0	Phải thu từ hoạt động đầu tư tài chính  | Receivables from financial investment activities
+411	11340	116	0.0	Phải thu theo tiến độ kế hoạch hợp đồng xây dựng | Construction contract in progress receivables
+411	11345	117	0.0	Phải thu về cho vay ngắn hạn | Short-term loan Receivables
+411	11350	120	4673571935002.0	Các khoản phải thu khác | Other Receivables
+411	11390	130	-513809823751.0	Dự phòng phải thu ngắn hạn khó đòi | Provision for doublful debt
+411	11400	150	119858010771.0	Hàng tồn kho | Inventories
+411	11410	160	119858010771.0	Hàng tồn kho | Inventory
+411	11490	170	0.0	Dự phòng giảm giá hàng tồn kho | Provision for decline in inventories
+411	11500	171	797196799590.0	Tài sản ngắn hạn khác | Other Current Assets
+411	11510	173	779204522027.0	Chi phí trả trước ngắn hạn | Short-term prepaid expenses
+411	11511	174	675014173362.0	Chi phí hoa hồng chưa phân bổ | Undistributed commission expenses
+411	11512	175	104190348665.0	Chi phí trả trước ngắn hạn khác | Other short - term prepayments
+411	611530	180	0.0	Tài sản thiếu chờ xử lý | Deficiency Assets  waiting for solution
+411	11560	181	0.0	Các khoản thế chấp, ký quỹ, ký cược | Mortgages, collateral, and deposits
+411	11570	182	0.0	Giao dịch mua bán lại trái phiếu chính phủ | Government bonds purchased for resale
+411	11520	183	1718557850.0	Thuế GTGT được khấu trừ | Discounted VAT
+411	11540	184	4845990291.0	Thuế và các khoản khác phải thu Nhà nước | Tax and States Account Receivables
+411	11580	185	11427729422.0	Tài sản ngắn hạn khác | Other current assets
+411	411900	186	3856133608237.0	Tài sản tái bảo hiểm | Reinsurance assets 
+411	411910	187	2199873962778.0	Dự phòng phí nhượng tái bảo hiểm | Provision for Premium outward reinsurance 
+411	411920	188	1656259645459.0	Dự phòng bồi thường nhượng tái bảo hiểm | Provision for Claim from outward reinsurance 
+411	412000	198	0.0	Cho vay khách hàng | Customer Loans
+411	412100	199	0.0	Cho vay khách hàng | Customer Loans
+411	412200	200	0.0	Dự phòng rủi ro cho vay khách hàng | Provision for customer loans loss
+411	12000	201	178605554683085.0	Tài sản dài hạn | Long-term Assets
+411	12100	202	80820033890.0	Các khoản phải thu dài hạn | Long term Account Receivable
+411	12110	203	0.0	Phải thu dài hạn của khách hàng | Long-term trade receivables from customers
+411	12111	204	0.0	Trả trước dài hạn người bán | Long term prepaid for suppliers
+411	12120	205	0.0	Vốn kinh doanh ở đơn vị trực thuộc | Business capital in subsidiary uints
+411	12130	206	0.0	Phải thu dài hạn nội bộ | Internal Longterm Receivables
+411	12140	207	0.0	Phải thu về cho vay dài hạn | Long-term loans receivables
+411	12180	208	80820033890.0	Phải thu dài hạn khác | Other Long term Receivables
+411	12188	209	0.0	Phải thu ký quỹ bảo hiểm dài hạn | Long-term receivable - insurance deposit
+411	12189	210	80820033890.0	Phải thu dài hạn khác | Other long term Account Receivables
+411	12190	211	0.0	Dự phòng phải thu dài hạn khó đòi | Provision for doubtful Long-term receivable
+411	12200	215	1652317686248.0	Tài sản cố định | Fixed assets
+411	12210	216	806359699077.0	Tài sản cố định hữu hình | Tangible Fixed Assets
+411	12220	220	2845968003919.0	Nguyên giá TSCĐHH | Original Price
+411	12230	230	-2039608304842.0	Hao mòn TSCĐHH | Acumulated Depreation and Amortization
+411	12240	231	0.0	Tài sản cố định thuê tài chính | Financial leases fixed assets
+411	12250	232	0.0	Nguyên giá TSCĐTTC | Original Price
+411	12260	233	0.0	Hao mòn TSCĐTTC | Acumulated Depreation and Amortization
+411	12270	240	845957987171.0	Tài sản cố định vô hình | Intangible Fixed Asset
+411	12280	250	1849374895591.0	Nguyên giá TSCĐVH | Original Price
+411	12290	260	-1003416908420.0	Hao mòn TSCĐVH | Acumulated Depreation and Amortization
+411	12300	270	0.0	Chi phí xây dựng cơ bản dở dang (trước 2015) | Construction in progress (before 2015)
+411	12400	271	90392167424.0	Bất động sản đầu tư | Real Estate Investment
+411	12410	272	181613564723.0	Nguyên giá bất động sản đầu tư | Original Price
+411	12420	273	-91221397299.0	Hao mòn bất động sản đầu tư | Acumulated Depreation and Amortization
+411	12440	274	167514377933.0	Tài sản dở dang dài hạn | Long-term incomplete assets
+411	12450	275	0.0	Chi phí sản xuất, kinh doanh dở dang dài hạn | Long-term cost of work in progress
+411	12460	276	167514377933.0	Chi phí xây dựng cơ bản dở dang  | Capital Construction in Process
+411	12500	280	176335099231730.0	Các khoản đầu tư tài chính dài hạn | Long term Finacial  Investments
+411	12510	285	0.0	Đầu tư vào công ty con | Investments in subsidiaries
+411	612200	295	2951773568601.0	Góp vốn liên doanh | Join-venture Capital Contribution
+411	612400	300	1500000222417.0	Đầu tư dài hạn khác | Other Long term investment
+411	12590	305	-83265272701.0	Dự phòng giảm giá đầu tư tài chính dài hạn | Provision for long-term investments
+411	12595	310	171966590713413.0	Đầu tư dài hạn giữ đến ngày đáo hạn | Long term held-to-maturity Investment
+411	12600	311	279411185860.0	Tài sản dài hạn khác | Other long term assets
+411	611240	312	0.0	Tài sản ký quỹ dài hạn | Long-term deposits
+411	12610	313	225825880364.0	Chi phí trả trước dài hạn | Prepaid expenses
+411	600000	314	42632062276.0	Cầm cố, ký quỹ, ký cược dài hạn khác | Other long-term assets
+411	12620	315	10953243220.0	Tài sản thuế thu nhập hoãn lại | Deferred Income Tax
+411	12630	316	0.0	Thiết bị, vật tư, phụ tùng thay thế dài hạn | Long-term equipment, material and spare parts
+411	412541	317	0.0	Lợi thế thương mại (trước 2015) | Goodwill (before 2015)
+411	12690	318	0.0	Lợi thế thương mại | Goodwill
+411	14400	399	305991238026465.0	TỔNG CỘNG NGUỒN VỐN | TOTAL EQUITY
+411	13000	400	278678086087637.0	Nợ phải trả | Liabilities
+411	13100	410	67868057475837.0	Nợ ngắn hạn | Short term Liabilities
+411	13111	411	3848832603732.0	Vay ngắn hạn | Short term Loan
+411	13120	420	3315864727561.0	Phải trả người bán | Payment for suppliers
+411	13121	430	3057814595663.0	Phải trả hoạt động bảo hiểm gốc | Payables from insurance contract
+411	13124	460	258050131898.0	Phải trả khác | Payables to suppliers
+411	13130	461	3614580000.0	Người mua trả tiền trước | Prepaid from Customers
+411	13140	470	357312225237.0	Thuế và các khoản phải nộp Nhà nước | Tax and other payable to State Budget
+411	13150	480	2484197912234.0	Phải trả người lao động | Employees Payable
+411	13160	481	202681243973.0	Chi phí phải trả | Expenses Payable
+411	13170	482	0.0	Phải trả nội bộ | Internal Payable
+411	13180	483	0.0	Phải trả theo tiến độ kế hoạch hợp đồng xây dựng | Construction contract in progress payables
+411	13190	485	1306645155109.0	Các khoản phải trả, phải nộp ngắn hạn khác | Other Account Payables
+411	13199	486	283176159156.0	Doanh thu chưa thực hiện ngắn hạn | Short-term unrealized revenue
+411	14310	487	0.0	Quỹ khen thưởng, phúc lợi | Bonus and welfare funds
+411	13201	488	490555584840.0	Doanh thu hoa hồng chưa được hưởng | Unearned commission income
+411	13200	489	0.0	Dự phòng phải trả ngắn hạn | Provision for short term Payables
+411	13210	490	450522937842.0	Quỹ bình ổn giá | Price stabilisation Fund
+411	13220	491	55124654346153.0	Giao dịch mua bán lại trái phiếu chính phủ | Government bonds purchased for resale
+411	13230	492	0.0	Dự phòng nghiệp vụ Bảo Hiểm (từ 2014) | Insurance Operation Reserve (from 2014)
+411	13240	493	0.0	Dự phòng phí chưa được hưởng | Unearned premium reserve
+411	13250	494	0.0	Dự phòng toán học | Mathematical reserve
+411	13260	495	0.0	Dự phòng bồi thường | Claim reserve
+411	13270	496	0.0	Dự phòng dao động lớn | Catastrophe reserve
+411	13280	497	0.0	Dự phòng chia lãi | Dividend reserves
+411	13290	498	0.0	Dự phòng đảm bảo cân đối | Equalization reserves
+411	413201	499	0.0	Tiền gửi của khách hàng và các TCTD khác | Deposit of customers and other financial institutions
+411	413300	500	0.0	Tiền gửi của khách hàng | Deposit of customers
+411	413210	501	0.0	Tiền gửi của các TCTD khác | Deposit of other financial institutions
+411	13300	540	210810028611800.0	Nợ dài hạn | Long term Liabilities
+411	13340	541	0.0	Vay và nợ dài hạn | Loans and Long term Liabilities
+411	13343	542	0.0	Trái phiếu chuyển đổi | convertible bond
+411	13346	543	0.0	Cổ phiếu ưu đãi | Preferred shares
+411	12181	544	0.0	Ký quỹ, ký cược dài hạn | Long term Deposits, Collateral
+411	13350	545	-178678210.0	Thuế thu nhập hoãn lại phải trả | Deferred Income Tax Payable
+411	13310	546	0.0	Phải trả dài hạn người bán | Long-term Payable for suppliers
+411	13311	547	0.0	Người mua trả trước dài hạn | Long term prepaid from Customers
+411	13312	548	0.0	Chi phí phải trả dài hạn | Long term Expenses Payables
+411	13313	549	0.0	Phải trả nội bộ về vốn kinh doanh | Internal Payables of Business Capital
+411	13320	550	0.0	Phải trả dài hạn nội bộ | Internal Payable
+411	13330	555	210810207290010.0	Phải trả dài hạn khác | Other long-term payables
+411	13197	560	0.0	Doanh thu chưa thực hiện dài hạn | Unrealized Revenue (Long term)
+411	14193	561	0.0	Quỹ phát triển khoa học và công nghệ | Technology-science development fund
+411	13360	562	0.0	Dự phòng trợ cấp mất việc làm | Provision for  unemloyment pension  allowance
+411	13370	563	0.0	Dự phòng phải trả dài hạn | Provision for long-term liabilities
+411	13500	564	0.0	Các quĩ dự phòng nghiệp vụ (trước 2014) | Reserves
+411	13510	565	0.0	Dự phòng phí (trước 2014) | Unearned premium reserve
+411	600001	566	0.0	Dự phòng toán học | Technical reserve
+411	13520	567	0.0	Dự phòng bồi thường (trước 2014) | Claim reserve
+411	13530	568	0.0	Dự phòng dao động lớn (trước 2014) | Catastrophe reserve
+411	600002	569	0.0	Dự phòng chia lãi | Dividend reserve
+411	22072	570	0.0	Dự phòng đảm bảo cân đối | Equalization reserve
+411	14000	600	27313151938828.0	Vốn chủ sở hữu | Owners equity
+411	14100	610	27313151938828.0	Vốn và các quỹ | Capital and researves
+411	14110	620	7423227640000.0	Vốn góp | Paid-in capital
+411	14148	625	7423227640000.0	Cổ phiếu phổ thông | Common shares
+411	14145	630	0.0	Cổ phiếu ưu đãi | Prefered shares
+411	14130	640	0.0	Vốn khác của chủ sở hữu | Other capitals of Owners Equity
+411	14140	650	0.0	Cổ phiếu quỹ | Treasury shares
+411	14120	660	7310458742807.0	Thặng dư vốn cổ phần | Share premium
+411	14150	670	0.0	Chênh lệch đánh giá lại tài sản | Property revaluation differences
+411	14160	680	15445192000.0	Chênh lệch tỷ giá hối đoái | Exchange differences
+411	14170	700	5821447746993.0	Quỹ đầu tư phát triển | Development and Investment Fund
+411	14180	710	0.0	Quỹ dự phòng tài chính | Financial Provision  Fund
+411	14185	715	825201783099.0	Quĩ dự phòng bảo hiểm bắt buộc | Statutory reserve
+411	14190	720	103568802818.0	Quỹ khác thuộc vốn chủ sở hữu | Other Funds of Owners Equity
+411	14200	730	4747877996725.0	Lợi nhuận sau thuế chưa phân phối | Undistributed Profit after Tax
+411	14220	731	2104273017735.0	Lợi nhuận sau thuế chưa phân phối lũy kế đến cuối kỳ trước | Cummulative Undistributed Profit after Tax until last year
+411	14230	732	2643604978990.0	Lợi nhuận sau thuế chưa phân phối kỳ này | Undistributed Profit after Tax this year
+411	14201	733	0.0	Quỹ hỗ trợ sắp xếp doanh nghiệp | Business Arrangement Assistance Fund
+411	14240	734	1065924034386.0	Lợi ích cổ đông không kiểm soát | Non Controlling Shareholders
+411	14300	750	0.0	Nguồn kinh phí và quỹ khác | Expenditures and Other Funds
+411	700036	760	0.0	Quỹ khen thưởng, phúc lợi (trước 2010) | Bonus and welfare funds (Before 2010)
+411	14320	770	0.0	Vốn ngân sách nhà nước | Budget sources and other funds
+411	14330	780	0.0	Nguồn kinh phí đã hình thành TSCĐ | Fixed Assets expenditures
+411	15000	781	0.0	Lợi ích của cổ đông không kiểm soát (trước 2015) | Minority shareholderss Equity
+411	616100	790	0.0	Tài sản thuê ngoài | Rental Assets
+411	616200	800	0.0	Vật tư, hàng hóa nhận giữ hộ, nhận gia công | Goods held in trust
+411	616300	810	0.0	Nợ khó đòi đã xử lý | Bad Debts proceeded
+411	40330	820	0.0	Hợp đồng bảo hiểm chưa phát sinh trách nhiệm | Insurance policies signed but not yet effective
+411	616400	830	0.0	Ngoại tệ các loại | Foreign currencies
+411	413109	840	0.0	Đô la Mỹ (USD) | USD
+411	40340	850	0.0	Đồng Euro (EUR) | EUR
+411	40350	860	0.0	Đồng Yên Nhật (JPY) | JPY
+411	40360	870	0.0	Ngoại tệ khác | Foreign currency
+412	21400	10	10670827656032.0	Doanh thu phí bảo hiểm | Revenue from insurance premium
+412	21410	20	10665940608425.0	Thu phí bảo hiểm gốc | Gross written premium
+412	21420	30	132488851274.0	Thu phí nhận tái bảo hiểm | Reinsurance premium ceded
+412	21425	31	127601803667.0	Tăng (giảm) dự phòng phí bảo hiểm gốc và nhận tái bảo hiểm | Increase/(decrease) in unearned premium reserve for direct insurance and outward reinsurance
+412	21090	32	1080801752039.0	Các khoản giảm trừ doanh thu | Deduction revenues
+412	21491	33	1144674158412.0	Phí nhượng tái bảo hiểm | Reinsurance premium ceded
+412	411910	34	2199873962778.0	Dự phòng phí nhượng tái bảo hiểm | Provision for Premium outward reinsurance 
+412	21493	35	63872406373.0	Giảm phí | Premium deductions
+412	21492	36	0.0	Hoàn phí | Premium returns
+412	99999	37	0.0	Các khoản giảm trừ khác | Others deduction
+412	21480	38	0.0	Tăng (giảm) dự phòng phí, dự phòng toán học (trước 2014) | Increase in unearned premium reserve and techinical reserve
+412	21440	39	9590025903993.0	Doanh thu phí bảo hiểm thuần | Net revenue of insurance premium
+412	21450	40	266087045781.0	Hoa hồng nhượng tái bảo hiểm và doanh thu khác HĐKD Bảo hiểm | Commission income from  outward reinsurance and other income from insurance activities
+412	21411	45	266087045781.0	Thu hoa hồng nhượng tái bảo hiểm | Commission on reinsurance ceded
+412	21430	46	0.0	Thu khác hoạt động kinh doanh bảo hiểm | Other income
+412	21412	47	0.0	Thu nhận tái bảo hiểm | Income on reinsurance assumed
+412	21431	50	0.0	Thu nhượng tái bảo hiểm | Income on reinsurance ceded
+412	21432	60	0.0	Thu khác (giám định, đại lý ...) | Income from other acitvites
+412	21001	120	9856112949774.0	Doanh thu thuần | Net Sales
+412	400540	122	6957531513777.0	Chi bồi thường | Total insurance claim settlement expenses
+412	400550	123	6969451125168.0	Tổng chi bồi thường_BH gốc và nhận tái BH | Claim expenses - direct insurance & reinsurance assumed
+412	22140	130	6933224565081.0	Chi bồi thường bảo hiểm gốc, trả tiền bảo hiểm | Claim and maturity payment expenses
+412	22141	140	36226560087.0	Chi bồi thường nhận tái bảo hiểm | Claim expenses for reinsurance assumed
+412	22142	150	11919611391.0	Các khoản giảm trừ | Deductions
+412	22143	160	0.0	Thu bồi thường nhượng tái bảo hiểm (trước 2014) | Recoveries form reinsurance ceded
+412	22144	170	11353819160.0	Thu đòi người thứ ba | Subrogation recoveries
+412	22145	171	565792231.0	Thu hàng đã xử lý bồi thường 100% | Salvages
+412	22146	175	490942265433.0	Thu bồi thường nhượng tái bảo hiểm | Claim recoveries from outward reinsurance
+412	22150	180	-6466589248344.0	Bồi thường thuộc phần trách nhiệm giữ lại | Claim expenses on retained risks
+412	22180	185	-2614665803402.0	Tăng (giảm) dự phòng toán học | Increase/(decrease) in mathematic reserves
+412	22152	200	72675541160.0	Tăng (giảm) dự phòng bồi thường | Increase/(decrease) in claim reserve
+412	22185	201	43366997580.0	Tăng (giảm) dự phòng bồi thường bảo hiểm gốc và nhận tái bảo hiểm | Increase/(decrease) in claim reserve for direct insurance and inward insurance
+412	22190	202	116042538740.0	Tăng (giảm) dự phòng bồi thường nhượng tái bảo hiểm | Increase/(decrease) in claim reserve for outward insurance
+412	22195	203	-9008579510586.0	Tổng chi bồi thường bảo hiểm | Total insurance claim settlement expenses
+412	22151	205	0.0	Chi bồi thường từ quỹ dự phòng dao động lớn | Claim expenses using catastrophe reserve
+412	22153	210	13813568057.0	Trích dự phòng dao động lớn | Provision for catastrophe reserve
+412	22154	220	1345714552571.0	Chi khác hoạt động kinh doanh bảo hiểm | Other insurance operating expenses
+412	22155	230	1345714552571.0	Chi khác hoạt động kinh doanh bảo hiểm gốc | Other underwriting expenses
+412	22161	231	802839503186.0	Chi hoa hồng bảo hiểm gốc | Commissions
+412	22162	232	0.0	Chi đòi người thứ 3 | Expense of recourse against the third party
+412	22163	233	0.0	Chi xử lý hàng bồi thường 100% | Expense of handling fully-indemnified goods
+412	22164	234	0.0	Chi đề phòng hạn chế tổn thất | Risk minimization expenses
+412	22165	235	0.0	Chi giám định, chi đánh giá rủi ro đối tượng được bảo hiểm, chi khác | Loss adjusting fee, risk assessment
+412	22120	236	0.0	Chi bán hàng | Selling Expenses
+412	22166	237	542875049385.0	Chi khác_KD Bảo hiểm gốc | Others
+412	22156	240	0.0	Chi khác hoạt động kinh doanh nhận tái bảo hiểm | Other reinsurance assumed expenses
+412	22157	250	0.0	Chi hoạt động nhượng tái bảo hiểm | Other reinsurance ceded expenses
+412	22158	260	0.0	Chi phí trực tiếp hoạt động kinh doanh khác | Other direct insurance operating expenses
+412	22160	270	10368107631214.0	Tổng chi trực tiếp hoạt động kinh doanh BH | Total direct insurance operating expenses
+412	23100	280	-511994681440.0	Lợi nhuận gộp | Gross profit
+412	22167	281	0.0	Thu nhập từ hoạt động ngân hàng  | Income from banking activities
+412	22168	282	0.0	Chi phí của hoạt động ngân hàng | Expenses from banking activities
+412	22169	283	0.0	Thu nhập thuần từ hoạt động ngân hàng | Net operating income from banking activities
+412	400560	284	0.0	Lợi nhuận từ hoạt động đầu tư bất động sản | Profit from investment properties business
+412	400570	285	0.0	Doanh thu kinh doanh bất động sản đầu tư | Revenue from investment properties business
+412	400580	286	0.0	Giá vốn bất động sản đầu tư | Cost of investment properties
+412	421600	287	-8534001280.0	Thu nhập thuần từ hoạt động kinh doanh khác | Net income of other business operations
+412	421601	288	114516708210.0	Thu nhập từ hoạt động khác | Other incomes
+412	421602	289	123050709490.0	Chi phí hoạt động khác | Other expenses
+412	22110	290	78052100975.0	Chi phí bán hàng | Selling Expenses
+412	22200	300	1950584227590.0	Chi phí quản lý doanh nghiệp | General and admin expenses
+412	22170	301	1950584227590.0	Chi phí quản lý doanh nghiệp liên quan trực tiếp đến hoạt động bảo hiểm  | General and administrative expenses of insurance operation
+412	22171	302	0.0	Chi phí quản lý liên quan trực tiếp đến hoạt động ngân hàng | General and administrative expenses of banking operation
+412	22172	303	0.0	Chi phí quản lý doanh nghiệp liên quan đến các lĩnh vực khác | General and administrative expenses of others operation
+412	23110	310	-2540631010005.0	Lợi nhuận thuần từ hoạt động kinh doanh | Net Profit from Operating activities
+412	22176	311	0.0	Lỗ thuần từ hoạt động bảo hiểm nhân thọ | Loss from life insurance
+412	22177	312	-2540631010005.0	Lãi thuần từ hoạt động bảo hiểm phi nhân thọ | Net profit from non - life insurance 
+412	22173	320	0.0	Lợi nhuận thuần hoạt đông ngân hàng | Net profit from bank operation
+412	22174	330	-8534001280.0	Lợi nhuận thuần từ các hoạt động khác | Net profit from others operation
+412	21500	335	4668158281685.0	Doanh thu hoạt động tài chính | Financial income
+412	22500	340	1152727038075.0	Chi phí tài chính | Financial Expenses
+412	23300	345	0.0	Lợi nhuận hoặc lỗ trong công ty liên kết | Profit or loss from join venture companies
+412	22175	350	3515431243610.0	Lợi nhuận hoạt động tài chính | Profit from financial activities
+412	21900	360	9887805524.0	Thu nhập khác | Other incomes
+412	22900	370	1503100512.0	Chi phí khác | Other Expenses
+412	23900	380	8384705012.0	Lợi nhuận khác | Other profits
+412	23200	390	34883078203.0	Lợi nhuận hoặc lỗ trong công ty liên kết (trước 2015) | Profit or lost from join venture companies (before 2015)
+412	23800	400	1009534015540.0	Lợi nhuận kế toán trước thuế | Pretax Profit
+412	22071	410	0.0	Dự phòng đảm bảo cân đối | Equalisation reserve
+412	22070	420	174698509960.0	Chi phí thuế TNDN | Corporate Income Tax Expenses
+412	22051	430	176319226736.0	Chi phí thuế TNDN hiện hành | Current Corporate Income Tax Expenses
+412	22052	440	-1620716776.0	Chi phí thuế TNDN hoãn lại | Deferred Income Taxes Expenses
+412	23003	441	834835505580.0	Lợi nhuận sau thuế thu nhập doanh nghiệp | Net Profit After Tax
+412	23500	445	10524340057.0	Lợi ích của cổ đông thiểu số | Benefits of Minitory shareholders
+412	23000	450	824311165523.0	Lợi nhuận sau thuế của Công ty mẹ | Net Profit After Tax of Parent Company
+412	23001	460	1110.0	Lãi cơ bản trên cổ phiếu | Earnings  per share
+413	932000	0		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG KINH DOANH - GIÁN TIẾP | Cash flows from Operating Activities - Indirect method
+413	23810	1	1009534015540.0	Lợi nhuận kế toán trước thuế | Pretax Profit
+413	30000	2		Điều chỉnh cho các khoản | Adjustments
+413	22230	3	61954401653.0	Chi phí khấu hao tài sản cố định | Depreciation of Fixed Assets Expenses
+413	31111	4	0.0	Phân bổ lợi thế thương mại | Amortisation of goodwill
+413	22515	5	2839653733585.0	Dự phòng giảm giá các khoản đầu tư ngắn hạn, dài hạn | Provision for short term investment loss
+413	31100	6	-2818225516.0	Lãi, lỗ chênh lệch tỷ giá hối đoái chưa thực hiện | Unrealised foreign exchange gain/(loss)
+413	31110	7	-4698558279892.0	Lãi, lỗ từ hoạt động đầu tư | Profit/(loss) from investing activities
+413	22509	8	830880999531.0	Chi phí lãi vay | Interest Expenses
+413	31102	12	0.0	Thu lãi và cổ tức | Interest income and dividend
+413	431100	13	0.0	Các khoản điều chỉnh khác | Other adjustments
+413	31120	14	40646644901.0	Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn  lưu động | Operating profit/(loss) before changes in Working Capital
+413	31130	15	5571820407299.0	Tăng, giảm các khoản phải thu |  Increase/(decrease) in receivables
+413	520000	16	0.0	Phải thu hoạt động BH gốc | 
+413	521000	17	0.0	Phải thu hoạt động BH Nhận Tái | Reinsurance assumed receivables
+413	522000	18	0.0	Phải thu hoạt động BH Nhượng Tái | Reinsurance ceded receivables
+413	523000	19	5571820407299.0	Phải thu hoạt động khác | Other receivables from insurance activities
+413	524000	20	0.0	Phải thu/trả đơn vị nội bộ | Inter-company receivables/payables
+413	31140	21	-2468067221.0	Tăng, giảm hàng tồn kho | Increase/(decrease) in inventories
+413	31150	22	-905674394873.0	Tăng, giảm các khoản phải trả (Không kể lãi vay phải trả, thuế TNDN phải nộp) | (Increase)/decrease in payables
+413	525000	23	0.0	Phải trả hoạt động BH gốc | Gross written premium payables
+413	526000	24	0.0	Phải trả hoạt động BH Nhận Tái | Reinsurance assumed payables
+413	527000	25	0.0	Phải trả hoạt động BH Nhượng Tái | Reinsurance ceded payables
+413	528000	26	-905674394873.0	Phải trả hoạt động khác | Other payables from insurance activities
+413	529000	27	0.0	Phải trả CBCNV | Payables to employees
+413	31160	28	-49447731233.0	Tăng, giảm chi phí trả trước | Increase/(decrease) in prepaid expenses
+413	431400	29	-159587867667.0	Tăng/ (Giảm) chứng khoán kinh doanh | Increase/(decrease)  in trading securities
+413	31170	30	-1044941608465.0	Tiền lãi vay đã trả | Interest paid
+413	31180	31	-195843701840.0	Thuế thu nhập doanh nghiệp đã nộp | Income Tax paid
+413	31190	32	0.0	Tiền thu khác từ hoạt động kinh doanh | Other Incomes from Operating Activities
+413	31200	33	-24597615102.0	Tiền chi khác cho hoạt động kinh doanh | Other Incomes from Operating Activities
+413	932001	34		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG KINH DOANH - TRỰC TIẾP | Cash flows from Operating Activities - Direct method
+413	600023	35		Tiền từ thu phí và hoa hồng | Premium received and interest income received
+413	600109	80		Trả tiền cho người bán, người cung cấp dịch vụ | Payments to suppliers
+413	600110	90		Trả tiền cho cán bộ công nhân viên | Payments to employees
+413	600111	100		Trả tiền nộp thuế và các khoản nợ Nhà nước | Payments for corporate income tax
+413	30600	130		Tiền thu khác từ hoạt động kinh doanh | Proceeds from operating activities
+413	30700	140		Tiền chi khác cho hoạt động kinh doanh | Other Cash payments to Operating activities
+413	30400	150		Tiền chi trả lãi vay | Cash payments to Interest
+413	32000	160	3229906065799.0	Lưu chuyển tiền thuần từ hoạt động kinh doanh | Net cashflow from operating activities
+413	933000	170		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG ĐẦU TƯ | Cash flows  from Investing activities
+413	600114	180	-29640098900.0	Tiền thu từ các khoản đầu tư vào đơn vị khác | Proceeds from divestment in other entities
+413	600115	190	3517802748675.0	Tiền thu lãi đầu tư | Dividends and interest received
+413	600140	200		Tiền ủy thác đầu tư | Cash transfer under trusted investment arrangement
+413	600141	210		Tiền rút vốn ủy thác đầu tư | Cash receipt from trusted investment arrangement
+413	600116	220	1710318485.0	Tiền thu do bán tài sản cố định | Proceeds from disposal of fixed assets
+413	32300	230	-42462685706467.0	Tiền chi cho vay, mua các công cụ nợ của đơn vị khác | Loans granted, purchases of debt instruments
+413	32400	240	48093893983082.0	Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác | Collection of loans, proceeds from sales of debts instruments
+413	600117	250	0.0	Tiền đầu tư vào các đơn vị khác | Investments in other entities
+413	600118	260	-91898353747.0	Tiền mua tài sản cố định | Purchases of fixed assets and other long term assets
+413	33000	270	9029182891128.0	Lưu chuyển tiền thuần từ hoạt động đầu tư | Net Cashflow from Investing activities
+413	934000	280		LƯU CHUYỂN TIỀN TỪ HOẠT ĐỘNG TÀI CHÍNH | Cash flows  from Financing activities
+413	600119	290	31151311597776.0	Tiền thu lãi do đi vay | Proceeds from borrowings
+413	600120	300	0.0	Tiền thu do các chủ sở hữu góp vốn | Proceeds from issue of shares
+413	33500	310	0.0	Tiền chi trả nợ thuê tài chính | Payment of financial lease
+413	600142	320	-20600000000.0	Tiền trả cổ tức | Dividends paid
+413	600143	330		Tiền trả lại các nhà đầu tư và chuyển trả BTC về thặng dư vốn thu từ cổ phần  | 
+413	600122	350	-43281427995818.0	Tiền đã trả nợ vay | Repayment of borrowings
+413	600123	360	0.0	Tiền đã hoàn vốn cho các chủ sở hữu | Refund to investors and shares premium paid to MOF
+413	600124	370		Tiền lãi đã trả cho các nhà đầu tư vào doanh nghiệp | Payments for share returns and repurchases
+413	34000	380	-12150716398042.0	Lưu chuyển tiền thuần từ hoạt động tài chính | Net Cashflow from Financing activities
+413	35000	390	108372558885.0	Lưu chuyển tiền thuần trong kỳ | Net Cash and Cash equivalents during the period
+413	36000	400	3853168442933.0	Tiền và tương đương tiền đầu kỳ | Cash and cash equivalents at beginning of year
+413	36100	410	1448178872.0	Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ | Effect of foreign exchange differences
+413	37000	420	3962989180690.0	Tiền và tương đương tiền cuối kỳ | Cash and Cash equivalents at end of  year

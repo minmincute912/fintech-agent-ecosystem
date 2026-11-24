@@ -23,6 +23,8 @@ LAYOUTS = {
     411: ("insurance", (411, 412, 413)),
 }
 _ROWS = 10000  # newest first; about 50 quarters of one company's items
+# finfo answers 403 to python default User-Agents (probe 2026-11-25); identify honestly instead
+_HEADERS = {"User-Agent": "vsi-research/0.1 (personal research)"}
 
 
 class FinfoClient:
@@ -33,7 +35,7 @@ class FinfoClient:
     def _get(self, endpoint: str, params: dict) -> list[dict]:
         failure = None
         try:
-            resp = self._session.get(BASE_URL + endpoint, params=params, timeout=30)
+            resp = self._session.get(BASE_URL + endpoint, params=params, headers=_HEADERS, timeout=30)
         except requests.RequestException as e:
             failure = type(e).__name__
         if failure:  # raised outside the except: no chained traceback in tool output
