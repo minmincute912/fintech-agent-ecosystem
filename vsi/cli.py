@@ -18,7 +18,8 @@ from tradingagents.graph.trading_graph import TradingAgentsGraph
 from vsi.bridge import install
 from vsi.markets import VN_ANALYSTS, normalize_ticker, vn_config
 from vsi.dnse import DnseClient
-from vsi.news import collect, default_store
+from vsi.jobs import run_lock
+from vsi.news import collect, default_store, vsi_home
 
 DATA_SOURCE = "DNSE OpenAPI"
 
@@ -57,7 +58,7 @@ def analyze(ticker: str, trade_date: str, *, config: dict | None = None, graph_f
     log.parent.mkdir(parents=True, exist_ok=True)
     with log.open("a", encoding="utf-8") as f:
         f.write(json.dumps(result, ensure_ascii=False) + "\n")
-    return result
+    return result | {"final_state": state}  # after logging: the state is not JSON and stays out of the log
 
 
 def collect_news() -> int:
@@ -90,7 +91,8 @@ def main(argv: list[str] | None = None) -> int:
             print(f"error: {base} is not listed on HOSE, HNX or UPCoM (DNSE)")
             return 2
         install(client)
-        result = analyze(args.ticker, args.date)
+        with run_lock(vsi_home() / "run.lock"):  # one paid run at a time, shared with the bot worker
+            result = analyze(args.ticker, args.date)
     except ValueError as e:  # bad ticker/date, missing DNSE keys (VendorNotConfiguredError)
         print(f"error: {e}")
         return 2
