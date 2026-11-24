@@ -8,6 +8,7 @@ TradingAgents' vendor error types, so a broken source reads as DATA_UNAVAILABLE,
 
 from __future__ import annotations
 
+from datetime import date
 from typing import Literal
 
 import pandas as pd
@@ -22,9 +23,25 @@ LAYOUTS = {
     89: ("securities", (89, 90, 91)),
     411: ("insurance", (411, 412, 413)),
 }
+_VN = "Asia/Ho_Chi_Minh"
 _ROWS = 10000  # newest first; about 50 quarters of one company's items
 # finfo answers 403 to python default User-Agents (probe 2026-11-25); identify honestly instead
 _HEADERS = {"User-Agent": "vsi-research/0.1 (personal research)"}
+
+
+def _vn_day(value) -> date:
+    """finfo dates come as 'YYYY-MM-DD HH:MM:SS' (Vietnam time); an explicit offset is converted to Vietnam time."""
+    ts = pd.Timestamp(value)
+    return (ts.tz_convert(_VN) if ts.tzinfo else ts).date()
+
+
+def _frame(rows: list[dict]) -> pd.DataFrame:
+    raw = pd.DataFrame(rows)
+    return pd.DataFrame({
+        "model_type": raw["modelType"].astype(int), "fiscal_date": raw["fiscalDate"].map(_vn_day),
+        "item_code": raw["itemCode"].astype(int), "value": raw["numericValue"].astype(float),
+        "created": raw["createdDate"].map(_vn_day), "modified": raw["modifiedDate"].map(_vn_day),
+    })
 
 
 class FinfoClient:
@@ -56,20 +73,22 @@ class FinfoClient:
                                                       "sort": "fiscalDate:desc", "size": _ROWS})
             if not rows:
                 raise NoMarketDataError(symbol, symbol, f"finfo has no {report_type.lower()} statements")
-            raw = pd.DataFrame(rows)
-            day = lambda col: pd.to_datetime(raw[col]).dt.date  # noqa: E731
-            self._cache[key] = pd.DataFrame({
-                "model_type": raw["modelType"].astype(int), "fiscal_date": day("fiscalDate"),
-                "item_code": raw["itemCode"].astype(int), "value": raw["numericValue"].astype(float),
-                "created": day("createdDate"), "modified": day("modifiedDate"),
-            })
+            frame, failure = None, None
+            try:
+                frame = _frame(rows)
+            except (KeyError, ValueError, TypeError, AttributeError) as e:
+                failure = type(e).__name__
+            if failure:  # raised outside the except, like _get
+                raise VendorUnavailableError(f"finfo statements changed shape ({failure}); not used")
+            self._cache[key] = frame
         return self._cache[key]
 
     def layout(self, symbol: str) -> str:
         return self.layout_models(symbol)[0]
 
     def layout_models(self, symbol: str) -> tuple[str, tuple[int, int, int]]:
-        present = set(self.statements(symbol, "QUARTER")["model_type"])
+        q = self.statements(symbol, "QUARTER")
+        present = set(q[q["fiscal_date"] == q["fiscal_date"].max()]["model_type"])  # stray old rows don't decide
         for name, models in LAYOUTS.values():
             if present & set(models):
                 return name, models

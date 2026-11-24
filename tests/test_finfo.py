@@ -100,3 +100,28 @@ def test_requests_identify_the_client():
     session = FakeSession(FakeResponse({"data": [_row(1, 1, 1.0)]}))
     FinfoClient(session).statements("VNM", "QUARTER")
     assert session.calls[0][2]["User-Agent"].startswith("vsi-research/")
+
+
+@pytest.mark.parametrize("rows", [
+    [{"code": "VNM", "itemCode": 1.0}],                      # fields gone
+    [_row(1, 1, 1.0) | {"fiscalDate": "not a date"}],        # unparseable
+    [_row(1, 1, 1.0) | {"modelType": None}],                 # nulls
+])
+def test_changed_shape_is_unavailable(rows):
+    # review finding 1: a shape change must read as DATA_UNAVAILABLE, not crash the run
+    with pytest.raises(VendorUnavailableError) as e:
+        FinfoClient(FakeSession(FakeResponse({"data": rows}))).statements("VNM", "QUARTER")
+    assert e.value.__context__ is None
+
+
+def test_dates_with_offsets_use_vietnam_day():
+    rows = [_row(1, 1, 1.0, created="2026-10-29T23:00:00+07:00"),
+            _row(1, 2, 1.0, created="2026-10-29T18:30:00Z")]  # 01:30 on 30/10 in Vietnam
+    df = FinfoClient(FakeSession(FakeResponse({"data": rows}))).statements("VNM", "QUARTER")
+    assert df["created"].tolist() == [date(2026, 10, 29), date(2026, 10, 30)]
+
+
+def test_layout_uses_latest_period():
+    # review: a bank with stray old corporate rows must still get the bank layout
+    rows = [_row(1, 1, 1.0, fiscal="2015-12-31")] + [_row(m, 1, 1.0) for m in (101, 102, 103)]
+    assert FinfoClient(FakeSession(FakeResponse({"data": rows}))).layout("VCB") == "bank"

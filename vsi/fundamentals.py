@@ -131,7 +131,7 @@ def get_fundamentals(ticker: str, as_of_date: str | None = None) -> str:
     year_ago = (pd.Timestamp(latest) - pd.DateOffset(years=1)).date()
     by_key = df.groupby(["model_type", "item_code", "fiscal_date"])["value"].last()
 
-    def value(key, period):
+    def value(key, period):  # df holds only rows created on or before as_of
         return by_key.get((*key, period), float("nan"))
 
     rows, missing = {}, []
@@ -154,7 +154,11 @@ def get_fundamentals(ticker: str, as_of_date: str | None = None) -> str:
             "# QoQ: change vs previous quarter; YoY: vs same quarter a year earlier; % computed by code, "
             "blank when a value is missing or the base is not positive. Quarterly figures are for the quarter alone.",
             f"Latest usable quarter: {latest} (created {created})" + (" (revised after analysis date)" if revised else "")]
-    lines = [f"| Item | {latest} | QoQ % | YoY % | {prev} | {year_ago} |", "|---|---|---|---|---|---|"]
+    def label(period):
+        rows_of = df[df["fiscal_date"] == period]
+        return _period_label(rows_of, period, as_of) if not rows_of.empty else str(period)
+
+    lines = [f"| Item | {latest} | QoQ % | YoY % | {label(prev)} | {label(year_ago)} |", "|---|---|---|---|---|---|"]
     for label, (cur, before, last_year) in rows.items():
         lines.append(f"| {label} | {_cell(cur)} | {_pct(cur, before)} | {_pct(cur, last_year)} | "
                      f"{_cell(before)} | {_cell(last_year)} |")

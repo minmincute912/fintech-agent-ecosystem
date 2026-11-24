@@ -42,13 +42,13 @@ def _published(raw: str | None) -> datetime | None:
     raw = (raw or "").strip()
     try:
         dt = parsedate_to_datetime(raw)
+        if dt.tzinfo is None:  # RFC 2822 "-0000": UTC, local zone unknown
+            dt = dt.replace(tzinfo=timezone.utc)
     except (TypeError, ValueError, IndexError):
-        try:  # Tuổi Trẻ: "11/24/2026 10:02:00 PM", Vietnam time
-            dt = datetime.strptime(raw, "%m/%d/%Y %I:%M:%S %p")
+        try:  # Tuổi Trẻ: "11/24/2026 10:02:00 PM", Vietnam time (its lastBuildDate says GMT+7)
+            dt = datetime.strptime(raw, "%m/%d/%Y %I:%M:%S %p").replace(tzinfo=VN_TZ)
         except ValueError:
             return None
-    if dt.tzinfo is None:  # a feed without an offset: Vietnamese outlets publish in Vietnam time
-        dt = dt.replace(tzinfo=VN_TZ)
     return dt.astimezone(timezone.utc)
 
 
@@ -102,9 +102,10 @@ class NewsStore:
         return [NewsItem(t, d, link, o, datetime.fromisoformat(p)) for t, d, link, o, p in rows]
 
 
-    def earliest(self) -> date | None:
+    def collected_since(self) -> date | None:
+        """Vietnam date of the first collection: before it, only items the feeds still held were caught."""
         with self._db() as db:
-            (first,) = db.execute("SELECT MIN(published) FROM news").fetchone()
+            (first,) = db.execute("SELECT MIN(fetched_at) FROM news").fetchone()
         return datetime.fromisoformat(first).astimezone(VN_TZ).date() if first else None
 
 
@@ -154,6 +155,7 @@ _MAX_COMPANY_ITEMS = 20
 _store: NewsStore | None = None
 _refreshed = False
 _refresh_error: str | None = None
+_names: dict[str, list[str]] = {}  # company names per ticker, once per process
 
 
 def names_for(symbol: str) -> list[str]:
@@ -192,24 +194,29 @@ def _refresh(store: NewsStore) -> None:
         _refresh_error = "every feed failed"
 
 
-def _serve(lines_title: str, items: list[NewsItem], empty: str, store: NewsStore) -> str:
+def _quoted(text: str) -> str:
+    return text.replace("`", "'")  # news text must not close the code fence it is quoted in
+
+
+def _serve(lines_title: str, items: list[NewsItem], empty: str, store: NewsStore, notes=()) -> str:
     head = [UNTRUSTED, "", lines_title,
             "Source: RSS feeds of VnExpress, VnEconomy, Báo Đầu tư, Tuổi Trẻ, CafeF, Vietstock "
             "(free for personal reading; times are Vietnam time)."]
-    earliest = store.earliest()
-    head.append(f"Local news store holds items published from {earliest:%Y-%m-%d}; earlier days are not covered."
-                if earliest else "Local news store is empty.")
+    since = store.collected_since()
+    head.append(f"Local news store collected since {since:%Y-%m-%d}; days before that are incomplete or missing."
+                if since else "Local news store is empty.")
     if _refresh_error:
         head.append(f"Warning: news refresh failed ({_refresh_error}); showing stored items only.")
+    head += notes
     if not items:
         return "\n".join(head + ["", empty])
     body = []
     for i in items:
         when = i.published.astimezone(VN_TZ)
-        body.append(f"- [{i.outlet}] {when:%d/%m/%Y %H:%M} — {i.title}")
+        body.append(f"- [{i.outlet}] {when:%d/%m/%Y %H:%M} — {_quoted(i.title)}")
         if i.description:
-            body.append(f"  {i.description[:400]}")
-        body.append(f"  {i.link}")
+            body.append(f"  {_quoted(i.description[:400])}")
+        body.append(f"  {_quoted(i.link)}")
     return "\n".join(head + ["", "```"] + body + ["```"])
 
 
@@ -223,11 +230,17 @@ def _ready() -> NewsStore:
 def get_news(ticker: str, start_date: str, end_date: str) -> str:
     store = _ready()
     symbol = ticker.strip().upper().removesuffix(".VN")
-    names = names_for(symbol)
+    notes = []
+    if symbol not in _names:
+        try:
+            _names[symbol] = names_for(symbol)
+        except Exception as e:  # a DNSE blip must not cost the agent the stored news
+            notes.append(f"Note: company-name lookup failed ({type(e).__name__}); matched by ticker only.")
+    names = _names.get(symbol, [])
     start, end = date.fromisoformat(start_date[:10]), date.fromisoformat(end_date[:10])
     items = [i for i in store.between(start, end) if matches(i, symbol, names)][:_MAX_COMPANY_ITEMS]
     return _serve(f"# Vietnamese news about {symbol}, {start} to {end}", items,
-                  f"No Vietnamese news matching {symbol} between {start} and {end} was found.", store)
+                  f"No Vietnamese news matching {symbol} between {start} and {end} was found.", store, notes)
 
 
 def get_global_news(as_of_date: str, look_back_days: int | None = None, limit: int | None = None) -> str:

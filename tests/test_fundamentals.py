@@ -222,3 +222,14 @@ def test_values_shown_in_billion_vnd_except_per_share(client):
     assert "billion VND" in out.split("\n\n", 1)[0]
     assert "| 1,001.99 |" in out
     assert "| 1,265 (VND per share) |" in out
+
+
+def test_summary_columns_carry_created_and_revision(monkeypatch):
+    # review finding 2: previous-quarter and year-ago columns need created date and revision label too
+    fake = FixtureClient("corporate")
+    q2 = fake.df["fiscal_date"] == date(2026, 6, 30)
+    fake.df.loc[q2, "modified"] = date(2026, 11, 20)
+    monkeypatch.setattr(fundamentals, "_client", fake)
+    head = next(line for line in fundamentals.get_fundamentals("VNM", "2026-11-10").splitlines() if line.startswith("| Item"))
+    assert "2026-06-30 (created 2026-07-30) (revised after analysis date)" in head
+    assert "2025-09-30 (created 2025-10-30)" in head
