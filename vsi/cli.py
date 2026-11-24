@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import argparse
+import functools
 import json
 import os
 import time
 from pathlib import Path
 
 from cli.stats_handler import StatsCallbackHandler
+from langchain_core.callbacks import BaseCallbackHandler
 from dotenv import load_dotenv
 from tradingagents.dataflows.errors import VendorError
 from tradingagents.graph.trading_graph import TradingAgentsGraph
@@ -21,17 +23,31 @@ from vsi.news import collect, default_store
 DATA_SOURCE = "DNSE OpenAPI"
 
 
+class ToolCounter(BaseCallbackHandler):
+    """Counts tool runs only; a graph-level handler also sees LLM runs, which StatsCallbackHandler already counts."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.count = 0
+
+    def on_tool_start(self, *args, **kwargs) -> None:
+        self.count += 1
+
+
 def analyze(ticker: str, trade_date: str, *, config: dict | None = None, graph_factory=None) -> dict:
     symbol = normalize_ticker(ticker)
     config = config or vn_config()
     stats = StatsCallbackHandler()
     graph = (graph_factory or TradingAgentsGraph)(selected_analysts=VN_ANALYSTS, config=config, callbacks=[stats])
+    tools = ToolCounter()
+    # TradingAgents 0.7.1 propagate() calls get_graph_args() without callbacks, so tool runs went uncounted
+    graph.propagator.get_graph_args = functools.partial(graph.propagator.get_graph_args, callbacks=[tools])
     started = time.monotonic()
     state, rating = graph.propagate(symbol, trade_date)
     report = graph.save_reports(state, symbol)
     result = {
         "ticker": symbol, "date": trade_date, "rating": rating, "report_path": str(report),
-        "llm_calls": stats.llm_calls, "tool_calls": stats.tool_calls,
+        "llm_calls": stats.llm_calls, "tool_calls": max(stats.tool_calls, tools.count),
         "tokens_in": stats.tokens_in, "tokens_out": stats.tokens_out,
         "seconds": round(time.monotonic() - started, 1),
         "model_quick": config["quick_think_llm"], "model_deep": config["deep_think_llm"],

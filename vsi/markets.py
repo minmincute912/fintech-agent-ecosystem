@@ -2,10 +2,9 @@
 
 from __future__ import annotations
 
-import copy
 import re
 
-from tradingagents.default_config import DEFAULT_CONFIG
+from tradingagents.default_config import build_default_config
 
 VN_SUFFIX = ".VN"
 VN_BENCHMARK = "VNINDEX"
@@ -23,7 +22,7 @@ def normalize_ticker(raw: str) -> str:
 
 
 def vn_config() -> dict:
-    cfg = copy.deepcopy(DEFAULT_CONFIG)
+    cfg = build_default_config()  # reads TRADINGAGENTS_* now, after .env is loaded, not at import
     cfg["data_vendors"].update(core_stock_apis="dnse", technical_indicators="dnse",
                                fundamental_data="vsi", news_data="vsi", macro_data="vsi", prediction_markets="vsi")
     # first, so resolve_benchmark matches .VN before the "" (SPY) fallback

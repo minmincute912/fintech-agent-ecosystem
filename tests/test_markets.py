@@ -44,3 +44,9 @@ def test_vn_config_leaves_default_untouched():
 
 def test_benchmark_is_known_index():
     assert VN_BENCHMARK in bridge.INDEX_CODES
+
+
+def test_vn_config_reads_env_at_call_time(monkeypatch):
+    # .env is loaded after tradingagents is imported, so DEFAULT_CONFIG alone would miss it
+    monkeypatch.setenv("TRADINGAGENTS_QUICK_THINK_LLM", "model-from-env")
+    assert vn_config()["quick_think_llm"] == "model-from-env"

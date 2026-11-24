@@ -7,14 +7,23 @@ from vsi import cli
 from vsi.markets import VN_ANALYSTS, vn_config
 
 
+class FakePropagator:
+    def get_graph_args(self, callbacks=None):  # TradingAgents 0.7.1 propagate() passes no callbacks
+        return {"config": {"callbacks": callbacks or []}}
+
+
 class FakeGraph:
     built = []
 
     def __init__(self, selected_analysts, config, callbacks):
         FakeGraph.built.append((tuple(selected_analysts), config, callbacks))
         self.config = config
+        self.propagator = FakePropagator()
 
     def propagate(self, ticker, date):
+        for handler in self.propagator.get_graph_args()["config"]["callbacks"]:
+            handler.on_tool_start({}, "")
+            handler.on_tool_start({}, "")
         return {"final_trade_decision": "x"}, "Hold"
 
     def save_reports(self, state, ticker):
@@ -46,6 +55,7 @@ def test_analyze_runs_graph_and_logs(tmp_path):
     assert FakeGraph.built[-1][0] == VN_ANALYSTS
     line = json.loads((tmp_path / "vsi_runs.jsonl").read_text().splitlines()[-1])
     assert line["ticker"] == out["ticker"] and "tokens_in" in line
+    assert out["tool_calls"] == 2
 
 
 def test_main_rejects_bad_ticker(env, monkeypatch):
