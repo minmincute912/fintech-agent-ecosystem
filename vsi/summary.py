@@ -14,6 +14,8 @@ from datetime import date
 BANDS = {"HOSE": 0.07, "HNX": 0.10, "UPCOM": 0.15}
 _FIELD = re.compile(r"^\*\*([^*]+)\*\*:\s?(.*)$")
 _LABELS = {"entry": "Vào lệnh", "stop": "Cắt lỗ", "target": "Mục tiêu"}
+# UPCoM reference price is the prior session's VWAP (quant-methodology.md), not the close
+_ESTIMATED_REFERENCE = " (tham chiếu ước tính bằng giá đóng cửa; giá tham chiếu thật là bình quân gia quyền phiên trước)"
 
 
 @dataclass
@@ -65,7 +67,8 @@ def check_levels(levels: dict[str, float | None], close: float, low60: float, hi
         if lo <= value <= hi:
             kept[key] = value
         else:
-            notes.append(f"Bỏ {_LABELS[key].lower()} {vn_num(value)}: ngoài {where} {vn_num(lo)} – {vn_num(hi)}")
+            # the failing value itself is never shown as a number (spec anti-goal)
+            notes.append(f"Bỏ mức {_LABELS[key].lower()} agent đưa ra: nằm ngoài {where} {vn_num(lo)} – {vn_num(hi)}")
     return kept, notes
 
 
@@ -87,8 +90,9 @@ def build_summary(ticker: str, analysis_date: str, facts: MarketFacts, quarter: 
     lines = [
         f"{ticker} ({facts.exchange}) · phân tích ngày {_d(date.fromisoformat(analysis_date))}",
         f"Dữ liệu: giá DNSE đến {_d(facts.last_bar)} · {statements} · {news}",
-        f"Đóng cửa gần nhất {vn_num(facts.close)} (nghìn đồng); biên độ {facts.exchange} ±{round(band * 100)}%: "
-        f"{vn_num(facts.close * (1 - band))} – {vn_num(facts.close * (1 + band))}",
+        f"Đóng cửa gần nhất {vn_num(facts.close)} (nghìn đồng); biên độ {facts.exchange} ±{round(band * 100)}%"
+        + ("" if facts.exchange.upper() in ("HOSE", "HNX") else _ESTIMATED_REFERENCE)
+        + f": {vn_num(facts.close * (1 - band))} – {vn_num(facts.close * (1 + band))}",
         f"Xếp hạng: {decision.get('Rating') or 'không nêu'} — chưa được kiểm chứng, chỉ để nghiên cứu",
         "",
         "Mức giá agent điền vào ô riêng (đã kiểm tra biên độ và vùng giá 60 phiên):",

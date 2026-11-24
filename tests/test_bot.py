@@ -287,3 +287,71 @@ def test_deliver_marks_job_sent_only_after_success(make, tmp_path):
 
 def test_poll_backoff_caps_at_60():
     assert (backoff(0), backoff(1), backoff(3), backoff(10)) == (0, 1, 4, 60)
+
+
+# --- final review fixes ---
+
+from vsi.bot import work_and_deliver  # noqa: E402
+
+
+def test_summary_failure_keeps_report(make, tmp_path):
+    b, jobs = make(analyze=lambda t, d: _result(tmp_path))
+
+    def facts(t, d):
+        raise VendorUnavailableError("DNSE blip")
+    b.facts = facts
+    b.handle(msg("/analyze VNM"))
+    replies = b.work_once()
+    assert "Không tạo được tóm tắt" in replies[0].text and "VendorUnavailableError" in replies[0].text
+    assert replies[1].document.name == "complete_report.html"
+    assert jobs.get(replies[1].job_id).status == "done_unsent"
+
+
+def test_worker_survives_unexpected_errors(make):
+    b, _ = make()
+
+    def broken():
+        raise OSError("database is locked")
+    b.work_once = broken
+    assert work_and_deliver(b, FakeTelegram()) == 30  # waits and goes on, never raises
+
+
+def test_permanently_rejected_report_does_not_block_queue(make, tmp_path):
+    calls = []
+    b, jobs = make(analyze=lambda t, d: calls.append(t) or _result(tmp_path))
+    b.handle(msg("/analyze VNM"))
+    b.handle(msg("/analyze FPT"))
+
+    class Rejecting(FakeTelegram):
+        def send_message(self, chat_id, text):
+            raise TelegramError("sendMessage", 403, "Forbidden: bot was blocked by the user")
+    work_and_deliver(b, Rejecting())
+    vnm = [j for j in jobs._jobs("ticker = 'VNM'")][0]
+    assert vnm.status == "done" and "403" in vnm.error
+    work_and_deliver(b, FakeTelegram())
+    assert calls == ["VNM", "FPT"]
+
+
+def test_transient_send_error_keeps_unsent(make, tmp_path):
+    b, jobs = make(analyze=lambda t, d: _result(tmp_path))
+    b.handle(msg("/analyze VNM"))
+    assert work_and_deliver(b, FakeTelegram(fail_send=True)) == 30
+    assert len(jobs.unsent()) == 1
+
+
+def test_each_job_starts_with_fresh_data(make, tmp_path):
+    refreshed = []
+    b, _ = make(analyze=lambda t, d: _result(tmp_path))
+    b.refresh = lambda: refreshed.append(1)
+    b.handle(msg("/analyze VNM"))
+    b.work_once()
+    assert refreshed == [1]
+
+
+def test_explicit_today_before_close_refused(make):
+    b, jobs = make(now=at(25, 10))
+    assert "15:05" in b.handle(msg("/analyze VNM 2026-11-25"))[0].text
+    assert jobs.active() == []
+    b2, jobs2 = make(now=at(25, 15, 30))
+    b2.handle(msg("/analyze VNM 2026-11-25"))
+    assert len(jobs2.active()) == 1

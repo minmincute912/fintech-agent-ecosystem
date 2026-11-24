@@ -48,7 +48,7 @@ def test_check_levels_boundaries():
     kept, notes = check_levels({"entry": 55.95, "stop": None, "target": None}, 52.3, 50.0, 56.0, band)
     assert kept == {"entry": 55.95} and notes == []
     kept, notes = check_levels({"entry": 55.97, "stop": 0, "target": None}, 52.3, 50.0, 56.0, band)
-    assert kept == {} and len(notes) == 1 and "55,97" in notes[0]
+    assert kept == {} and len(notes) == 1 and "55,97" not in notes[0] and "vào lệnh" in notes[0]
     low_edge = 50.0 * 0.93
     kept, _ = check_levels({"entry": None, "stop": low_edge, "target": None}, 52.3, 50.0, 56.0, band)
     assert kept == {"stop": low_edge}
@@ -59,7 +59,7 @@ def test_check_levels_boundaries():
 
 def test_levels_in_vnd_are_dropped():
     kept, notes = check_levels({"entry": 52000.0, "stop": None, "target": None}, 52.3, 50.0, 56.0, 0.07)
-    assert kept == {} and "52.000,00" in notes[0]
+    assert kept == {} and "52.000" not in notes[0]  # a failing level is never shown as a number
 
 
 def _summary(**kw):
@@ -95,3 +95,10 @@ def test_summary_missing_fields():
     out = _summary(decision_md="**Rating**: Hold", trader_md="", quarter=None, news_since=None)
     assert "BCTC: không có" in out and "tin tức: chưa thu" in out
     assert "Thời gian nắm giữ: không nêu" in out and "Xếp hạng: Hold" in out
+
+
+def test_upcom_band_is_labelled_estimate():
+    facts = MarketFacts(exchange="UPCOM", last_bar=date(2026, 11, 23), close=37.0, low60=33.0, high60=40.0)
+    out = _summary(facts=facts)
+    assert "biên độ UPCOM ±15% (tham chiếu ước tính bằng giá đóng cửa" in out
+    assert "biên độ HNX ±10%: 12,06 – 14,74" in _summary()  # HOSE/HNX reference = prior close

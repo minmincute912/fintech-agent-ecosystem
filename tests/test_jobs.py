@@ -99,3 +99,19 @@ def test_run_lock_is_exclusive(tmp_path):
 def test_vsi_home(monkeypatch, tmp_path):
     monkeypatch.setenv("VSI_HOME", str(tmp_path))
     assert news.vsi_home() == tmp_path
+
+
+def test_claim_only_once(store):
+    job, _ = store.enqueue(1, "VNM", "2026-11-23", 10, at(25))
+    assert store.claim(job.id, at(25)) is True
+    assert store.claim(job.id, at(25)) is False  # a second worker must not start it again
+    assert store.get(job.id).status == "running"
+
+
+def test_instance_lock_refuses_second(tmp_path):
+    from vsi.jobs import instance_lock
+    first = instance_lock(tmp_path / "bot.lock")
+    assert first is not None
+    assert instance_lock(tmp_path / "bot.lock") is None
+    first.close()
+    assert instance_lock(tmp_path / "bot.lock") is not None

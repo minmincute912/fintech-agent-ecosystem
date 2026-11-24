@@ -14,7 +14,7 @@ from pathlib import Path
 
 from tradingagents.dataflows.errors import NoMarketDataError, VendorError
 
-from vsi.jobs import JobStore, Refused, run_lock
+from vsi.jobs import JobStore, Refused, instance_lock, run_lock
 from vsi.markets import normalize_ticker
 from vsi.news import VN_TZ
 from vsi.summary import MarketFacts, build_summary
@@ -81,6 +81,7 @@ class Bot:
         self.facts = facts or _market_facts
         self.quarter = quarter or fundamentals.latest_quarter
         self.secrets = secrets if secrets is not None else [os.environ.get(k, "") for k in _SECRET_KEYS]
+        self.refresh = _clear_caches
 
     # --- commands ------------------------------------------------------------------------
 
@@ -119,8 +120,11 @@ class Bot:
                     day = date.fromisoformat(args[1])
                 except ValueError:
                     return "Ngày không hợp lệ; dùng dạng YYYY-MM-DD, ví dụ 2026-11-20."
-                if day > now.astimezone(VN_TZ).date():
+                local = now.astimezone(VN_TZ)
+                if day > local.date():
                     return "Ngày phân tích không được ở tương lai."
+                if day == local.date() and local.time() < _CLOSE:
+                    return "Phiên hôm nay chưa đóng cửa; chỉ phân tích ngày hôm nay sau 15:05."
             else:
                 day = latest_session(self.client, base, now)
         except NoMarketDataError:
@@ -184,21 +188,38 @@ class Bot:
         if job is None:
             return []
         with run_lock(self.lock_path):
-            self.jobs.start(job.id, self.now())
+            if not self.jobs.claim(job.id, self.now()):  # another worker took it while we waited
+                return []
+            self.refresh()  # a long-running bot must not reuse yesterday's prices or statements
             try:
                 result = self.analyze(job.ticker, job.date)
-                state = result["final_state"]
-                summary = build_summary(job.ticker, job.date, self.facts(job.ticker, job.date),
-                                        self.quarter(job.ticker, job.date), self.news_since(),
-                                        state.get("final_trade_decision", ""), state.get("trader_investment_plan", ""))
             except Exception as e:  # any failure is reported to the owner, minus secrets
-                error = redact(f"{type(e).__name__}: {e}", self.secrets)[:500]
+                error = self._redacted(e)
                 self.jobs.finish(job.id, "failed", self.now(), error=error)
                 log.warning("job %s failed: %s", job.id, error)
                 return [Reply(job.chat_id, f"Phân tích {job.ticker} ngày {_d(job.date)} lỗi: {error}")]
+        try:  # the paid run succeeded: a summary problem must not lose its report
+            state = result["final_state"]
+            summary = build_summary(job.ticker, job.date, self.facts(job.ticker, job.date),
+                                    self.quarter(job.ticker, job.date), self.news_since(),
+                                    state.get("final_trade_decision", ""), state.get("trader_investment_plan", ""))
+        except Exception as e:
+            summary = (f"{job.ticker} · phân tích ngày {_d(job.date)} · xếp hạng {result.get('rating') or '?'} "
+                       f"(chưa được kiểm chứng)\nKhông tạo được tóm tắt: {self._redacted(e)}\n"
+                       "Báo cáo đầy đủ: file đính kèm")
         self.jobs.finish(job.id, "done_unsent", self.now(), report_path=result["report_path"],
                          rating=result.get("rating"), summary=summary)
         return self._result_replies(self.jobs.get(job.id))
+
+    def _redacted(self, e: Exception) -> str:
+        return redact(f"{type(e).__name__}: {e}", self.secrets)[:500]
+
+
+def _clear_caches() -> None:
+    from vsi import bridge, fundamentals
+    bridge.load_ohlcv.cache_clear()
+    if fundamentals._client is not None and hasattr(fundamentals._client, "_cache"):
+        fundamentals._client._cache.clear()
 
 
 def _default_analyze(ticker: str, analysis_date: str) -> dict:
@@ -249,6 +270,32 @@ def deliver(telegram, bot: Bot, replies: list[Reply]) -> None:
             bot.mark_sent(r.job_id)
 
 
+_PERMANENT = {400, 403, 404, 413}  # Telegram will never accept this send; retrying blocks the queue
+
+
+def work_and_deliver(bot: Bot, telegram) -> float:
+    """One worker step; returns seconds to wait before the next. Never raises."""
+    from vsi.telegram import TelegramError
+    replies = []
+    try:
+        replies = bot.work_once()
+        if not replies:
+            return 5
+        deliver(telegram, bot, replies)
+        return 0
+    except TelegramError as e:
+        job_id = next((r.job_id for r in replies if r.job_id), None)
+        if job_id and e.status in _PERMANENT:
+            bot.jobs.finish(job_id, "done", bot.now(), error=f"not delivered: {e}")
+            log.warning("job %s report rejected by Telegram, giving up: %s", job_id, e)
+            return 0
+        log.warning("sending a result failed, will retry: %s", e)
+        return 30
+    except Exception:
+        log.exception("worker step failed; retrying")
+        return 30
+
+
 def poll_once(bot: Bot, telegram, jobs: JobStore) -> None:
     stored = jobs.get_state("offset")
     updates = telegram.get_updates(int(stored) if stored else None)
@@ -279,6 +326,10 @@ def run() -> int:
     for noisy in ("urllib3", "requests"):  # keep request lines (and any URL) out of the log by construction
         logging.getLogger(noisy).setLevel(logging.WARNING)
 
+    held = instance_lock(news.vsi_home() / "bot.lock")
+    if held is None:
+        print("error: another vsi bot is already running with this VSI_HOME")
+        return 2
     client = DnseClient.from_env()
     install(client)
     jobs = JobStore(news.vsi_home() / "bot.sqlite")
@@ -298,15 +349,7 @@ def run() -> int:
 
     def worker():
         while not stop.is_set():
-            replies = bot.work_once()
-            if not replies:
-                stop.wait(5)
-                continue
-            try:
-                deliver(telegram, bot, replies)
-            except TelegramError as e:
-                log.warning("sending a result failed, will retry: %s", e)
-                stop.wait(30)
+            stop.wait(work_and_deliver(bot, telegram))
 
     def collector():
         while not stop.is_set():
@@ -327,7 +370,8 @@ def run() -> int:
             failures = 0
         except TelegramError as e:
             failures += 1
-            log.warning("polling failed (%d in a row): %s", failures, e)
+            hint = " (another bot instance is polling with this token)" if e.status == 409 else ""
+            log.warning("polling failed (%d in a row): %s%s", failures, e, hint)
             stop.wait(backoff(failures))
         except Exception:
             failures += 1

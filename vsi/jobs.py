@@ -96,6 +96,13 @@ class JobStore:
             job_id = cur.lastrowid
         return self.get(job_id), len(active) + 1
 
+    def claim(self, job_id: int, now: datetime) -> bool:
+        """queued -> running atomically; False if another worker already took it."""
+        with self._db() as db:
+            cur = db.execute("UPDATE jobs SET status = 'running', started_at = ? WHERE id = ? AND status = 'queued'",
+                             (_utc(now), job_id))
+            return cur.rowcount == 1
+
     def start(self, job_id: int, now: datetime) -> None:
         with self._db() as db:
             db.execute("UPDATE jobs SET status = 'running', started_at = ? WHERE id = ?", (_utc(now), job_id))
@@ -137,3 +144,16 @@ def run_lock(path: Path):
             yield
         finally:
             fcntl.flock(f, fcntl.LOCK_UN)
+
+
+def instance_lock(path: Path):
+    """Non-blocking lock held for the bot's lifetime; None if another bot already holds it."""
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    f = open(path, "a")
+    try:
+        fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        f.close()
+        return None
+    return f
