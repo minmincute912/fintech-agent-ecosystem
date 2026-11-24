@@ -185,3 +185,15 @@ def test_get_global_news_excludes_after_as_of(served):
 
 def _boom(*a, **k):
     raise OSError("no network")
+
+
+def test_parse_feed_tolerates_leading_whitespace():
+    # Báo Đầu tư serves blank lines before the XML declaration (seen 2026-11-25)
+    assert len(parse_feed(b"\n\n   " + FIXTURE, "Báo Đầu tư")) == 2
+
+
+def test_parse_feed_reads_us_style_vietnam_time():
+    # Tuổi Trẻ pubDate "11/24/2026 10:02:00 PM" is Vietnam time (lastBuildDate says GMT+7), seen 2026-11-25
+    xml = ("<rss><channel><item><title>t</title><link>https://tuoitre.vn/a</link>"
+           "<pubDate>11/24/2026 10:02:00 PM</pubDate></item></channel></rss>").encode()
+    assert parse_feed(xml, "Tuổi Trẻ")[0].published == datetime(2026, 11, 24, 15, 2, tzinfo=timezone.utc)

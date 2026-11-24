@@ -39,10 +39,14 @@ def _clean(text: str | None) -> str:
 
 
 def _published(raw: str | None) -> datetime | None:
+    raw = (raw or "").strip()
     try:
-        dt = parsedate_to_datetime(raw.strip())
-    except (AttributeError, TypeError, ValueError, IndexError):
-        return None
+        dt = parsedate_to_datetime(raw)
+    except (TypeError, ValueError, IndexError):
+        try:  # Tuổi Trẻ: "11/24/2026 10:02:00 PM", Vietnam time
+            dt = datetime.strptime(raw, "%m/%d/%Y %I:%M:%S %p")
+        except ValueError:
+            return None
     if dt.tzinfo is None:  # a feed without an offset: Vietnamese outlets publish in Vietnam time
         dt = dt.replace(tzinfo=VN_TZ)
     return dt.astimezone(timezone.utc)
@@ -51,7 +55,7 @@ def _published(raw: str | None) -> datetime | None:
 def parse_feed(xml: bytes, outlet: str) -> list[NewsItem]:
     """Items with a title, link and readable pubDate; anything else is skipped, never raised."""
     try:
-        root = ElementTree.fromstring(xml)
+        root = ElementTree.fromstring(xml.lstrip())  # some feeds send blank lines before <?xml
     except ElementTree.ParseError:
         return []
     items = []
