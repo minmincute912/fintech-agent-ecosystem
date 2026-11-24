@@ -18,6 +18,8 @@ from pathlib import Path
 from xml.etree import ElementTree
 from zoneinfo import ZoneInfo
 
+import requests
+
 VN_TZ = ZoneInfo("Asia/Ho_Chi_Minh")
 
 
@@ -98,3 +100,35 @@ class NewsStore:
 def default_store() -> NewsStore:
     home = Path(os.environ.get("VSI_HOME") or Path.home() / ".tradingagents" / "vsi")
     return NewsStore(home / "news.sqlite")
+
+
+FEEDS = (
+    ("VnExpress", "https://vnexpress.net/rss/kinh-doanh.rss"),
+    ("VnEconomy", "https://vneconomy.vn/chung-khoan.rss"),
+    ("VnEconomy", "https://vneconomy.vn/nhip-cau-doanh-nghiep.rss"),
+    ("Báo Đầu tư", "https://baodautu.vn/kinh-doanh.rss"),
+    ("Báo Đầu tư", "https://baodautu.vn/thong-tin-doanh-nghiep.rss"),
+    ("Tuổi Trẻ", "https://tuoitre.vn/kinh-doanh.rss"),
+    ("CafeF", "https://cafef.vn/thi-truong-chung-khoan.rss"),
+    ("CafeF", "https://cafef.vn/doanh-nghiep.rss"),
+    ("Vietstock", "https://vietstock.vn/830/chung-khoan/co-phieu.rss"),
+)
+_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; vsi-news/0.1; personal research)"}
+
+
+def collect(store: NewsStore, session=None) -> dict[str, int | str]:
+    """Fetch every feed once; '<outlet> <url>' -> new rows, or why that feed failed. One bad feed never stops the rest."""
+    session = session or requests.Session()
+    result: dict[str, int | str] = {}
+    for outlet, url in FEEDS:
+        key = f"{outlet} {url}"
+        try:
+            r = session.get(url, headers=_HEADERS, timeout=20)
+        except requests.RequestException as e:
+            result[key] = type(e).__name__
+            continue
+        if not 200 <= r.status_code < 300:
+            result[key] = f"HTTP {r.status_code}"
+            continue
+        result[key] = store.add(parse_feed(r.content, outlet))
+    return result

@@ -82,3 +82,13 @@ def test_main_reports_dnse_outage(env, monkeypatch, capsys):
     monkeypatch.setattr(cli.DnseClient, "instrument", _raise(VendorUnavailableError("DNSE down")))
     assert cli.main(["analyze", "VNM", "--date", "2026-10-30"]) == 1
     assert "DNSE down" in capsys.readouterr().out
+
+
+def test_collect_news_cli_exit_codes(monkeypatch, tmp_path, capsys):
+    monkeypatch.setenv("VSI_HOME", str(tmp_path))
+    monkeypatch.setattr(cli, "collect", lambda store: {"A u": "ConnectionError", "B v": "HTTP 500"})
+    assert cli.main(["collect-news"]) == 1
+    monkeypatch.setattr(cli, "collect", lambda store: {"A u": "ConnectionError", "B v": 3})
+    assert cli.main(["collect-news"]) == 0
+    out = capsys.readouterr().out
+    assert "B v: 3 new" in out and "A u: failed (ConnectionError)" in out

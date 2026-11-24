@@ -55,3 +55,38 @@ def test_between_newest_first_and_roundtrip(tmp_path):
 def test_default_store_uses_vsi_home(tmp_path, monkeypatch):
     monkeypatch.setenv("VSI_HOME", str(tmp_path / "home"))
     assert news.default_store().path == tmp_path / "home" / "news.sqlite"
+
+
+class FakeResponse:
+    def __init__(self, content, status_code=200):
+        self.content, self.status_code = content, status_code
+
+
+class FakeSession:
+    def __init__(self, answers):
+        self.answers, self.urls = answers, []
+
+    def get(self, url, **kwargs):
+        self.urls.append(url)
+        answer = self.answers.get(url, FakeResponse(b"", 404))
+        if isinstance(answer, Exception):
+            raise answer
+        return answer
+
+
+def test_feeds_are_the_nine_planned():
+    assert len(news.FEEDS) == 9
+    assert {outlet for outlet, _ in news.FEEDS} == {"VnExpress", "VnEconomy", "Báo Đầu tư", "Tuổi Trẻ", "CafeF", "Vietstock"}
+    assert all(url.startswith("https://") for _, url in news.FEEDS)
+
+
+def test_collect_continues_when_a_feed_fails(tmp_path, monkeypatch):
+    import requests
+    feeds = (("A", "https://a.vn/rss"), ("B", "https://b.vn/rss"), ("C", "https://c.vn/rss"))
+    monkeypatch.setattr(news, "FEEDS", feeds)
+    session = FakeSession({"https://a.vn/rss": requests.ConnectionError("down"),
+                           "https://b.vn/rss": FakeResponse(FIXTURE)})
+    store = NewsStore(tmp_path / "news.sqlite")
+    result = news.collect(store, session=session)
+    assert result == {"A https://a.vn/rss": "ConnectionError", "B https://b.vn/rss": 2, "C https://c.vn/rss": "HTTP 404"}
+    assert len(store.between(date(2026, 1, 1), date(2026, 12, 31))) == 2
