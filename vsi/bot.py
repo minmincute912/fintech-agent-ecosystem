@@ -211,3 +211,127 @@ def _default_history() -> list[dict]:
 
     from vsi.markets import vn_config
     return TradingMemoryLog(vn_config()).load_entries()
+
+
+# --- runtime -------------------------------------------------------------------------------
+
+def startup_problems(env, env_file: Path) -> list[str]:
+    """Reasons to refuse to start; never echoes a secret value."""
+    problems = []
+    if not env.get("TELEGRAM_BOT_TOKEN"):
+        problems.append("TELEGRAM_BOT_TOKEN is not set in .env (create the bot with @BotFather)")
+    ids = [p.strip() for p in (env.get("TELEGRAM_ALLOWED_CHAT_IDS") or "").split(",") if p.strip()]
+    if not ids:
+        problems.append("TELEGRAM_ALLOWED_CHAT_IDS is empty; the bot answers only listed chats")
+    elif not all(p.lstrip("-").isdigit() for p in ids):
+        problems.append("TELEGRAM_ALLOWED_CHAT_IDS must be comma-separated integers")
+    if not env.get("OPENAI_API_KEY"):
+        problems.append("OPENAI_API_KEY is not set in .env")
+    if not env.get("DNSE_API_KEY") or not env.get("DNSE_API_SECRET"):
+        problems.append("DNSE_API_KEY and DNSE_API_SECRET must be set in .env")
+    if env_file.exists() and env_file.stat().st_mode & 0o077:
+        problems.append(".env is readable by group or others; run: chmod 600 .env")
+    return problems
+
+
+def backoff(failures: int) -> float:
+    return 0 if failures <= 0 else min(60, 2 ** (failures - 1))
+
+
+def deliver(telegram, bot: Bot, replies: list[Reply]) -> None:
+    """Send replies in order; a job is marked done only after its last reply went out."""
+    for r in replies:
+        if r.document:
+            telegram.send_document(r.chat_id, r.document)
+        elif r.text:
+            telegram.send_message(r.chat_id, r.text)
+        if r.job_id:
+            bot.mark_sent(r.job_id)
+
+
+def poll_once(bot: Bot, telegram, jobs: JobStore) -> None:
+    stored = jobs.get_state("offset")
+    updates = telegram.get_updates(int(stored) if stored else None)
+    if not updates:
+        return
+    # saved first: a crash while handling loses that command (re-send it) but never runs it twice
+    jobs.set_state("offset", str(max(u["update_id"] for u in updates) + 1))
+    for update in updates:
+        deliver(telegram, bot, bot.handle(update))
+
+
+def run() -> int:
+    """`vsi bot`: start-up checks, then poll loop (main thread), worker and hourly news threads."""
+    import signal
+    import threading
+
+    from vsi import news
+    from vsi.bridge import install
+    from vsi.dnse import DnseClient
+    from vsi.telegram import Telegram, TelegramError
+
+    problems = startup_problems(os.environ, Path(".env"))
+    if problems:
+        for p in problems:
+            print(f"error: {p}")
+        return 2
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+    for noisy in ("urllib3", "requests"):  # keep request lines (and any URL) out of the log by construction
+        logging.getLogger(noisy).setLevel(logging.WARNING)
+
+    client = DnseClient.from_env()
+    install(client)
+    jobs = JobStore(news.vsi_home() / "bot.sqlite")
+    allowed = {int(p) for p in os.environ["TELEGRAM_ALLOWED_CHAT_IDS"].split(",") if p.strip()}
+    bot = Bot(allowed, jobs, client, int(os.environ.get("VSI_DAILY_RUN_CAP") or 10))
+    telegram = Telegram(os.environ["TELEGRAM_BOT_TOKEN"])
+    stop = threading.Event()
+    signal.signal(signal.SIGTERM, lambda *_: stop.set())
+    signal.signal(signal.SIGINT, lambda *_: stop.set())
+
+    for job in jobs.recover(bot.now()):
+        try:
+            telegram.send_message(job.chat_id, f"Phân tích {job.ticker} ngày {_d(job.date)} bị dừng vì bot khởi động "
+                                               "lại; gửi lại /analyze nếu vẫn cần.")
+        except TelegramError as e:
+            log.warning("could not notify about job %s: %s", job.id, e)
+
+    def worker():
+        while not stop.is_set():
+            replies = bot.work_once()
+            if not replies:
+                stop.wait(5)
+                continue
+            try:
+                deliver(telegram, bot, replies)
+            except TelegramError as e:
+                log.warning("sending a result failed, will retry: %s", e)
+                stop.wait(30)
+
+    def collector():
+        while not stop.is_set():
+            try:
+                result = news.collect(news.default_store())
+                log.info("news collected: %d new", sum(n for n in result.values() if isinstance(n, int)))
+            except Exception as e:  # a collection failure must not stop the bot
+                log.warning("news collection failed: %s", type(e).__name__)
+            stop.wait(3600)
+
+    for target in (worker, collector):
+        threading.Thread(target=target, daemon=True).start()
+    log.info("bot started; allowed chats: %d; daily cap: %d", len(allowed), bot.cap)
+    failures = 0
+    while not stop.is_set():
+        try:
+            poll_once(bot, telegram, jobs)
+            failures = 0
+        except TelegramError as e:
+            failures += 1
+            log.warning("polling failed (%d in a row): %s", failures, e)
+            stop.wait(backoff(failures))
+        except Exception:
+            failures += 1
+            log.exception("unexpected error while handling updates")
+            stop.wait(backoff(failures))
+    log.info("bot stopped")
+    return 0

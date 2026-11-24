@@ -132,3 +132,12 @@ def test_main_analyze_takes_run_lock(env, monkeypatch, tmp_path):
                          "tokens_in": 1, "tokens_out": 1, "seconds": 1})
     assert cli.main(["analyze", "VNM", "--date", "2026-10-30"]) == 0
     assert events == [("lock", tmp_path / "run.lock"), "enter", "analyze", "exit"]
+
+
+def test_cli_bot_exits_2_on_startup_problems(monkeypatch, capsys, tmp_path):
+    monkeypatch.setattr(cli, "load_dotenv", lambda *a, **k: None)
+    monkeypatch.chdir(tmp_path)
+    for key in ("TELEGRAM_BOT_TOKEN", "TELEGRAM_ALLOWED_CHAT_IDS"):
+        monkeypatch.delenv(key, raising=False)
+    assert cli.main(["bot"]) == 2
+    assert "TELEGRAM_BOT_TOKEN" in capsys.readouterr().out

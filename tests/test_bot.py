@@ -194,3 +194,96 @@ def test_unsent_report_is_sent_later(make, tmp_path):
 def test_reply_type():
     assert Reply(1, "x").document is None and Reply(1, "x").job_id is None
     assert botmod.HELP.startswith("Lệnh")
+
+
+# --- runtime (Task 6) ---
+
+import os  # noqa: E402
+
+from vsi.bot import backoff, deliver, poll_once, startup_problems  # noqa: E402
+from vsi.telegram import TelegramError  # noqa: E402
+
+GOOD_ENV = {"TELEGRAM_BOT_TOKEN": "123:SECRET-token", "TELEGRAM_ALLOWED_CHAT_IDS": "111, 222",
+            "OPENAI_API_KEY": "k", "DNSE_API_KEY": "i", "DNSE_API_SECRET": "s"}
+
+
+def _env_file(tmp_path, mode):
+    f = tmp_path / ".env"
+    f.write_text("x=1\n")
+    os.chmod(f, mode)
+    return f
+
+
+def test_startup_refuses(tmp_path):
+    ok = _env_file(tmp_path, 0o600)
+    assert startup_problems(GOOD_ENV, ok) == []
+    cases = [({"TELEGRAM_BOT_TOKEN": ""}, "TELEGRAM_BOT_TOKEN"),
+             ({"TELEGRAM_ALLOWED_CHAT_IDS": ""}, "TELEGRAM_ALLOWED_CHAT_IDS"),
+             ({"TELEGRAM_ALLOWED_CHAT_IDS": "12,abc"}, "TELEGRAM_ALLOWED_CHAT_IDS"),
+             ({"OPENAI_API_KEY": ""}, "OPENAI_API_KEY"),
+             ({"DNSE_API_SECRET": ""}, "DNSE")]
+    for change, name in cases:
+        problems = startup_problems(GOOD_ENV | change, ok)
+        assert len(problems) == 1 and name in problems[0]
+    loose = startup_problems(GOOD_ENV, _env_file(tmp_path, 0o644))
+    assert len(loose) == 1 and "chmod 600" in loose[0]
+    assert all("SECRET" not in p for p in loose + startup_problems(GOOD_ENV | {"TELEGRAM_ALLOWED_CHAT_IDS": "x"}, ok))
+
+
+class FakeTelegram:
+    def __init__(self, updates=(), fail_send=False):
+        self.updates, self.offsets, self.sent, self.fail_send = list(updates), [], [], fail_send
+
+    def get_updates(self, offset, timeout=50):
+        self.offsets.append(offset)
+        return [u for u in self.updates if offset is None or u["update_id"] >= offset]
+
+    def send_message(self, chat_id, text):
+        if self.fail_send:
+            raise TelegramError("sendMessage", None, "ConnectionError")
+        self.sent.append((chat_id, text))
+
+    def send_document(self, chat_id, path, caption=""):
+        if self.fail_send:
+            raise TelegramError("sendDocument", None, "ConnectionError")
+        self.sent.append((chat_id, path))
+
+
+def test_update_handled_once_across_restart(make, tmp_path):
+    b, jobs = make()
+    handled = []
+
+    def handle(update):
+        handled.append(update["update_id"])
+        raise RuntimeError("crash while handling")
+
+    b.handle = handle
+    tg = FakeTelegram([msg("/help") | {"update_id": 41}])
+    with pytest.raises(RuntimeError):
+        poll_once(b, tg, jobs)
+    assert JobStore(tmp_path / "bot.sqlite").get_state("offset") == "42"  # saved before handling
+    b2, jobs2 = make()
+    poll_once(b2, tg, jobs2)
+    assert tg.offsets == [None, 42] and handled == [41]
+
+
+def test_poll_once_sends_replies(make):
+    b, jobs = make()
+    tg = FakeTelegram([msg("/help") | {"update_id": 7}])
+    poll_once(b, tg, jobs)
+    assert tg.sent == [(OWNER, HELP)]
+
+
+def test_deliver_marks_job_sent_only_after_success(make, tmp_path):
+    b, jobs = make(analyze=lambda t, d: _result(tmp_path))
+    b.handle(msg("/analyze VNM"))
+    replies = b.work_once()
+    with pytest.raises(TelegramError):
+        deliver(FakeTelegram(fail_send=True), b, replies)
+    assert jobs.unsent()
+    deliver(FakeTelegram(), b, replies)
+    assert jobs.unsent() == [] and jobs.get(replies[-1].job_id).status == "done"
+
+
+def test_poll_backoff_caps_at_60():
+    assert (backoff(0), backoff(1), backoff(3), backoff(10)) == (0, 1, 4, 60)

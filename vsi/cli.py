@@ -76,11 +76,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("ticker")
     p.add_argument("--date", required=True, help="analysis date, YYYY-MM-DD")
     sub.add_parser("collect-news", help="fetch Vietnamese RSS news into the local store")
+    sub.add_parser("bot", help="run the Telegram bot (owner chats only)")
     args = parser.parse_args(argv)
     if args.command == "collect-news":
         return collect_news()
 
     load_dotenv()
+    if args.command == "bot":
+        from vsi import bot
+        return bot.run()
     if not os.environ.get("OPENAI_API_KEY"):
         print("OPENAI_API_KEY is not set; add it to .env")
         return 2
