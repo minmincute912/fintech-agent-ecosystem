@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>Sample feed</title>
+<item>
+<title>VNM: lãi quý 3 tăng 5%</title>
+<description>Sữa Việt Nam báo lãi quý 3.</description>
+<link>https://example.vn/vnm-lai-quy-3.html</link>
+<pubDate>Tue, 24 Nov 2026 17:07:00 +0700</pubDate>
+</item>
+<item>
+<title>Thị trường chứng khoán &amp; dòng tiền</title>
+<description><![CDATA[<a href="https://example.vn/x"><img src="https://example.vn/x.jpg" /></a></br>VN-Index tăng &amp; thanh khoản cải thiện]]></description>
+<link>https://example.vn/thi-truong.html</link>
+<pubDate>Mon, 23 Nov 2026 09:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Tin không có ngày</title>
+<description>Không có pubDate</description>
+<link>https://example.vn/no-date.html</link>
+</item>
+<item>
+<title>Tin ngày hỏng</title>
+<description>pubDate không đọc được</description>
+<link>https://example.vn/bad-date.html</link>
+<pubDate>hôm qua</pubDate>
+</item>
+</channel>
+</rss>

@@ -3,7 +3,7 @@ from tradingagents.default_config import DEFAULT_CONFIG
 from tradingagents.memory.settlement import resolve_benchmark
 
 from vsi import bridge
-from vsi.markets import VN_BENCHMARK, normalize_ticker, vn_config
+from vsi.markets import VN_ANALYSTS, VN_BENCHMARK, normalize_ticker, vn_config
 
 
 def test_normalize_adds_suffix():
@@ -24,6 +24,9 @@ def test_vn_config_values():
     cfg = vn_config()
     assert cfg["data_vendors"]["core_stock_apis"] == "dnse"
     assert cfg["data_vendors"]["technical_indicators"] == "dnse"
+    for category in ("fundamental_data", "news_data", "macro_data", "prediction_markets"):
+        assert cfg["data_vendors"][category] == "vsi"
+    assert VN_ANALYSTS == ("market", "fundamentals", "news")
     assert cfg["output_language"] == "Vietnamese"
     assert cfg["llm_provider"] == "openai"
     assert cfg["max_tokens"] == 4096
@@ -41,3 +44,9 @@ def test_vn_config_leaves_default_untouched():
 
 def test_benchmark_is_known_index():
     assert VN_BENCHMARK in bridge.INDEX_CODES
+
+
+def test_vn_config_reads_env_at_call_time(monkeypatch):
+    # .env is loaded after tradingagents is imported, so DEFAULT_CONFIG alone would miss it
+    monkeypatch.setenv("TRADINGAGENTS_QUICK_THINK_LLM", "model-from-env")
+    assert vn_config()["quick_think_llm"] == "model-from-env"
