@@ -18,7 +18,8 @@ from tradingagents.graph.trading_graph import TradingAgentsGraph
 from vsi.bridge import install
 from vsi.markets import VN_ANALYSTS, normalize_ticker, vn_config
 from vsi.dnse import DnseClient
-from vsi.news import collect, default_store
+from vsi.jobs import run_lock
+from vsi.news import collect, default_store, vsi_home
 
 DATA_SOURCE = "DNSE OpenAPI"
 
@@ -57,7 +58,7 @@ def analyze(ticker: str, trade_date: str, *, config: dict | None = None, graph_f
     log.parent.mkdir(parents=True, exist_ok=True)
     with log.open("a", encoding="utf-8") as f:
         f.write(json.dumps(result, ensure_ascii=False) + "\n")
-    return result
+    return result | {"final_state": state}  # after logging: the state is not JSON and stays out of the log
 
 
 def collect_news() -> int:
@@ -75,11 +76,15 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("ticker")
     p.add_argument("--date", required=True, help="analysis date, YYYY-MM-DD")
     sub.add_parser("collect-news", help="fetch Vietnamese RSS news into the local store")
+    sub.add_parser("bot", help="run the Telegram bot (owner chats only)")
     args = parser.parse_args(argv)
     if args.command == "collect-news":
         return collect_news()
 
     load_dotenv()
+    if args.command == "bot":
+        from vsi import bot
+        return bot.run()
     if not os.environ.get("OPENAI_API_KEY"):
         print("OPENAI_API_KEY is not set; add it to .env")
         return 2
@@ -90,7 +95,8 @@ def main(argv: list[str] | None = None) -> int:
             print(f"error: {base} is not listed on HOSE, HNX or UPCoM (DNSE)")
             return 2
         install(client)
-        result = analyze(args.ticker, args.date)
+        with run_lock(vsi_home() / "run.lock"):  # one paid run at a time, shared with the bot worker
+            result = analyze(args.ticker, args.date)
     except ValueError as e:  # bad ticker/date, missing DNSE keys (VendorNotConfiguredError)
         print(f"error: {e}")
         return 2

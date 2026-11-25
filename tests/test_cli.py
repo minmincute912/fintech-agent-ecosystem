@@ -102,3 +102,42 @@ def test_collect_news_cli_exit_codes(monkeypatch, tmp_path, capsys):
     assert cli.main(["collect-news"]) == 0
     out = capsys.readouterr().out
     assert "B v: 3 new" in out and "A u: failed (ConnectionError)" in out
+
+
+def test_analyze_returns_final_state_not_logged(tmp_path):
+    cfg = vn_config() | {"results_dir": str(tmp_path)}
+    out = cli.analyze("vnm", "2026-10-30", config=cfg, graph_factory=FakeGraph)
+    assert out["final_state"] == {"final_trade_decision": "x"}
+    line = json.loads((tmp_path / "vsi_runs.jsonl").read_text().splitlines()[-1])
+    assert "final_state" not in line
+
+
+def test_main_analyze_takes_run_lock(env, monkeypatch, tmp_path):
+    events = []
+
+    class Lock:
+        def __init__(self, path):
+            events.append(("lock", path))
+
+        def __enter__(self):
+            events.append("enter")
+
+        def __exit__(self, *exc):
+            events.append("exit")
+
+    monkeypatch.setenv("VSI_HOME", str(tmp_path))
+    monkeypatch.setattr(cli, "run_lock", Lock)
+    monkeypatch.setattr(cli, "analyze", lambda t, d: events.append("analyze") or
+                        {"ticker": "VNM.VN", "date": d, "rating": "Hold", "report_path": "r", "llm_calls": 1,
+                         "tokens_in": 1, "tokens_out": 1, "seconds": 1})
+    assert cli.main(["analyze", "VNM", "--date", "2026-10-30"]) == 0
+    assert events == [("lock", tmp_path / "run.lock"), "enter", "analyze", "exit"]
+
+
+def test_cli_bot_exits_2_on_startup_problems(monkeypatch, capsys, tmp_path):
+    monkeypatch.setattr(cli, "load_dotenv", lambda *a, **k: None)
+    monkeypatch.chdir(tmp_path)
+    for key in ("TELEGRAM_BOT_TOKEN", "TELEGRAM_ALLOWED_CHAT_IDS"):
+        monkeypatch.delenv(key, raising=False)
+    assert cli.main(["bot"]) == 2
+    assert "TELEGRAM_BOT_TOKEN" in capsys.readouterr().out

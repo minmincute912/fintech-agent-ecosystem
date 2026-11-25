@@ -109,9 +109,12 @@ class NewsStore:
         return datetime.fromisoformat(first).astimezone(VN_TZ).date() if first else None
 
 
+def vsi_home() -> Path:
+    return Path(os.environ.get("VSI_HOME") or Path.home() / ".tradingagents" / "vsi")
+
+
 def default_store() -> NewsStore:
-    home = Path(os.environ.get("VSI_HOME") or Path.home() / ".tradingagents" / "vsi")
-    return NewsStore(home / "news.sqlite")
+    return NewsStore(vsi_home() / "news.sqlite")
 
 
 FEEDS = (

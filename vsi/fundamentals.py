@@ -164,3 +164,13 @@ def get_fundamentals(ticker: str, as_of_date: str | None = None) -> str:
                      f"{_cell(before)} | {_cell(last_year)} |")
     tail = [f"Not in source data: {', '.join(missing)}"] if missing else []
     return "\n".join(head) + "\n\n" + "\n".join(lines + tail)
+
+
+def latest_quarter(ticker: str, as_of_date: str) -> tuple[date, date] | None:
+    """(fiscal date, created date) of the latest quarter created on or before as_of; None if unavailable."""
+    try:
+        df = _usable(_symbol(ticker), "QUARTER", _as_of(as_of_date))
+        fiscal = max(df["fiscal_date"])
+        return fiscal, df[df["fiscal_date"] == fiscal]["created"].min()
+    except Exception:  # summary line only; a finfo outage must not fail the report
+        return None

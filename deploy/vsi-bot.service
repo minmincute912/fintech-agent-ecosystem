@@ -1,0 +1,19 @@
+# systemd user service for the Telegram bot. Install (as the bot's Linux user, not root):
+#   mkdir -p ~/.config/systemd/user && cp deploy/vsi-bot.service ~/.config/systemd/user/
+#   systemctl --user daemon-reload && systemctl --user enable --now vsi-bot
+#   sudo loginctl enable-linger "$USER"     # keep it running after you log out
+# Logs: journalctl --user -u vsi-bot -f
+[Unit]
+Description=Vietnam Stock Intelligence Telegram bot (research only)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=%h/fintech-agent-ecosystem
+ExecStart=%h/.local/bin/uv run vsi bot
+Restart=on-failure
+RestartSec=30
+TimeoutStopSec=90
+
+[Install]
+WantedBy=default.target
